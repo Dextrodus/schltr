@@ -16,12 +16,9 @@ The workflow skips the build while there is no `package.json`, and skips the dep
 
 ## One-time setup (staging)
 
-### 1. Find out where schltr.com's DNS lives
+### 1. Current setup
 
-Run `dig NS schltr.com +short` (or check at your domain registrar).
-
-- Ends in `ns.cloudflare.com` → DNS is already on Cloudflare. Step 5 adds the DNS record for you.
-- Anything else → you'll add one CNAME record at that provider in step 5. No nameserver change is needed for staging.
+schltr.com is registered at **Namecheap**, which also runs its DNS (Namecheap BasicDNS), and the site is served by **Adobe Portfolio**. Staging only adds one `staging` record at Namecheap; the Adobe records stay as they are.
 
 ### 2. Cloudflare account
 
@@ -56,30 +53,30 @@ The next push to `main` (or *Actions → Deploy → Run workflow* on `main`) bui
 
 Do this in the dashboard **before** adding any DNS record yourself, otherwise the subdomain shows a Cloudflare 522 error.
 
-- DNS on Cloudflare: confirm the record it proposes (*Activate domain*). Done.
-- DNS elsewhere: at your DNS provider, add
+Then, in Namecheap: *Domain List → schltr.com → Manage → Advanced DNS → Add New Record*:
 
-  | Type | Name | Target |
-  | --- | --- | --- |
-  | CNAME | `staging` | `schltr.pages.dev` |
+| Type | Host | Value | TTL |
+| --- | --- | --- | --- |
+| CNAME Record | `staging` | `schltr.pages.dev` | Automatic |
 
-  Leave every other record (`@`, `www`, `MX`, …) as it is.
+Leave every other record (the Adobe Portfolio `@`/`www` records, any mail records) as it is.
 
 The domain shows *Active* once DNS and the TLS certificate are ready (usually minutes, can take up to a day). From then on, every merge to `main` is live at <https://staging.schltr.com>.
 
 ### Optional: password-protect staging
 
-`noindex` keeps staging out of search engines but anyone with the URL can open it. To restrict it to you, put a Cloudflare Access application (Zero Trust → Access → Applications → Self-hosted, free for up to 50 users) in front of `staging.schltr.com` with an email login policy. This needs schltr.com's DNS on Cloudflare.
+`noindex` keeps staging out of search engines but anyone with the URL can open it. To restrict it to you, put a Cloudflare Access application (Zero Trust → Access → Applications → Self-hosted, free for up to 50 users) in front of `staging.schltr.com` with an email login policy. This needs schltr.com's DNS on Cloudflare, so it's only possible after the nameserver move in go-live step 1.
 
 ## Go-live
 
 Do this only when staging looks right. This is the step that changes schltr.com.
 
-1. **Move schltr.com's DNS to Cloudflare, if it isn't already.** Pages can only serve an apex domain (`schltr.com` without a subdomain) from a Cloudflare zone.
-   - *Add a site* → `schltr.com` → Free plan. Cloudflare imports the existing records.
-   - Compare the imported records with your current provider's, especially **MX, SPF/DKIM/DMARC TXT records** for email (the catch-all mailbox depends on them). Fix anything missing before continuing.
-   - Change the nameservers at your registrar to the two Cloudflare shows. With identical records, the website and email keep working during the switch.
-2. **Attach the production domains**: *Workers & Pages → schltr → Custom domains* → add `schltr.com`, then `www.schltr.com`. This is the moment visitors start seeing the new site. Cloudflare replaces the old `@`/`www` records with ones pointing at Pages.
+1. **Move schltr.com's DNS from Namecheap to Cloudflare.** Pages can only serve an apex domain (`schltr.com` without a subdomain) from a Cloudflare zone. Namecheap stays the registrar.
+   - In Cloudflare: *Add a site* → `schltr.com` → Free plan. Cloudflare imports the existing records.
+   - Compare them with Namecheap's *Advanced DNS* page. The Adobe Portfolio `@`/`www` records and the `staging` CNAME must be there so nothing changes yet.
+   - **Email:** Namecheap's free email forwarding stops working once the nameservers move. If you use it, set up *Email → Email Routing* in Cloudflare first (it supports a catch-all address). For a mail host like Fastmail or Google, check its MX and SPF/DKIM/DMARC TXT records were imported.
+   - In Namecheap: *Domain List → schltr.com → Manage → Nameservers → Custom DNS* → enter the two Cloudflare nameservers. With identical records, the Portfolio site keeps working during the switch.
+2. **Attach the production domains**: *Workers & Pages → schltr → Custom domains* → add `schltr.com`, then `www.schltr.com`. This is the moment visitors start seeing the new site. Cloudflare replaces the old Adobe `@`/`www` records with ones pointing at Pages. Afterwards, remove the custom domain in Adobe Portfolio's site settings.
 3. **Redirect www to the apex** (or the other way round): *Rules → Redirect Rules → Create rule → "Redirect from WWW to root"* template.
 4. **Staging after launch** (pick one):
    - Drop it: remove `staging.schltr.com` under Custom domains and its DNS record, and use the per-PR preview URLs instead.
