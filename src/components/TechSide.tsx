@@ -7,19 +7,21 @@ interface Props {
   page: TechPage | null;
   /** The content hides while the photo side is leaned; the menu only dims. */
   leanedAway: boolean;
+  /** Out of reach for keyboard and screen readers: the side is collapsed, or a dialog is open. */
+  inert: boolean;
   go: Go;
 }
 
 // bottom-up listing: the first entry sits right under `ls`
 const listing: TechPage[] = ['contact', 'what-i-use', 'hobbies', 'career', 'introduction'];
 
-export default function TechSide({ page, leanedAway, go }: Props) {
+export default function TechSide({ page, leanedAway, inert, go }: Props) {
   const [hovered, setHovered] = useState<TechPage | null>(null);
   const active = page ?? 'introduction';
   const off = () => setHovered(null);
 
   return (
-    <section className="tech" aria-label="Tech">
+    <section className="tech" aria-label="Tech" inert={inert}>
       <div className={`tech-content slide ${page ? 'is-open' : ''}`} style={{ opacity: leanedAway ? 0 : 1 }}>
         {page === null && <Home />}
         {page === 'introduction' && <Introduction />}

@@ -1,5 +1,5 @@
 import type { MouseEvent } from 'react';
-import { albums, albumBySlug, thumbSrc } from '../data/photos';
+import { albums, albumBySlug, gridSrcSet, thumbSrc } from '../data/photos';
 import { currentGear, previousGear, photoCount, type Gear } from '../data/gear';
 import type { PhotoPage, View } from '../lib/route';
 import { Envelope, Grain, ViewLink, type Go } from './bits';
@@ -8,6 +8,8 @@ interface Props {
   page: PhotoPage;
   album?: string;
   open: boolean;
+  /** Out of reach for keyboard and screen readers: the side is collapsed, or a viewer or dialog is open. */
+  inert: boolean;
   /** The menu dims slightly while the tech side is leaned. */
   dimmed: boolean;
   go: Go;
@@ -15,12 +17,12 @@ interface Props {
   onOpenPhoto: (index: number) => void;
 }
 
-export default function PhotoSide({ page, album, open, dimmed, go, onNoCopy, onOpenPhoto }: Props) {
+export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCopy, onOpenPhoto }: Props) {
   const current = (p: PhotoPage, slug?: string) => (page === p && (!slug || album === slug) ? 'is-current' : undefined);
   const albumView = (slug: string): View => ({ side: 'photo', page: 'album', album: slug });
 
   return (
-    <section className="photo slide" aria-label="Photography">
+    <section className="photo slide" aria-label="Photography" inert={inert}>
       <Grain id="grain-side" />
 
       <nav className="photo-nav slide" aria-label="Photography" style={{ opacity: dimmed ? 0.8 : 1 }}>
@@ -50,7 +52,15 @@ export default function PhotoSide({ page, album, open, dimmed, go, onNoCopy, onO
             {albums.map((a) => (
               <ViewLink key={a.slug} to={albumView(a.slug)} go={go} className="cover ph-h" tabIndex={open ? undefined : -1}>
                 {a.cover ? (
-                  <img src={thumbSrc(a.cover)} alt={a.cover.alt} width={a.cover.width} height={a.cover.height} onContextMenu={onNoCopy} />
+                  <img
+                    src={thumbSrc(a.cover)}
+                    srcSet={gridSrcSet(a.cover)}
+                    sizes="260px"
+                    alt={a.cover.alt}
+                    width={a.cover.width}
+                    height={a.cover.height}
+                    onContextMenu={onNoCopy}
+                  />
                 ) : (
                   <span className="cover__empty">[ {a.name.toLowerCase()} ]</span>
                 )}
@@ -80,6 +90,9 @@ function AlbumPage({ slug, onNoCopy, onOpenPhoto }: { slug: string; onNoCopy: Pr
             <img
               key={p.file}
               src={thumbSrc(p)}
+              srcSet={gridSrcSet(p)}
+              sizes="350px"
+              data-index={i}
               alt={p.alt}
               width={p.width}
               height={p.height}

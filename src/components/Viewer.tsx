@@ -1,7 +1,7 @@
 import { useEffect, useRef, type KeyboardEvent, type MouseEvent } from 'react';
 import { fullSrc, type Album } from '../data/photos';
 import { lensId } from '../data/gear';
-import { ChevronLeft, ChevronRight, Cross, Grain, ViewLink, type Go } from './bits';
+import { ChevronLeft, ChevronRight, Cross, Grain, ViewLink, trapTab, type Go } from './bits';
 
 interface Props {
   album: Album;
@@ -23,11 +23,16 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
   const photo = album.photos[index];
   const e = photo.exif;
 
+  // on close, focus the thumbnail of the photo last shown (it may differ from the one that opened the viewer)
+  const last = useRef(index);
+  last.current = index;
   useEffect(() => {
     ref.current?.focus();
+    return () => document.querySelector<HTMLElement>(`.masonry [data-index="${last.current}"]`)?.focus();
   }, []);
 
-  const onKey = (ev: KeyboardEvent) => {
+  const onKey = (ev: KeyboardEvent<HTMLDivElement>) => {
+    trapTab(ev);
     if (ev.key === 'ArrowLeft') onStep(-1);
     else if (ev.key === 'ArrowRight') onStep(1);
     else if (ev.key === 'Escape') onClose();

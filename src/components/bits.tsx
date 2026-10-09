@@ -1,4 +1,4 @@
-import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, KeyboardEvent, MouseEvent, ReactNode } from 'react';
 import { pathFor, type View } from '../lib/route';
 
 /** Film grain over the photo side: above the background, below the content. */
@@ -38,6 +38,24 @@ export const Envelope = () => (
     <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
   </svg>
 );
+
+/** Keeps Tab inside a modal: wraps from the last focusable element to the first and back. */
+export function trapTab(e: KeyboardEvent<HTMLElement>) {
+  if (e.key !== 'Tab') return;
+  const root = e.currentTarget;
+  const items = [...root.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')];
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  const active = document.activeElement;
+  if (e.shiftKey && (active === first || active === root)) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && active === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
 
 export type Go = (view: View, hash?: string) => void;
 

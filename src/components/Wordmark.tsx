@@ -8,6 +8,7 @@ interface Props {
   frac: number;
   onClick: () => void;
   onKeyDown: (e: KeyboardEvent) => void;
+  inert: boolean;
 }
 
 // open side: the wordmark shrinks to 47% and slides into the top corner of the closed side
@@ -17,7 +18,7 @@ const EDGE = 64;
 // useLayoutEffect warns during server rendering; measuring only matters in the browser
 const useIsoLayoutEffect = typeof window === 'undefined' ? () => {} : useLayoutEffect;
 
-export default function Wordmark({ mode, frac, onClick, onKeyDown }: Props) {
+export default function Wordmark({ mode, frac, onClick, onKeyDown, inert }: Props) {
   const schRef = useRef<HTMLSpanElement>(null);
   const ltrRef = useRef<HTMLSpanElement>(null);
   const [widths, setWidths] = useState({ sch: 112, ltr: 112 });
@@ -50,6 +51,7 @@ export default function Wordmark({ mode, frac, onClick, onKeyDown }: Props) {
       style={style}
       onClick={() => open && onClick()}
       onKeyDown={onKeyDown}
+      inert={inert}
       aria-label={open ? 'schltr: back to the split view' : 'schltr. Left and right arrow keys lean toward a side, Enter opens it.'}
     >
       <span className="wm__row">

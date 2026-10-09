@@ -76,6 +76,8 @@ export const albums: Album[] = [
 ];
 
 export const thumbSrc = (p: Photo) => `/photos/thumbs/${p.file}.jpg`;
+/** 720 px grid version and the 1200 px thumb; the grid shows photos at roughly 260–350 px. */
+export const gridSrcSet = (p: Photo) => `/photos/grid/${p.file}.jpg 720w, ${thumbSrc(p)} 1200w`;
 export const fullSrc = (p: Photo) => `/photos/full/${p.file}.jpg`;
 
 export const albumBySlug = (slug: string) => albums.find((a) => a.slug === slug);

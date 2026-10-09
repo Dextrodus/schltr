@@ -25,14 +25,6 @@ a {
 img {
   display: block;
 }
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 
 /* anything that follows the divider */
 .slide {
@@ -551,6 +543,10 @@ img {
   background: rgba(0, 0, 0, 0.05);
   color: var(--photo-accent);
 }
+.chev--tech:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--tech-accent);
+}
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -860,8 +856,11 @@ img {
   border-top-color: var(--footer-line-tech);
 }
 .footer :focus-visible {
-  outline: 2px solid var(--photo-accent);
+  outline: 2px solid var(--footer-ink);
   outline-offset: 2px;
+}
+.footer .popup :focus-visible {
+  outline-color: var(--popup-link);
 }
 .footer__start {
   display: flex;

@@ -3,12 +3,13 @@ import type { DialogKind } from './Dialogs';
 
 interface Props {
   side: 'split' | 'photo' | 'tech';
+  inert: boolean;
   onOpenDialog: (kind: DialogKind) => void;
 }
 
-export default function Footer({ side, onOpenDialog }: Props) {
+export default function Footer({ side, inert, onOpenDialog }: Props) {
   return (
-    <footer className={`footer ${side === 'split' ? '' : `is-${side}`}`}>
+    <footer className={`footer ${side === 'split' ? '' : `is-${side}`}`} inert={inert}>
       <div className="footer__start">
         <Cookie />
       </div>
@@ -28,6 +29,8 @@ export default function Footer({ side, onOpenDialog }: Props) {
   );
 }
 
+const HIDE_KEY = 'schltr.cookie-chip-hidden';
+
 type CookieState = 'closed' | 'open' | 'done' | 'closing' | 'hidden';
 type Choice = 'crunchy' | 'soft';
 
@@ -41,6 +44,15 @@ function Cookie() {
     timers.current = [];
   };
   useEffect(() => clear, []);
+
+  // × hides the chip for the browser session; read after mount so the server-rendered HTML matches
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(HIDE_KEY)) setState('hidden');
+    } catch {
+      // storage blocked: the chip simply comes back on reload
+    }
+  }, []);
 
   // play the reaction, then get out of the way
   const pick = (c: Choice, hold: number) => {
@@ -113,6 +125,11 @@ function Cookie() {
           onClick={() => {
             clear();
             setState('hidden');
+            try {
+              sessionStorage.setItem(HIDE_KEY, '1');
+            } catch {
+              // storage blocked: hidden for this page view only
+            }
           }}
         >
           ×

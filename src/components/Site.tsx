@@ -23,6 +23,8 @@ export default function Site({ initial }: { initial: View }) {
   const [toast, setToast] = useState<{ x: number; y: number } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const toastTimer = useRef<number>(undefined);
+  // where focus goes back to when a dialog closes (the viewer returns it to the photo itself)
+  const returnFocus = useRef<HTMLElement | null>(null);
 
   const mode: Mode =
     view.side === 'photo' ? 'open-photo' : view.side === 'tech' ? 'open-tech' : lean ? (`lean-${lean}` as Mode) : 'split';
@@ -117,6 +119,22 @@ export default function Site({ initial }: { initial: View }) {
   const album = view.side === 'photo' && view.page === 'album' ? albumBySlug(view.album ?? '') : undefined;
   const step = (d: number) => album && setViewer((i) => (i === null ? i : (i + d + album.photos.length) % album.photos.length));
 
+  // a viewer or dialog is modal: everything behind it is out of reach, so Tab stays inside it
+  const viewerOpen = !!album && viewer !== null && viewer < album.photos.length;
+  const modal = viewerOpen || dialog !== null;
+
+  useEffect(() => {
+    if (modal || !returnFocus.current) return;
+    returnFocus.current.focus();
+    returnFocus.current = null;
+  }, [modal]);
+
+  const openDialog = (kind: DialogKind) => {
+    // remember the opener now: once the background is inert it loses focus
+    returnFocus.current = document.activeElement as HTMLElement | null;
+    setDialog(kind);
+  };
+
   const contact = () => go(view.side === 'tech' ? { side: 'tech', page: 'contact' } : { side: 'photo', page: 'contact' });
 
   return (
@@ -131,6 +149,7 @@ export default function Site({ initial }: { initial: View }) {
         page={view.side === 'photo' ? view.page : 'albums'}
         album={view.side === 'photo' ? view.album : undefined}
         open={view.side === 'photo'}
+        inert={modal || view.side === 'tech'}
         dimmed={frac < 0.5}
         go={go}
         onNoCopy={onNoCopy}
@@ -139,16 +158,17 @@ export default function Site({ initial }: { initial: View }) {
           setViewer(i);
         }}
       />
-      <TechSide page={view.side === 'tech' ? view.page : null} leanedAway={frac > 0.5} go={go} />
+      <TechSide page={view.side === 'tech' ? view.page : null} leanedAway={frac > 0.5} inert={modal || view.side === 'photo'} go={go} />
 
       <div className="divider slide" aria-hidden="true" style={{ opacity: open ? 0 : 1 }} />
 
-      <Wordmark mode={mode} frac={frac} onClick={goHome} onKeyDown={onWordmarkKey} />
+      <Wordmark mode={mode} frac={frac} onClick={goHome} onKeyDown={onWordmarkKey} inert={modal} />
 
       {view.side === 'photo' && (
         <button
           className="strip strip--photo chev chev--photo"
           tabIndex={-1}
+          inert={modal}
           onClick={goHome}
           aria-label="Back to the split view, to reach the tech side"
           title="Back to the split view"
@@ -160,6 +180,7 @@ export default function Site({ initial }: { initial: View }) {
         <button
           className="strip strip--tech chev chev--tech"
           tabIndex={-1}
+          inert={modal}
           onClick={goHome}
           aria-label="Back to the split view, to reach the photography side"
           title="Back to the split view"
@@ -168,7 +189,7 @@ export default function Site({ initial }: { initial: View }) {
         </button>
       )}
 
-      {album && viewer !== null && viewer < album.photos.length && (
+      {album && viewerOpen && viewer !== null && (
         <Viewer album={album} index={viewer} onStep={step} onClose={() => setViewer(null)} onNoCopy={onNoCopy} go={go} />
       )}
 
@@ -195,13 +216,14 @@ export default function Site({ initial }: { initial: View }) {
           kind={dialog}
           onClose={() => setDialog(null)}
           onContact={() => {
+            returnFocus.current = null;
             setDialog(null);
             contact();
           }}
         />
       )}
 
-      <Footer side={view.side} onOpenDialog={setDialog} />
+      <Footer side={view.side} inert={modal} onOpenDialog={openDialog} />
     </div>
   );
 }

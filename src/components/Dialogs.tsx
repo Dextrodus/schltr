@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
-import { Cross } from './bits';
+import { Cross, trapTab } from './bits';
 
 export type DialogKind = 'impressum' | 'credits' | 'support';
 
@@ -16,12 +16,11 @@ export default function Dialog({ kind, onClose, onContact }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const before = document.activeElement as HTMLElement | null;
     ref.current?.focus();
-    return () => before?.focus?.();
   }, []);
 
-  const onKey = (e: KeyboardEvent) => {
+  const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    trapTab(e);
     if (e.key === 'Escape') {
       e.preventDefault();
       onClose();
