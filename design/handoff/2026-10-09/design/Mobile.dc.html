@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>schltr — start, mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&amp;family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&amp;display=swap">
+<style>
+body{margin:0;background:#0b1626}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:inherit}
+a{color:inherit}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; background: #80838f; color: #16181e; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;">
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: {{grain}}; pointer-events: none;"><filter id="grain-m"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain-m)"></rect></svg>
+
+<nav aria-label="Photography" style="position: absolute; left: 16px; top: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
+<div style="display: flex; flex-direction: column; align-items: flex-start;">
+<button style="padding: 6px 0; font-size: 23px; line-height: 1.2; font-weight: 600; color: #0e3a6b;">Portfolio</button>
+<div style="display: flex; flex-direction: column; align-items: flex-start; margin-left: {{albMargin}}; padding-left: {{albPad}}; border-left: {{albBorder}};">
+<button style="padding: {{albPadY}} 0; font-size: {{albSize}}; line-height: 1.2; font-weight: 500; color: {{albColor}};">Landscapes</button>
+<button style="padding: {{albPadY}} 0; font-size: {{albSize}}; line-height: 1.2; font-weight: 500; color: {{albColor}};">Astro</button>
+<button style="padding: {{albPadY}} 0; font-size: {{albSize}}; line-height: 1.2; font-weight: 500; color: {{albColor}};">People</button>
+<button style="padding: {{albPadY}} 0; font-size: {{albSize}}; line-height: 1.2; font-weight: 500; color: {{albColor}};">Action</button>
+<button style="padding: {{albPadY}} 0; font-size: {{albSize}}; line-height: 1.2; font-weight: 500; color: {{albColor}};">Wildlife</button>
+</div>
+</div>
+<button style="padding: 6px 0; font-size: 23px; line-height: 1.2; font-weight: 600;">What I use</button>
+<button style="padding: 6px 0; font-size: 23px; line-height: 1.2; font-weight: 600;">Contact</button>
+</nav>
+
+<div style="position: absolute; left: 214px; top: 24px; display: flex; flex-direction: column; gap: 8px;">
+<img src="/_blob/3adc37c799ed1fd00cfa8be4d6df0d4e" alt="Layered blue mountain ridges under heavy clouds" style="display: block; width: 160px; height: 107px; object-fit: cover; background: #6c6f7b;">
+<img src="/_blob/24b1284425c66b0f13aa3cf7a8bafa8a" alt="Power pylon against a starry night sky" style="display: block; width: 160px; height: 107px; object-fit: cover; background: #6c6f7b;">
+</div>
+
+<div style="position: absolute; inset: 0; background: #0b1626; clip-path: polygon(0 591px, 390px 253px, 390px 844px, 0 844px); color: #dce6f0; font-family: 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;">
+<div style="position: absolute; left: 16px; top: 640px; font-size: 13px; line-height: 1.7;">
+<div><span style="color: #8fa2b8;">~ $</span> whoami</div>
+<div>konrad</div>
+</div>
+<nav aria-label="Tech" style="position: absolute; right: 16px; bottom: 68px; width: 190px; display: flex; flex-direction: column; align-items: flex-start; font-size: 13px; line-height: 1.7;">
+<span style="color: #8fa2b8;">~ $ ls</span>
+<button style="padding: 11px 0;">contact/</button>
+<button style="padding: 11px 0;">what-i-use/</button>
+<button style="padding: 11px 0;">hobbies/</button>
+<button style="padding: 11px 0;">career/</button>
+<button style="padding: 11px 0; color: #6fb7cf;">introduction/</button>
+</nav>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: -63px; top: 422px; width: 516px; height: 1px; background: #f2f2f2; transform: rotate(-40.89deg); pointer-events: none;"></div>
+
+<button aria-label="schltr. Drag up-left to open photography, down-right to open tech." style="position: absolute; left: 195px; top: 422px; transform: translate(-50%, -50%); display: flex; align-items: stretch; height: 48px; border: 1px solid #6e6e6e; border-radius: 999px; overflow: hidden;">
+<span style="display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 0 0 16px; background: #80838f; color: #16181e;">
+<span aria-hidden="true" style="font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37;">↖</span>
+<span style="font-size: 24px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;">sch</span>
+</span>
+<span style="display: flex; align-items: center; gap: 10px; padding: 0 16px 0 0; background: #0b1626; color: #dce6f0; font-family: 'Martian Mono', ui-monospace, monospace;">
+<span style="margin-left: -0.08em; font-size: 21px; line-height: 1; font-weight: 400; letter-spacing: -0.03em;">ltr</span>
+<span aria-hidden="true" style="font-size: 12px; color: #8fa2b8;">↘</span>
+</span>
+</button>
+
+<div style="position: absolute; left: 16px; bottom: 68px; display: flex; border: 1px solid #50678a; border-radius: 2px; background: #0b1626; color: #dce6f0; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.4;">
+<button style="padding: 12px 10px;">Cookies</button>
+<button aria-label="Hide cookie preferences for this visit" style="padding: 12px 10px; border-left: 1px solid #50678a; font-size: 13px; line-height: 1.2;">×</button>
+</div>
+
+<footer style="position: absolute; left: 0; right: 0; bottom: 0; height: 56px; box-sizing: border-box; padding: 0 16px; display: flex; align-items: center; justify-content: center; gap: 24px; background: #464c5a; border-top: 1px solid #565c6a; color: #e2e4e8; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.4;">
+<a href="#" style="padding: 12px 0; text-decoration: none;">Impressum</a>
+<a href="#" style="padding: 12px 0; text-decoration: none;">Credits</a>
+<button style="padding: 12px 0;">Tech support</button>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"grain":{"editor":"range","min":0,"max":0.3,"step":0.01,"default":0.14},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      grain: this.props.grain ?? 0.14,
+      albMargin: '4px',
+      albPad: '16px',
+      albBorder: '1px solid #b4b7c0',
+      albSize: '17px',
+      albPadY: '7px',
+      albColor: '#16181e'
+    };
+  }
+}
+</script>
+</body>
+</html>

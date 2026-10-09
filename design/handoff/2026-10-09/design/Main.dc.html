@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>schltr — start</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&amp;family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&amp;display=swap">
+<style>
+body{margin:0;background:#0b1626}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:inherit}
+a{color:inherit}
+.slide{transition:width 520ms cubic-bezier(.22,.8,.24,1),left 520ms cubic-bezier(.22,.8,.24,1),top 520ms cubic-bezier(.22,.8,.24,1),transform 520ms cubic-bezier(.22,.8,.24,1),transform-origin 520ms cubic-bezier(.22,.8,.24,1),opacity 220ms ease-out}
+.page-in{animation:pagein 200ms ease-out 480ms both}
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+.cur{animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.dk-h:hover{color:#0e3a6b !important}
+.tm-h:hover{color:#6fb7cf}
+.ft-h:hover{color:#ffffff}
+.ck-in{animation:ck-in 180ms ease-out both}
+.ck-out{animation:ck-out 240ms ease-in both}
+.ck-yay{border-color:#7cc08a !important;transition:border-color 200ms ease-out}
+.ck-no{border-color:#e0574a !important;animation:ck-shake 440ms ease-in-out}
+.ck-cookie{animation:ck-pop 560ms cubic-bezier(.3,1.6,.5,1) both}
+.ck-crumb{position:absolute;left:12px;top:12px;width:4px;height:4px;background:#c8955a;opacity:0;animation:ck-fly 620ms ease-out 200ms both}
+.ck-c1{--dx:-22px;--dy:-16px}.ck-c2{--dx:20px;--dy:-18px}.ck-c3{--dx:-26px;--dy:6px}.ck-c4{--dx:26px;--dy:8px}.ck-c5{--dx:-8px;--dy:22px}.ck-c6{--dx:10px;--dy:-26px}
+@keyframes ck-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes ck-out{to{opacity:0;transform:translateY(6px)}}
+@keyframes ck-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
+@keyframes ck-pop{0%{transform:scale(0) rotate(-45deg)}60%{transform:scale(1.45) rotate(12deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes ck-fly{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(90deg)}}
+.dlg-bg{animation:ck-in 160ms ease-out both}
+.sup-box{transition:height 420ms cubic-bezier(.22,.8,.24,1)}
+.dog-in{animation:ck-in 300ms ease-out 200ms both}
+.dlg :focus-visible{outline:2px solid #8fb3e6 !important;outline-offset:2px}
+.dots span{animation:blink 1.2s steps(1) infinite}.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+.sliver{transition:background-color 150ms ease-out,color 150ms ease-out}
+.sliver-p{color:#2b2e37}
+.sliver-t{color:#8fa2b8}
+.sliver:hover{background:rgba(0,0,0,0.05);color:#0e3a6b}
+.ftbg{transition:background-color 520ms cubic-bezier(.22,.8,.24,1),border-color 520ms cubic-bezier(.22,.8,.24,1)}
+.dk :focus-visible,.ft :focus-visible{outline:2px solid #0e3a6b;outline-offset:2px}
+.tm :focus-visible{outline:2px solid #6fb7cf;outline-offset:2px}
+.wm:focus-visible{outline:none}
+.wm:focus-visible .wm-l{outline:2px solid #0e3a6b;outline-offset:6px}
+.wm:focus-visible .wm-r{outline:2px solid #6fb7cf;outline-offset:6px}
+@media (prefers-reduced-motion: reduce){.slide,.ftbg{transition:none}.ck-in,.ck-out,.ck-no,.ck-cookie,.ck-crumb,.dlg-bg,.dots span,.dog-in{animation:none}.sup-box{transition:none}.page-in{animation:none}.cur{animation:none}}
+</style>
+</helmet>
+<div ref="{{setRoot}}" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}" style="position: relative; width: 100%; height: 100vh; min-height: 640px; overflow: hidden; display: flex; background: #0b1626;">
+
+<section class="dk slide" aria-label="Photography" style="position: relative; flex: none; width: {{photoW}}; height: 100%; overflow: hidden; background: #80838f; color: #16181e; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;">
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: {{grain}}; pointer-events: none;"><filter id="grain-a"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain-a)"></rect></svg>
+
+<nav class="slide" aria-label="Photography" style="position: absolute; left: 32px; top: {{pNavTop}}; transform: translateY({{pNavTy}}); width: 260px; display: flex; flex-direction: column; align-items: flex-start; gap: 20px; opacity: {{photoNavOp}};">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
+<button class="dk-h" onClick="{{openAlbums}}" style="position: relative; color: {{pAlbumsC}}; font-size: 30px; line-height: 1.2; font-weight: 600;">Portfolio</button>
+<div style="display: flex; flex-direction: column; align-items: flex-start; margin-left: {{albMargin}}; padding-left: {{albPad}}; border-left: {{albBorder}};">
+<sc-for list="{{albums}}" as="a" hint-placeholder-count="5">
+<button class="dk-h" onClick="{{a.open}}" style="font-size: {{albSize}}; line-height: {{albLH}}; font-weight: 500; color: {{a.color}};">{{a.name}}</button>
+</sc-for>
+</div>
+</div>
+<button class="dk-h" onClick="{{openUsesP}}" style="position: relative; color: {{pUsesC}}; font-size: 30px; line-height: 1.2; font-weight: 600;">What I use</button>
+<button class="dk-h" onClick="{{openContactP}}" style="position: relative; color: {{pContactC}}; font-size: 30px; line-height: 1.2; font-weight: 600;">Contact</button>
+</nav>
+
+<div style="position: absolute; left: 304px; top: 140px; bottom: 64px; width: calc(100vw - 352px); overflow-x: hidden; overflow-y: {{photoScroll}}; scrollbar-gutter: stable;">
+
+<sc-if value="{{pAlbums}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-auto-flow: column; grid-template-rows: repeat(3, auto); grid-auto-columns: calc((100vw - 400px) / 4); gap: 24px 8px; padding-bottom: 32px;">
+<sc-for list="{{albums}}" as="a" hint-placeholder-count="5">
+<button class="dk-h" onClick="{{a.open}}" style="display: flex; flex-direction: column; gap: 8px; min-width: 0;">
+<sc-if value="{{a.hasSrc}}" hint-placeholder-val="{{true}}"><img src="{{a.src}}" alt="{{a.alt}}" onContextMenu="{{noCopy}}" style="display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #6c6f7b"></sc-if>
+<sc-if value="{{a.noSrc}}" hint-placeholder-val="{{false}}"><span style="width: 100%; aspect-ratio: 3 / 2; background: #6c6f7b; display: flex; align-items: center; justify-content: center; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37;">{{a.tag}}</span></sc-if>
+<span style="font-size: 22px; line-height: 1.2; font-weight: 500;">{{a.name}}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{pAlbum}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 24px; padding: 0 16px 32px 0;">
+<h1 style="margin: 0; font-size: 44px; line-height: 1; font-weight: 700; letter-spacing: -0.02em;">{{alb.name}}</h1>
+<sc-if value="{{alb.has}}" hint-placeholder-val="{{true}}">
+<div style="column-width: 300px; column-gap: 8px;">
+<sc-for list="{{alb.photos}}" as="ph" hint-placeholder-count="9">
+<img src="{{ph.src}}" alt="{{ph.alt}}" width="{{ph.w}}" height="{{ph.h}}" loading="lazy" onClick="{{ph.open}}" onContextMenu="{{noCopy}}" style="display: block; width: 100%; height: auto; margin: 0 0 8px; break-inside: avoid; background: #6c6f7b; cursor: zoom-in;">
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{alb.empty}}" hint-placeholder-val="{{false}}">
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #2b2e37;">Nothing developed yet. Still in the darkroom.</p>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{pUses}}" hint-placeholder-val="{{false}}">
+<div style="max-width: 760px; display: flex; flex-direction: column; gap: 48px; padding: 0 16px 32px 0;">
+<section style="display: flex; flex-direction: column; gap: 12px;">
+<h2 style="margin: 0; font-size: 30px; line-height: 1.15; font-weight: 600;">Current</h2>
+<div style="display: flex; flex-direction: column; font-size: 18px; line-height: 1.45;">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;">Body</span><span style="flex: 1 1 240px; min-width: 0;">Sony a7c</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;"></span></div>
+<div style="margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;">Lens</span><span style="flex: 1 1 240px; min-width: 0;">Tamron 28–200mm</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">[N] photos</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;"></span><span style="flex: 1 1 240px; min-width: 0;">Samyang 75mm f/1.8</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">[N] photos</span></div>
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 12px;">
+<h2 style="margin: 0; font-size: 30px; line-height: 1.15; font-weight: 600;">Previous or borrowed</h2>
+<div style="display: flex; flex-direction: column; font-size: 18px; line-height: 1.45;">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;">Body</span><span style="flex: 1 1 240px; min-width: 0;">Canon EOS 200D</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">18 photos</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;"></span><span style="flex: 1 1 240px; min-width: 0;">Canon EOS 5D Mark III</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">1 photo</span></div>
+<div style="margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;">Lens</span><span style="flex: 1 1 240px; min-width: 0;">Canon EF-S 55–250mm f/4–5.6 IS STM</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">14 photos</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;"></span><span style="flex: 1 1 240px; min-width: 0;">Canon EF-S 10–18mm f/4.5–5.6 IS STM</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">3 photos</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;"></span><span style="flex: 1 1 240px; min-width: 0;">Canon EF-S 18–55mm f/4–5.6 IS STM</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">1 photo</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;"></span><span style="flex: 1 1 240px; min-width: 0;">Canon EF 100–400mm f/4.5–5.6L IS USM</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">1 photo</span></div>
+<div style="margin-top: 14px; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; row-gap: 2px; padding: 3px 0;"><span style="flex: 0 0 48px; font-size: 15px; color: #2b2e37;">Drone</span><span style="flex: 1 1 240px; min-width: 0;">DJI (FC2103)</span><span style="flex: none; margin-left: auto; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #2b2e37; white-space: nowrap;">1 photo</span></div>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{pContact}}" hint-placeholder-val="{{false}}">
+<div style="max-width: 65ch; display: flex; flex-direction: column; gap: 40px; padding: 0 16px 32px 0; font-size: 18px; line-height: 1.55;">
+<p style="margin: 0; font-size: 30px; line-height: 1.2; font-weight: 600;">Konrad Schlüter</p>
+<a href="mailto:k@schltr.com" class="dk-h" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; font-size: 20px; line-height: 1.3; font-weight: 500; text-decoration: underline; text-decoration-color: #16181e; text-decoration-thickness: 2px; text-underline-offset: 5px;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0e3a6b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none;"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3.5 6.5l8.5 6.5 8.5-6.5"></path></svg>k@schltr.com</a>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #2b2e37;">Send any complaints to <a href="mailto:spam@schltr.com" class="dk-h" style="text-decoration: underline; text-decoration-color: #16181e; text-underline-offset: 3px;">spam@schltr.com</a> for appropriate disposal.</p>
+</div>
+</sc-if>
+</div>
+</section>
+
+<section class="tm" aria-label="Tech" style="position: relative; flex: 1 1 0; min-width: 0; height: 100%; overflow: hidden; background: #0b1626; color: #dce6f0; font-family: 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;">
+
+<div class="slide" style="position: absolute; left: max(48px, calc(50% - 400px)); top: 140px; bottom: 64px; width: min(600px, calc(100% - 96px)); overflow-x: hidden; overflow-y: {{devScroll}}; opacity: {{devContentOp}}; font-size: 14px; line-height: 1.7;">
+
+<sc-if value="{{dHome}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div><div><span style="color: #8fa2b8;">~ $</span> whoami</div><div>konrad — software developer</div></div>
+<div><div><span style="color: #8fa2b8;">~ $</span> cat background.txt</div><div>computer science @ TUM, applied subject: medicine</div><div>llm pipeline for kidney nutrition data · poster award</div></div>
+<div><div><span style="color: #8fa2b8;">~ $</span> cat status.txt</div><div>looking for a developer role, ideally in digital health</div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{dIntro}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px; padding-bottom: 32px;">
+<div style="color: #8fa2b8;">~ $ cat introduction.md</div>
+<h1 style="margin: 0; font-size: 14px; line-height: 1.7; font-weight: 700; color: #6fb7cf;"># introduction</h1>
+<p style="margin: 0;">Hi, I'm Konrad.</p>
+<p style="margin: 0;">I feel at home where computer science meets medicine. I studied Computer Science at TUM with medicine as my application subject, and now I want to build software that makes a real difference.</p>
+<p style="margin: 0;">As a working student at Carealytix, I learned how to build software that reaches real patients quickly without cutting corners on quality, accessibility or regulatory compliance (ISO 13485 / ISO 27001). At the same time, I worked as a research assistant with nephrologists and nutrition specialists at TUM. I designed, built and validated an LLM-based pipeline that expands a nutritional database for patients with chronic kidney disease. I presented the results at the XXI International Congress on Renal Nutrition and Metabolism, where I won a poster award, and I'm first author of the paper, which is currently under review.</p>
+<p style="margin: 0;">What matters to me is software that's good for the planet, for people and for society. Sometimes that means medicine. I started as a school first-aider and kept going through my studies and at Carealytix. Sometimes it means passing on knowledge: first teaching beginner swimming courses with the DLRG, later teaching IT and maths at a secondary school. It could just as well mean reducing inequality or pushing the energy transition forward. As long as my work makes the world a little better, step by step, I'm motivated.</p>
+<p style="margin: 0;">I'm looking for a position as a software developer, ideally in digital health.</p>
+<p style="margin: 0; color: #8fa2b8;">When I'm not writing code, I'm probably behind a camera. That's the other half of this site.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{dUses}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 24px; padding-bottom: 32px;">
+<div style="color: #8fa2b8;">~ $ cat what-i-use.md</div>
+<h1 style="margin: 0; font-size: 14px; line-height: 1.7; font-weight: 700; color: #6fb7cf;"># what i use</h1>
+<section style="display: flex; flex-direction: column; gap: 8px;">
+<h2 style="margin: 0; font-size: 14px; line-height: 1.7; font-weight: 700; color: #6fb7cf;">## desk</h2>
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 2px 16px;">
+<span style="color: #8fa2b8;">editor</span><span>Zed / VS Code</span>
+<span style="color: #8fa2b8;">agents</span><span>Claude Code / Codex</span>
+<span style="color: #8fa2b8;">daily</span><span>React, Python, Marimo notebooks, Java, LaTeX</span>
+<span style="color: #8fa2b8;">this site</span><span>Astro</span>
+<span style="color: #8fa2b8;">os</span><span>Fedora with GNOME <span style="color: #8fa2b8;"># probably changed by the time you read this</span></span>
+<span style="color: #8fa2b8;">cad</span><span>Onshape</span>
+<span style="color: #8fa2b8;">printer</span><span>Anycubic Kobra S1</span>
+</div>
+<div style="margin-top: 8px; padding: 12px 16px; background: #12223a;">
+<div><span style="color: #8fa2b8;">~ $</span> kobra status</div>
+<div style="color: #8fa2b8;">printing: something I don't need</div>
+<div>[<span style="color: #6fb7cf;">###########</span><span style="color: #50678a;">...................</span>] 37%</div>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{dContact}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="color: #8fa2b8;">~ $ cat contact.md</div>
+<h1 style="margin: 0; font-size: 14px; line-height: 1.7; font-weight: 700; color: #6fb7cf;"># contact</h1>
+<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 2px 16px;">
+<span style="color: #8fa2b8;">name</span><span>Konrad Schlüter</span>
+<span style="color: #8fa2b8;">mail</span><span><a href="mailto:k@schltr.com" class="tm-h" style="text-decoration: underline; text-decoration-color: #6fb7cf; text-underline-offset: 3px;">k@schltr.com</a></span>
+<span style="color: #8fa2b8;">complaints</span><span><a href="mailto:spam@schltr.com" class="tm-h" style="text-decoration: underline; text-decoration-color: #6fb7cf; text-underline-offset: 3px;">spam@schltr.com</a> <span style="color: #8fa2b8;"># for appropriate disposal</span></span>
+</div>
+<p style="margin: 0; color: #8fa2b8;">Your message will be read by a human. Eventually.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{dTodo}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="color: #8fa2b8;">~ $ cat {{devPage}}.md</div>
+<h1 style="margin: 0; font-size: 14px; line-height: 1.7; font-weight: 700; color: #6fb7cf;"># {{devPage}}</h1>
+<p style="margin: 0; color: #8fa2b8;">cat: {{devPage}}.md: not written yet. It works on my machine.</p>
+</div>
+</sc-if>
+</div>
+
+<nav class="slide" aria-label="Tech" style="position: absolute; right: 32px; bottom: 88px; width: 240px; display: flex; flex-direction: column; align-items: flex-start; font-size: 14px; line-height: 1.7; opacity: {{devNavOp}};">
+<span style="color: #8fa2b8;">~ $ ls</span>
+<button class="tm-h" onClick="{{openContactD}}" onMouseEnter="{{hovContact}}" onFocus="{{hovContact}}" onMouseLeave="{{hovOff}}" onBlur="{{hovOff}}" style="color: {{dContactC}};">contact/</button>
+<button class="tm-h" onClick="{{openUsesD}}" onMouseEnter="{{hovUses}}" onFocus="{{hovUses}}" onMouseLeave="{{hovOff}}" onBlur="{{hovOff}}" style="color: {{dUsesC}};">what-i-use/</button>
+<button class="tm-h" onClick="{{openHobbies}}" onMouseEnter="{{hovHobbies}}" onFocus="{{hovHobbies}}" onMouseLeave="{{hovOff}}" onBlur="{{hovOff}}" style="color: {{dHobbiesC}};">hobbies/</button>
+<button class="tm-h" onClick="{{openCareer}}" onMouseEnter="{{hovCareer}}" onFocus="{{hovCareer}}" onMouseLeave="{{hovOff}}" onBlur="{{hovOff}}" style="color: {{dCareerC}};">career/</button>
+<button class="tm-h" onClick="{{openIntro}}" onMouseEnter="{{hovIntro}}" onFocus="{{hovIntro}}" onMouseLeave="{{hovOff}}" onBlur="{{hovOff}}" style="color: {{dIntroC}};">introduction/</button>
+<span><span style="color: #8fa2b8;">~ $</span> cd {{cdTarget}}<span class="cur" style="display: inline-block; width: 0.6em; height: 1.1em; margin-left: 2px; vertical-align: -0.2em; background: #6fb7cf;"></span></span>
+</nav>
+</section>
+
+<div aria-hidden="true" class="slide" style="position: absolute; top: 132px; bottom: 64px; left: {{photoW}}; width: 1px; margin-left: -0.5px; background: #f2f2f2; opacity: {{divOp}}; pointer-events: none; z-index: 2;"></div>
+
+<button class="wm slide" onClick="{{wmClick}}" onKeyDown="{{onKey}}" aria-label="{{wmLabel}}" style="position: absolute; left: 0; right: 0; top: 24px; z-index: 7; display: flex; flex-direction: column; gap: 4px; pointer-events: none; cursor: {{wmCursor}}; transform-origin: {{wmA}} 0; transform: scale({{wmScale}});">
+<span style="display: flex; align-items: baseline;">
+<span class="slide" style="flex: none; width: {{wmA}}; display: flex; justify-content: flex-end;"><span class="wm-l" ref="{{setSch}}" style="pointer-events: auto; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 65px; line-height: 1.108; font-weight: 600; letter-spacing: -0.02em; color: {{schColor}}; transition: color 520ms cubic-bezier(.22,.8,.24,1);">sch</span></span>
+<span style="flex: 1 1 0; min-width: 0; display: flex;"><span class="wm-r" ref="{{setLtr}}" style="pointer-events: auto; margin-left: -0.08em; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 56px; line-height: 1.2857; font-weight: 400; letter-spacing: -0.03em; color: #dce6f0;">ltr</span></span>
+</span>
+<span class="slide" style="display: flex; align-items: baseline; opacity: {{wmLabelOp}};">
+<span class="slide" style="flex: none; width: {{wmA}}; box-sizing: border-box; padding-right: 12px; display: flex; justify-content: flex-end; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 17px; line-height: 1.2; font-weight: 500; color: #2b2e37;">photo</span>
+<span style="flex: 1 1 0; min-width: 0; padding-left: 12px; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 14px; line-height: 1.2; color: #8fa2b8;">tech</span>
+</span>
+</button>
+
+
+<sc-if value="{{isOpenPhoto}}" hint-placeholder-val="{{false}}">
+<button class="sliver sliver-p page-in" tabIndex="-1" onClick="{{goHome}}" aria-label="Back to the split view, to reach the tech side" title="Back to the split view" style="position: absolute; top: 0; right: 0; bottom: 64px; width: 48px; z-index: 6; box-sizing: border-box; border-left: 1px solid #b4b7c0; display: flex; align-items: center; justify-content: center;"><svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4l12 28L3 60"></path></svg></button>
+</sc-if>
+<sc-if value="{{isOpenDev}}" hint-placeholder-val="{{false}}">
+<button class="sliver sliver-t page-in" tabIndex="-1" onClick="{{goHome}}" aria-label="Back to the split view, to reach the photography side" title="Back to the split view" style="position: absolute; top: 0; left: 0; bottom: 64px; width: 48px; z-index: 6; box-sizing: border-box; border-right: 1px solid #2b3f5c; display: flex; align-items: center; justify-content: center;"><svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4L3 32l12 28"></path></svg></button>
+</sc-if>
+
+<sc-if value="{{vOn}}" hint-placeholder-val="{{false}}">
+<div class="dk" ref="{{setViewer}}" tabIndex="-1" onKeyDown="{{vKey}}" role="dialog" aria-label="{{v.label}}" style="position: absolute; inset: 0; z-index: 30; outline: none; background: #80838f; color: #16181e; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;">
+<svg aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: {{grain}}; pointer-events: none;"><filter id="grain-v"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"></feTurbulence><feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1"></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain-v)"></rect></svg>
+<div style="position: absolute; left: 32px; top: 18px; height: 44px; display: flex; align-items: baseline;">
+<span style="font-size: 30px; line-height: 44px; font-weight: 600;">{{alb.name}}</span>
+</div>
+<button class="dk-h" onClick="{{vClose}}" aria-label="Close" style="position: absolute; right: 26px; top: 18px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #2b2e37;"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 3l14 14M17 3L3 17"></path></svg></button>
+<div style="position: absolute; left: 96px; right: 96px; top: 80px; bottom: 56px; display: flex; align-items: center; justify-content: center;">
+<img src="{{v.src}}" alt="{{v.alt}}" onClick="{{vImgClick}}" onContextMenu="{{noCopy}}" style="display: block; width: 100%; height: 100%; object-fit: contain; cursor: pointer;">
+</div>
+<button class="sliver sliver-p" onClick="{{vPrev}}" aria-label="Previous photo" style="position: absolute; left: 0; top: 80px; bottom: 56px; width: 96px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4L3 32l12 28"></path></svg></button>
+<button class="sliver sliver-p" onClick="{{vNext}}" aria-label="Next photo" style="position: absolute; right: 0; top: 80px; bottom: 56px; width: 96px; display: flex; align-items: center; justify-content: center;"><svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4l12 28L3 60"></path></svg></button>
+<div style="position: absolute; left: 96px; right: 96px; bottom: 0; height: 56px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.5; color: #16181e;">
+<sc-if value="{{v.hasExif}}" hint-placeholder-val="{{true}}">
+<p style="margin: 0; display: flex; flex-wrap: wrap; justify-content: center; column-gap: 20px; row-gap: 2px;"><sc-for list="{{v.exif}}" as="x" hint-placeholder-count="6"><sc-if value="{{x.link}}" hint-placeholder-val="{{false}}"><button class="dk-h" onClick="{{lensLink}}" title="See it on What I use" style="flex: none; width: {{x.w}}; text-align: center; white-space: nowrap; text-decoration: underline; text-decoration-color: #0e3a6b; text-underline-offset: 3px;">{{x.v}}</button></sc-if><sc-if value="{{x.plain}}" hint-placeholder-val="{{true}}"><span style="flex: none; width: {{x.w}}; text-align: center; white-space: nowrap;">{{x.v}}</span></sc-if></sc-for></p>
+</sc-if>
+<sc-if value="{{v.noExif}}" hint-placeholder-val="{{false}}">
+<p style="margin: 0; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 15px; color: #2b2e37;">No camera data on this one. Lost in the darkroom.</p>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{toastOn}}" hint-placeholder-val="{{false}}">
+<div class="ck-panel" role="status" style="position: absolute; left: {{toastX}}px; top: {{toastY}}px; z-index: 40; width: 280px; box-sizing: border-box; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; background: #1c1c1c; border: 1px solid #333333; color: #ebebe9; font-family: 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif; font-size: 17px; line-height: 1.4;">
+<span>Please do not try to download these web-quality files. Just ask, I can send you a high-res version.</span>
+<button class="dk-h" onClick="{{askHiRes}}" style="align-self: flex-start; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; color: #8fb3e6;">Contact →</button>
+</div>
+</sc-if>
+
+<sc-if value="{{dlgOn}}" hint-placeholder-val="{{false}}">
+<div class="ck-panel dlg-bg" onClick="{{dlgBackdrop}}" style="position: absolute; inset: 0; z-index: 35; background: rgba(0, 0, 0, 0.55); display: flex; align-items: center; justify-content: center; padding: 24px;">
+<div class="ck-panel dlg ft" ref="{{setDialog}}" tabIndex="-1" onKeyDown="{{dlgKey}}" role="dialog" aria-modal="true" aria-label="{{dlgTitle}}" style="position: relative; width: 440px; max-width: 100%; box-sizing: border-box; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 20px; outline: none; background: #1c1c1c; border: 1px solid #333333; color: #e6e6e6; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 13px; line-height: 1.7;">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+<h2 style="margin: 0; font-size: 13px; line-height: 1.7; font-weight: 700; color: #8fb3e6;">{{dlgTitle}}</h2>
+<button class="ft-h" onClick="{{dlgClose}}" aria-label="Close" style="width: 44px; height: 44px; margin: -12px -12px -12px 0; display: flex; align-items: center; justify-content: center; color: #b5b5b5;"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 3l14 14M17 3L3 17"></path></svg></button>
+</div>
+
+<sc-if value="{{dlgImpressum}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 4px;">
+<span>Konrad Schlüter</span>
+<a href="mailto:k@schltr.com" class="ft-h" style="align-self: flex-start; text-decoration: underline; text-decoration-color: #8fb3e6; text-underline-offset: 3px;">k@schltr.com</a>
+</div>
+</sc-if>
+
+<sc-if value="{{dlgCredits}}" hint-placeholder-val="{{false}}">
+<div style="display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 20px;">
+<span style="color: #b5b5b5;">bad puns</span><span>mostly me</span>
+<span style="color: #b5b5b5;">easter eggs</span><span>the Easter Bunny</span>
+<span style="color: #b5b5b5;">photos</span><span>me, unless marked otherwise</span>
+<span style="color: #b5b5b5;">code</span><span>mostly Claude</span>
+<span style="color: #b5b5b5;">qa</span><span>you, right now</span>
+<span style="color: #b5b5b5;">bugs</span><span>probably me, but let's blame Claude</span>
+</div>
+</sc-if>
+
+<sc-if value="{{dlgSupport}}" hint-placeholder-val="{{false}}">
+<div class="sup-box" style="height: {{sup.h}}; display: flex; flex-direction: column; gap: 16px;">
+<div aria-live="polite" style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; text-align: center;">
+<sc-if value="{{sup.ask}}" hint-placeholder-val="{{true}}"><p style="margin: 0;">{{sup.q}}</p></sc-if>
+<sc-if value="{{sup.try}}" hint-placeholder-val="{{false}}"><p style="margin: 0;">Please try that first. I'll wait.</p></sc-if>
+<sc-if value="{{sup.works}}" hint-placeholder-val="{{false}}"><p style="margin: 0;">Well, it works on my machine.</p></sc-if>
+<sc-if value="{{sup.esc}}" hint-placeholder-val="{{false}}"><p style="margin: 0;">Escalating to Level 2 Support<span class="dots"><span>.</span><span>.</span><span>.</span></span></p></sc-if>
+<sc-if value="{{sup.dog}}" hint-placeholder-val="{{false}}">
+<div class="dog-in" style="width: 100%; height: 240px; background: #2a2a2a; display: flex; align-items: center; justify-content: center; color: #b5b5b5;">[ dog photo ]</div>
+<p style="margin: 0; color: #b5b5b5;">Level 2 Support is looking into it.<br>Very closely.</p>
+<p style="margin: 0; font-size: 12px; color: #b5b5b5;">ticket #0001: resolved (probably)</p>
+</sc-if>
+</div>
+<div style="flex: none; height: 46px; display: flex; align-items: center; gap: 8px;">
+<span style="margin-right: auto; font-size: 12px; color: #b5b5b5; white-space: nowrap;">{{sup.step}}</span>
+<sc-if value="{{sup.ask}}" hint-placeholder-val="{{true}}"><button class="ft-h" onClick="{{supYes}}" style="padding: 12px 16px; border: 1px solid #6e6e6e; border-radius: 2px;">Yes</button><button class="ft-h" onClick="{{supNo}}" style="padding: 12px 16px; border: 1px solid #6e6e6e; border-radius: 2px;">No</button></sc-if>
+<sc-if value="{{sup.try}}" hint-placeholder-val="{{false}}"><button class="ft-h" onClick="{{supYes}}" style="padding: 12px 16px; border: 1px solid #6e6e6e; border-radius: 2px;">Done, still broken</button></sc-if>
+<sc-if value="{{sup.works}}" hint-placeholder-val="{{false}}"><button class="ft-h" onClick="{{supEscalate}}" style="padding: 12px 16px; border: 1px solid #6e6e6e; border-radius: 2px;">Escalate</button></sc-if>
+<sc-if value="{{sup.dog}}" hint-placeholder-val="{{false}}"><button class="ft-h" onClick="{{supContact}}" style="padding: 12px 0; white-space: nowrap; text-decoration: underline; text-decoration-color: #8fb3e6; text-underline-offset: 3px;">Still broken? Contact me →</button></sc-if>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<footer class="ft ftbg" style="position: absolute; left: 0; right: 0; bottom: 0; height: 64px; z-index: 8; box-sizing: border-box; padding: 0 32px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 24px; background: {{ftBg}}; border-top: 1px solid {{ftLine}}; color: #e2e4e8; font-family: 'Martian Mono', ui-monospace, monospace; font-size: 12px; line-height: 1.4; font-weight: 400;">
+<div style="display: flex; align-items: center; gap: 24px;">
+<sc-if value="{{cookieVisible}}" hint-placeholder-val="{{true}}">
+<div style="position: relative;">
+<sc-if value="{{cookiePanel}}" hint-placeholder-val="{{false}}">
+<div class="ck-panel {{ckAnim}}" style="position: absolute; left: 0; bottom: calc(100% + 12px); width: 300px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #1c1c1c; border: 1px solid #333333; color: #e6e6e6; letter-spacing: 0; font-weight: 400;">
+<p style="margin: 0; font-size: 13px; line-height: 1.6;">I don't use cookies. But which kind do you prefer?</p>
+<div aria-live="polite" style="height: 44px; display: flex; align-items: center;">
+<sc-if value="{{ckChoosing}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; gap: 8px;">
+<button onClick="{{pickCrunchy}}" style="padding: 12px 14px; border: 1px solid #6e6e6e; border-radius: 2px;">Crunchy</button>
+<button onClick="{{pickSoft}}" style="padding: 12px 14px; border: 1px solid #6e6e6e; border-radius: 2px;">Soft</button>
+</div>
+</sc-if>
+<sc-if value="{{isCrunchy}}" hint-placeholder-val="{{false}}"><p style="margin: 0; display: flex; align-items: center; gap: 12px; font-size: 12px; line-height: 1.5; color: #7cc08a;"><span style="position: relative; display: inline-block; flex: none; width: 28px; height: 28px;"><span class="ck-cookie" aria-hidden="true" style="position: absolute; inset: 0; font-size: 24px; line-height: 28px; text-align: center;">🍪</span><span class="ck-crumb ck-c1"></span><span class="ck-crumb ck-c2"></span><span class="ck-crumb ck-c3"></span><span class="ck-crumb ck-c4"></span><span class="ck-crumb ck-c5"></span><span class="ck-crumb ck-c6"></span></span><span>Good choice. Here's a cookie as a reward.</span></p></sc-if>
+<sc-if value="{{isSoft}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 12px; line-height: 1.5; color: #f08a7e;">Disappointing. Your preference will be ignored.</p></sc-if>
+</div>
+</div>
+</sc-if>
+<div style="display: flex; border: 1px solid #5a5a5a; border-radius: 2px; color: #e6e6e6;">
+<button onClick="{{toggleCookie}}" aria-expanded="{{cookiePanel}}" style="padding: 12px;">Cookie preferences</button>
+<button onClick="{{hideCookie}}" aria-label="Hide cookie preferences for this visit" style="padding: 12px; border-left: 1px solid #5a5a5a; font-size: 13px; line-height: 1.2;">×</button>
+</div>
+</div>
+</sc-if>
+</div>
+<nav aria-label="Footer" style="display: flex; align-items: center; justify-content: center; gap: 32px;">
+<button class="ft-h" onClick="{{openImpressum}}" style="padding: 12px 0;">Impressum</button>
+<button class="ft-h" onClick="{{openCredits}}" style="padding: 12px 0;">Credits</button>
+<button class="ft-h" onClick="{{openSupport}}" style="padding: 12px 0;">Tech support</button>
+</nav>
+<div></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;start&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;lean-photo&quot;,&quot;lean-dev&quot;,&quot;open-photo&quot;,&quot;open-dev&quot;],&quot;default&quot;:&quot;split&quot;},&quot;albums&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;min&quot;:4,&quot;max&quot;:8,&quot;step&quot;:1,&quot;default&quot;:5},&quot;grain&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:0.3,&quot;step&quot;:0.01,&quot;default&quot;:0.17},&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = { mode: null, photoPage: 'albums', album: null, viewer: null, toast: null, devPage: 'introduction', cd: null, cookie: 'closed', choice: null, dialog: null, supStep: 0, supTrying: false, schW: 112, ltrW: 112 };
+    this.setSch = (el) => { this.schEl = el; };
+    this.setLtr = (el) => { this.ltrEl = el; };
+    this.setRoot = (el) => { this.rootEl = el; };
+    this.setViewer = (el) => { this.viewerEl = el; };
+    this.setDialog = (el) => { this.dialogEl = el; };
+  }
+  componentDidMount() {
+    this.measure();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.measure());
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.measure();
+    if (this.state.viewer !== null && prevState && prevState.viewer === null && this.viewerEl) this.viewerEl.focus();
+    if (this.state.dialog !== null && prevState && prevState.dialog === null && this.dialogEl) this.dialogEl.focus();
+  }
+  componentWillUnmount() { clearTimeout(this.toastTimer); this.clearCookieTimers(); }
+  clearCookieTimers() { clearTimeout(this.ckT1); clearTimeout(this.ckT2); clearTimeout(this.supT); }
+  // play the reaction, then get out of the way
+  pickCookie(choice, hold) {
+    this.clearCookieTimers();
+    this.setState({ cookie: 'done', choice: choice });
+    this.ckT1 = setTimeout(() => this.setState({ cookie: 'closing' }), hold);
+    this.ckT2 = setTimeout(() => this.setState({ cookie: 'closed', choice: null }), hold + 240);
+  }
+  measure() {
+    const a = this.schEl, b = this.ltrEl;
+    if (!a || !b) return;
+    const s = a.offsetWidth, l = b.offsetWidth;
+    if (!s || !l) return;
+    if (Math.abs(s - this.state.schW) > 0.5 || Math.abs(l - this.state.ltrW) > 0.5) this.setState({ schW: s, ltrW: l });
+  }
+  mode() { return this.state.mode || this.props.start || 'split'; }
+  renderVals() {
+    const m = this.mode();
+    const frac = { 'split': 0.5, 'lean-photo': 0.8, 'lean-dev': 0.2, 'open-photo': 1, 'open-dev': 0 }[m] ?? 0.5;
+    const openP = m === 'open-photo', openD = m === 'open-dev', open = openP || openD;
+    const pp = openP ? this.state.photoPage : 'albums';
+    const dp = openD ? this.state.devPage : 'home';
+    const c = this.state.cookie;
+    const RED = '#0e3a6b', CYAN = '#6fb7cf', INK_P = '#16181e', INK_T = '#dce6f0';
+    const openPhoto = (page) => this.setState({ mode: 'open-photo', photoPage: page, viewer: null });
+    const openDev = (page) => this.setState({ mode: 'open-dev', devPage: page, cd: null });
+    const goHome = () => this.setState({ mode: 'split', cd: null });
+    const openAlbum = (name) => this.setState({ mode: 'open-photo', photoPage: 'album', album: name, viewer: null });
+    const B = (id, w, h, alt, x) => ({ src: '/_blob/' + id, w: w, h: h, alt: alt, x: x || null });
+    const X = (camera, lens, focal, f, shutter, iso, taken) => ({ camera: camera, lens: lens, focal: focal, f: f, shutter: shutter, iso: iso, taken: taken });
+    // full-resolution versions (no EXIF/GPS), used by the photo viewer
+    const FULL = {
+      '7c52d476ab99277a0ffac5edc407e528': '0398a0fb651fc93ce697b4de0087ee7b', '91164624ff5fd338a29b3380445c02fd': '1a1d16bf2d40f2603fec6dc8d46e268a',
+      '29bb742119ddd253629d04dbe65f572f': 'f4dd7697f3c8867ab09ff08310d78fd4', '05df722842df685aeab699bea3185e8e': '2143b153f42a49d1f5599a0659a68040',
+      'e586e87ed9779130851d5a735a462599': '3df1e9b4a69df8802c081e4207c7983e', '901e7af19ab13b8a6da929d840d52b52': 'd91d80b6369aa8320958bb60be0795d4',
+      '2f21f79b70d3be71ff6a42b2cda7dd5e': 'f476b125225a72f9029572bfe54f9bf5', 'e013a1aad4ab2ea232f8b2562fed60f9': 'c7dc421e24d86f1c1782d8ab3686eecc',
+      'a60637ea6af14599a33ea30f329b3338': '49511caec4fc040f05f73e68ecae3784', 'e7332f295912530eff0fd72bbfe43569': '8cac6388c124ac8d0c32b19afea634c2',
+      'e4574a695bd83ef5f01438e171085e8f': '6e0afd3082b1614b1528c19995dcbf6b', '84f445f504ce3673a6dfaf2141544472': '7187bb3492d4be1ca70ca68ca23245d9',
+      '521257940134e624229993ed89e8308c': 'a0378dd821edbfa5bf541be396d89133', '876423c336a1af44d18e8ca0fcd6e819': '1b4509f8ff1506afa810d17b653154ed',
+      'c910585298b78787f657d74bff393a8d': '8e93ace8d2613fdb07eb8dc14db0d584', '057ff38eb7790d23562d32fa3834e0a7': '9981c1c6d07d0dd6f03f446b3c6610e0',
+      '6a8df975797417d3b9fc6e607246997f': '168dae577add7d92237f0da1e2067060', '94eadef5baeee27f00b468df95fa3549': '0575f573d782a13f0a12859b7ab2cb36',
+      'a6b5589fe9c96602889d187f9a1d03e2': 'ea3897821a0c54471e29c2951fb7ca38', 'e8db5595219d826877232a57567bad81': 'e79b4109670ee78e4e29c8a900f51139',
+      'e522ba7e6352a99ffe2e37f306b79b33': 'b8d27971ad1601bcede66aabe2907728', '24b1284425c66b0f13aa3cf7a8bafa8a': 'b13bb3316c7cf5fd97ce4f0b8a48566c',
+      '3adc37c799ed1fd00cfa8be4d6df0d4e': 'f850e507c534f74072343344a31301d5', 'bcc2462e56e522bc3cd8bb59657e400d': '8f89e2a30e203061d163b99aa16460fa',
+      '3faf4822a08dc2c0594ede0ace95ad9d': 'a7547e11110d457719a43d478ef5d6a1'
+    };
+    const PHOTOS = {
+      Landscapes: [B('3adc37c799ed1fd00cfa8be4d6df0d4e', 960, 640, 'Layered blue mountain ridges under heavy clouds')],
+      Astro: [B('24b1284425c66b0f13aa3cf7a8bafa8a', 960, 640, 'Power pylon against a starry night sky')],
+      People: [B('bcc2462e56e522bc3cd8bb59657e400d', 960, 640, 'Three people silhouetted on a dune at sunset')],
+      Wildlife: [B('3faf4822a08dc2c0594ede0ace95ad9d', 960, 640, 'Ducks flying over the sea at dusk')],
+      Action: [
+        B('e522ba7e6352a99ffe2e37f306b79b33', 960, 640, 'Snowboarder mid-jump against a hazy sun'),
+        B('7c52d476ab99277a0ffac5edc407e528', 1200, 673, 'Paraglider with a yellow-green wing over hazy forested ridges', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 100, 5, '1/500', 100, '2017-01-23')),
+        B('91164624ff5fd338a29b3380445c02fd', 1200, 673, 'Paraglider with a yellow-green wing against dark misty hills', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 100, 5, '1/320', 100, '2017-01-23')),
+        B('29bb742119ddd253629d04dbe65f572f', 1200, 800, 'Skier in a blue jacket throwing up a wall of powder', X('Canon EOS 200D', 'EF-S10-18mm f/4.5-5.6 IS STM', 18, 7.1, '1/4000', 400, '2022-03-13')),
+        B('05df722842df685aeab699bea3185e8e', 1200, 800, 'Paraglider with a red wing against a clear blue sky', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 84, 4.5, '1/1600', 100, '2022-03-13')),
+        B('e586e87ed9779130851d5a735a462599', 1200, 800, 'Skier carving past a second skier under a bright sun', X('Canon EOS 200D', 'EF-S10-18mm f/4.5-5.6 IS STM', 11, 9, '1/2500', 400, '2022-03-14')),
+        B('901e7af19ab13b8a6da929d840d52b52', 1200, 800, 'Skier spraying snow under a low sun and a gondola line', X('Canon EOS 200D', 'EF-S10-18mm f/4.5-5.6 IS STM', 10, 9, '1/2500', 400, '2022-03-14')),
+        B('2f21f79b70d3be71ff6a42b2cda7dd5e', 1200, 800, 'Skier in yellow trousers jumping against a blue sky', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 55, 4, '1/3200', 100, '2022-03-14')),
+        B('e013a1aad4ab2ea232f8b2562fed60f9', 1200, 800, 'Skier crossing skis mid-jump against a blue sky', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 55, 4, '1/4000', 100, '2022-03-14')),
+        B('a60637ea6af14599a33ea30f329b3338', 1200, 800, 'Skier in blue carving through powder toward the camera', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 169, 5.6, '1/1600', 100, '2022-03-14')),
+        B('e7332f295912530eff0fd72bbfe43569', 1200, 800, 'Climber stretched across a granite slab', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 100, 5, '1/200', 200, '2022-05-22')),
+        B('e4574a695bd83ef5f01438e171085e8f', 1200, 800, 'Hiker with a large pack crossing a snowfield', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 250, 5.6, '1/2500', 100, '2022-05-27')),
+        B('84f445f504ce3673a6dfaf2141544472', 800, 1200, 'Runner splashing through shallow water on a beach', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 143, 5, '1/4000', 100, '2022-09-12')),
+        B('521257940134e624229993ed89e8308c', 802, 1200, 'Skimboarder dropping his board into the shallows', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 149, 5.6, '1/3200', 100, '2022-09-12')),
+        B('876423c336a1af44d18e8ca0fcd6e819', 899, 1200, 'Four friends carrying skimboards across the sand', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 100, 5, '1/2000', 100, '2022-09-12')),
+        B('c910585298b78787f657d74bff393a8d', 1200, 681, 'Overhead shot of a skimboarder in the surf', X('DJI FC2103', 'built-in', 4.5, 2.8, '1/1250', 100, '2022-09-12')),
+        B('057ff38eb7790d23562d32fa3834e0a7', 954, 1200, 'Spikeball players diving for the ball on a beach', X('Canon EOS 200D', 'EF-S18-55mm f/4-5.6 IS STM', 46, 5.6, '1/1250', 100, '2022-09-12')),
+        B('6a8df975797417d3b9fc6e607246997f', 1200, 800, 'Surfer sitting on his board, raising a fist', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 250, 5.6, '1/1600', 200, '2022-09-14')),
+        B('94eadef5baeee27f00b468df95fa3549', 1200, 800, 'Surfer riding a small green wave', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 250, 5.6, '1/1000', 200, '2022-09-14')),
+        B('a6b5589fe9c96602889d187f9a1d03e2', 800, 1200, 'Surfer walking out of the sea with his board', X('Canon EOS 200D', 'EF-S55-250mm f/4-5.6 IS STM', 124, 5, '1/3200', 200, '2022-09-14')),
+        B('e8db5595219d826877232a57567bad81', 800, 1200, 'Kitesurfer launching under a dark storm sky', X('Canon EOS 5D Mark III', 'EF100-400mm f/4.5-5.6L IS USM', 160, 5.6, '1/2000', 400, '2022-09-16'))
+      ]
+    };
+    const ALBUMS = [
+      { name: 'Landscapes', src: '/_blob/3adc37c799ed1fd00cfa8be4d6df0d4e', alt: 'Layered blue mountain ridges under heavy clouds' },
+      { name: 'Astro', src: '/_blob/24b1284425c66b0f13aa3cf7a8bafa8a', alt: 'Power pylon against a starry night sky' },
+      { name: 'People', src: '/_blob/bcc2462e56e522bc3cd8bb59657e400d', alt: 'Three people silhouetted on a dune at sunset' },
+      { name: 'Action', src: '/_blob/e522ba7e6352a99ffe2e37f306b79b33', alt: 'Snowboarder mid-jump against a hazy sun' },
+      { name: 'Wildlife', src: '/_blob/3faf4822a08dc2c0594ede0ace95ad9d', alt: 'Ducks flying over the sea at dusk' },
+      { name: 'City', src: '', alt: '' },
+      { name: '[Album 7]', src: '', alt: '' },
+      { name: '[Album 8]', src: '', alt: '' }
+    ];
+    const n = Math.max(4, Math.min(8, Math.round(this.props.albums ?? 5)));
+    const albums = ALBUMS.slice(0, n).map((a) => ({
+      name: a.name, src: a.src, alt: a.alt, hasSrc: !!a.src, noSrc: !a.src,
+      tag: '[ ' + a.name.replace(/[\[\]]/g, '').toLowerCase() + ' ]',
+      open: () => openAlbum(a.name),
+      color: openP && this.state.photoPage === 'album' && this.state.album === a.name ? RED : INK_P
+    }));
+    const albName = this.state.album || 'Action';
+    const albPhotos = PHOTOS[albName] || [];
+    const alb = {
+      name: albName,
+      photos: albPhotos,
+      count: albPhotos.length + (albPhotos.length === 1 ? ' photo' : ' photos'),
+      has: albPhotos.length > 0,
+      empty: albPhotos.length === 0
+    };
+    const openViewer = (i) => this.setState({ viewer: i, toast: null });
+    alb.photos = albPhotos.map((ph, i) => Object.assign({}, ph, { open: () => openViewer(i) }));
+    const vi = this.state.viewer;
+    const vOn = openP && this.state.photoPage === 'album' && vi !== null && vi < albPhotos.length;
+    const vp = vOn ? albPhotos[vi] : null;
+    const total = albPhotos.length;
+    const step = (d) => this.setState({ viewer: (vi + d + total) % total });
+    const pad = (k) => (k < 10 ? '0' : '') + k;
+    const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const fmtDate = (d) => { const p = d.split('-'); return Number(p[2]) + ' ' + MONTHS[Number(p[1]) - 1] + ' ' + p[0]; };
+    let exifRows = [];
+    if (vp && vp.x) {
+      const e = vp.x;
+      // fixed slot widths (in ch of the mono font) so the line never jumps between photos
+      exifRows = [
+        { v: e.camera, w: '21ch' },
+        { v: e.lens === 'built-in' ? 'built-in lens' : e.lens, link: e.lens !== 'built-in', w: '29ch' },
+        { v: e.focal + ' mm', w: '7ch' },
+        { v: 'f/' + e.f, w: '5ch' },
+        { v: e.shutter + ' s', w: '8ch' },
+        { v: 'ISO ' + e.iso, w: '9ch' },
+        { v: fmtDate(e.taken), w: '11ch' }
+      ];
+    }
+    const v = {
+      src: vp ? (FULL[vp.src.slice(7)] ? '/_blob/' + FULL[vp.src.slice(7)] : vp.src) : '',
+      alt: vp ? vp.alt : '',
+      pos: vOn ? pad(vi + 1) + ' / ' + pad(total) : '',
+      label: vOn ? alb.name + ', photo ' + (vi + 1) + ' of ' + total : '',
+      exif: exifRows.map((r) => ({ v: r.v, w: r.w, link: !!r.link, plain: !r.link })),
+      hasExif: exifRows.length > 0,
+      noExif: exifRows.length === 0
+    };
+    const toast = this.state.toast;
+    const dlg = this.state.dialog;
+    const QUESTIONS = ['Have you tried turning it off and on again?', 'Did you take off the lens cap?', 'Have you tried unplugging it, waiting 10 seconds and plugging it back in?'];
+    const st = this.state.supStep, trying = this.state.supTrying;
+    const sup = {
+      ask: st < 3 && !trying,
+      try: st < 3 && trying,
+      q: QUESTIONS[Math.min(st, 2)],
+      works: st === 3,
+      esc: st === 4,
+      dog: st === 5,
+      h: st === 5 ? '380px' : '236px',
+      step: st < 3 ? 'step ' + (st + 1) + ' / 3' : ''
+    };
+    const closeDlg = () => { clearTimeout(this.supT); this.setState({ dialog: null }); };
+    const pc = (page) => (pp === page ? RED : INK_P);
+    const devActive = openD ? dp : 'introduction';
+    const dc = (page) => (devActive === page ? CYAN : INK_T);
+    // wordmark: the junction between "sch" and "ltr" sits at wmA; when a side is open it scales down into the corner of the closed side
+    const S = 0.47, EDGE = 64;
+    let wmA = (frac * 100) + '%';
+    if (openP) wmA = 'calc(100% - ' + Math.round(EDGE + S * (this.state.ltrW - 4)) + 'px)';
+    if (openD) wmA = Math.round(EDGE + S * this.state.schW) + 'px';
+    return {
+      photoW: (frac * 100) + '%',
+      photoNavOp: frac < 0.5 ? 0.8 : 1,
+      albMargin: '5px',
+      albPad: '19px',
+      albBorder: '1px solid #b4b7c0',
+      albSize: '20px',
+      albLH: '1.5',
+      albColor: '#16181e',
+      pNavTop: '140px',
+      pNavTy: '0px',
+      photoScroll: openP ? 'auto' : 'hidden',
+      devNavOp: frac > 0.5 ? 0.8 : 1,
+      devContentOp: frac > 0.5 ? 0 : 1,
+      devScroll: openD ? 'auto' : 'hidden',
+      divOp: open ? 0 : 1,
+      ftBg: openP ? '#55585f' : (openD ? '#060d18' : '#464c5a'),
+      ftLine: openP ? '#676a72' : (openD ? '#18273d' : '#565c6a'),
+      wmA: wmA,
+      wmScale: open ? S : 1,
+      schColor: openD ? CYAN : INK_P,
+      wmLabelOp: open ? 0 : 1,
+      wmCursor: open ? 'pointer' : 'default',
+      wmLabel: open ? 'schltr: back to the split view' : 'schltr. Left and right arrow keys lean toward a side, Enter opens it.',
+      setSch: this.setSch,
+      setLtr: this.setLtr,
+      grain: this.props.grain ?? 0.17,
+      albums: albums,
+      isOpenPhoto: openP,
+      isOpenDev: openD,
+      pAlbums: pp === 'albums',
+      pAlbum: pp === 'album',
+      vOn: vOn,
+      v: v,
+      setViewer: this.setViewer,
+      setRoot: this.setRoot,
+      vClose: () => this.setState({ viewer: null }),
+      vPrev: () => step(-1),
+      vNext: () => step(1),
+      vImgClick: (e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        step(e.clientX - r.left < r.width / 2 ? -1 : 1);
+      },
+      vKey: (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+        else if (e.key === 'Escape') { e.preventDefault(); this.setState({ viewer: null }); }
+      },
+      lensLink: () => this.setState({ viewer: null, photoPage: 'uses' }),
+      noCopy: (e) => {
+        e.preventDefault();
+        const root = this.rootEl;
+        if (!root) return;
+        const r = root.getBoundingClientRect();
+        const k = root.offsetWidth ? r.width / root.offsetWidth : 1;
+        const x = Math.max(16, Math.min((e.clientX - r.left) / k + 12, root.offsetWidth - 296));
+        const y = Math.max(16, Math.min((e.clientY - r.top) / k + 12, root.offsetHeight - 200));
+        clearTimeout(this.toastTimer);
+        this.setState({ toast: { x: Math.round(x), y: Math.round(y) } });
+        this.toastTimer = setTimeout(() => this.setState({ toast: null }), 4500);
+      },
+      dlgOn: dlg !== null,
+      dlgImpressum: dlg === 'impressum',
+      dlgCredits: dlg === 'credits',
+      dlgSupport: dlg === 'support',
+      dlgTitle: { impressum: 'Impressum', credits: 'Credits', support: 'Tech support' }[dlg] || '',
+      setDialog: this.setDialog,
+      openImpressum: () => this.setState({ dialog: 'impressum' }),
+      openCredits: () => this.setState({ dialog: 'credits' }),
+      openSupport: () => this.setState({ dialog: 'support', supStep: 0, supTrying: false }),
+      dlgClose: closeDlg,
+      dlgBackdrop: (e) => { if (e.target === e.currentTarget) closeDlg(); },
+      dlgKey: (e) => { if (e.key === 'Escape') { e.preventDefault(); closeDlg(); } },
+      sup: sup,
+      supYes: () => this.setState({ supStep: st + 1, supTrying: false }),
+      supNo: () => this.setState({ supTrying: true }),
+      supEscalate: () => {
+        this.setState({ supStep: 4 });
+        clearTimeout(this.supT);
+        this.supT = setTimeout(() => this.setState({ supStep: 5 }), 1800);
+      },
+      supContact: () => { closeDlg(); if (openD) openDev('contact'); else openPhoto('contact'); },
+      toastOn: !!toast,
+      toastX: toast ? toast.x : 0,
+      toastY: toast ? toast.y : 0,
+      askHiRes: () => { clearTimeout(this.toastTimer); this.setState({ toast: null, viewer: null, mode: 'open-photo', photoPage: 'contact' }); },
+      alb: alb,
+      pUses: pp === 'uses',
+      pContact: pp === 'contact',
+      pAlbumsC: pc('albums'),
+      pUsesC: pc('uses'),
+      pContactC: pc('contact'),
+      dHome: dp === 'home',
+      dIntro: dp === 'introduction',
+      dUses: dp === 'what-i-use',
+      dContact: dp === 'contact',
+      dTodo: dp === 'career' || dp === 'hobbies',
+      devPage: dp,
+      dIntroC: dc('introduction'),
+      dCareerC: dc('career'),
+      dHobbiesC: dc('hobbies'),
+      dUsesC: dc('what-i-use'),
+      dContactC: dc('contact'),
+      cdTarget: this.state.cd || devActive,
+      cookieVisible: c !== 'hidden',
+      cookiePanel: c === 'open' || c === 'done' || c === 'closing',
+      ckChoosing: c === 'open',
+      isSoft: c !== 'open' && this.state.choice === 'soft',
+      isCrunchy: c !== 'open' && this.state.choice === 'crunchy',
+      ckAnim: c === 'closing' ? 'ck-out' : (c === 'done' ? (this.state.choice === 'crunchy' ? 'ck-yay' : 'ck-no') : 'ck-in'),
+      onMove: (e) => {
+        const cur = this.mode();
+        if (cur === 'open-photo' || cur === 'open-dev') return;
+        // the open cookie panel floats over the page: hovering it leaves the divider alone
+        if (e.target && e.target.closest && e.target.closest('.ck-panel')) return;
+        const el = e.currentTarget;
+        const rect = el.getBoundingClientRect();
+        const scale = el.offsetWidth ? rect.width / el.offsetWidth : 1;
+        const HEADER = 132;
+        const f = { 'split': 0.5, 'lean-photo': 0.8, 'lean-dev': 0.2 }[cur] ?? 0.5;
+        const x = e.clientX - rect.left;
+        // header and footer bands: never lean a side; a leaned side returns to the middle
+        const y = e.clientY - rect.top;
+        if (y < HEADER * scale || y > rect.height - 64 * scale) {
+          if (cur !== 'split') this.setState({ mode: 'split' });
+          return;
+        }
+        const divider = rect.width * f;
+        if (cur === 'split') {
+          // dead zone only while the divider is in the middle
+          if (Math.abs(x - divider) < 120 * scale) return;
+          this.setState({ mode: x < divider ? 'lean-photo' : 'lean-dev' });
+          return;
+        }
+        // leaned: crossing the divider sends it straight back to the middle
+        const crossed = cur === 'lean-photo' ? x > divider : x < divider;
+        if (crossed) this.setState({ mode: 'split' });
+      },
+      onLeave: () => {
+        const cur = this.mode();
+        if (cur !== 'open-photo' && cur !== 'open-dev' && this.state.mode !== null) this.setState({ mode: null });
+      },
+      onKey: (e) => {
+        const cur = this.mode();
+        if (cur === 'open-photo' || cur === 'open-dev') {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') { e.preventDefault(); goHome(); }
+          return;
+        }
+        const order = ['lean-dev', 'split', 'lean-photo'];
+        let i = order.indexOf(cur);
+        if (i < 0) i = 1;
+        if (e.key === 'ArrowLeft') { e.preventDefault(); this.setState({ mode: order[Math.max(0, i - 1)] }); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); this.setState({ mode: order[Math.min(2, i + 1)] }); }
+        else if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          if (cur === 'lean-photo') openPhoto('albums');
+          else if (cur === 'lean-dev') openDev('introduction');
+        }
+        else if (e.key === 'Escape') this.setState({ mode: 'split' });
+      },
+      wmClick: () => { if (open) goHome(); },
+      goHome: goHome,
+      openAlbums: () => openPhoto('albums'),
+      openUsesP: () => openPhoto('uses'),
+      openContactP: () => openPhoto('contact'),
+      openIntro: () => openDev('introduction'),
+      openCareer: () => openDev('career'),
+      openHobbies: () => openDev('hobbies'),
+      openUsesD: () => openDev('what-i-use'),
+      openContactD: () => openDev('contact'),
+      hovIntro: () => this.setState({ cd: 'introduction' }),
+      hovCareer: () => this.setState({ cd: 'career' }),
+      hovHobbies: () => this.setState({ cd: 'hobbies' }),
+      hovUses: () => this.setState({ cd: 'what-i-use' }),
+      hovContact: () => this.setState({ cd: 'contact' }),
+      hovOff: () => this.setState({ cd: null }),
+      toggleCookie: () => { this.clearCookieTimers(); this.setState({ cookie: c === 'open' ? 'closed' : 'open', choice: null }); },
+      hideCookie: () => { this.clearCookieTimers(); this.setState({ cookie: 'hidden' }); },
+      pickCrunchy: () => this.pickCookie('crunchy', 1800),
+      pickSoft: () => this.pickCookie('soft', 1600)
+    };
+  }
+}
+</script>
+</body>
+</html>

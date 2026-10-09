@@ -1,0 +1,84 @@
+/*
+ * schltr design tokens.
+ *
+ * Derived from the Claude Design handoff of 9 Oct 2026 (design/handoff/2026-10-09).
+ * This replaces the old schltr design system referenced in the export; only the
+ * values the design actually uses live here. Two worlds that meet at the divider:
+ * the photo side (darkroom grey, film grain, grotesk) and the tech side (flat navy,
+ * monospace), plus a small set of shared chrome tokens.
+ */
+
+:root {
+  /* ── Photo side ─────────────────────────────── */
+  --photo-bg: #80838f;
+  --photo-ink: #16181e;
+  --photo-ink-2: #2b2e37;
+  /* current page, hover, focus ring */
+  --photo-accent: #0e3a6b;
+  --photo-placeholder: #6c6f7b;
+  /* album tree line, back-strip line */
+  --photo-line: #b4b7c0;
+  --photo-grain-opacity: 0.17;
+
+  /* ── Tech side ──────────────────────────────── */
+  --tech-bg: #0b1626;
+  --tech-ink: #dce6f0;
+  --tech-ink-2: #8fa2b8;
+  /* headings, current page, cursor, focus ring */
+  --tech-accent: #6fb7cf;
+  --tech-surface: #12223a;
+  --tech-line: #2b3f5c;
+  --tech-track: #50678a;
+
+  /* ── Shared chrome ──────────────────────────── */
+  --divider: #f2f2f2;
+  --footer-bg-split: #464c5a;
+  --footer-bg-photo: #55585f;
+  --footer-bg-tech: #060d18;
+  --footer-line-split: #565c6a;
+  --footer-line-photo: #676a72;
+  --footer-line-tech: #18273d;
+  --footer-ink: #e2e4e8;
+
+  /* dialogs, popups, toasts */
+  --popup-bg: #1c1c1c;
+  --popup-border: #333333;
+  --popup-ink: #e6e6e6;
+  --popup-ink-2: #b5b5b5;
+  --popup-link: #8fb3e6;
+  --popup-control: #6e6e6e;
+  --popup-chip: #5a5a5a;
+  --popup-well: #2a2a2a;
+  --popup-scrim: rgba(0, 0, 0, 0.55);
+
+  --ok: #7cc08a;
+  --bad: #e0574a;
+  --bad-ink: #f08a7e;
+  --crumb: #c8955a;
+
+  /* ── Type ───────────────────────────────────── */
+  --font-photo: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-tech: 'Martian Mono Variable', 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* photo side scale */
+  --photo-menu: 600 30px/1.2 var(--font-photo);
+  --photo-album-link: 500 20px/1.5 var(--font-photo);
+  --photo-title: 700 44px/1 var(--font-photo);
+  --photo-body: 400 18px/1.45 var(--font-photo);
+  --photo-small: 400 15px/1.45 var(--font-photo);
+
+  /* tech side: one size, headings differ by weight and color only */
+  --tech-text: 400 14px/1.7 var(--font-tech);
+  --chrome-text: 400 12px/1.4 var(--font-tech);
+  --popup-text: 400 13px/1.7 var(--font-tech);
+
+  /* ── Layout ─────────────────────────────────── */
+  --header-h: 132px;
+  --footer-h: 64px;
+  --content-top: 140px;
+  --strip-w: 48px;
+
+  /* ── Motion ─────────────────────────────────── */
+  --ease-slide: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --dur-slide: 520ms;
+}

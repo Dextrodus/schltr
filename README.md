@@ -3,7 +3,22 @@ Personal Website
 
 Combined photography portfolio and personal website as dev/nerd.
 
-Status: currently in brainstorming, then design using Claude Design, then implementation.
+Status: desktop start page implemented from the Claude Design handoff of 9 Oct 2026 (`design/handoff/2026-10-09/`). Mobile next.
+
+## Development
+
+```sh
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # static site in dist/
+npm run check    # type check
+```
+
+- `src/components/Site.tsx`: the whole interactive shell (split view, divider, wordmark, viewer, dialogs). Every URL renders it in the right state, so deep links work and moving between pages stays animated.
+- `src/lib/route.ts`: which URL belongs to which state.
+- `src/data/`: albums, photos with camera data, and gear. Photos live in `public/photos/`.
+- `src/styles/tokens.css`: the design tokens, derived from the handoff.
+- `design/handoff/<date>/`: Claude Design exports, kept as design history.
 
 ---
 

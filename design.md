@@ -2,6 +2,8 @@
 
 Everything design-relevant for schltr.com, a combined photography portfolio and dev/nerd personal website. Feature details and joke texts are in [README.md](README.md).
 
+> The design itself now lives in Claude Design. The latest handoff ([design/handoff/2026-10-09](design/handoff/2026-10-09/README.md)) is the source of truth where it differs from this document (colors, fonts, footer, layout). Its values are captured as tokens in [src/styles/tokens.css](src/styles/tokens.css). This file stays as the original brief.
+
 ---
 
 ## Direction: Two Worlds
