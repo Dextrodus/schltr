@@ -20,6 +20,12 @@ npm run check    # type check
 - `src/styles/tokens.css`: the design tokens, derived from the handoff.
 - `design/handoff/<date>/`: Claude Design exports, kept as design history.
 
+## Deployment
+
+Every push builds and deploys to Cloudflare Pages ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)): `main` goes to https://schltr.pages.dev, other branches to `https://<branch>.schltr.pages.dev`. Needs the repo secrets `CLOUDFLARE_API_TOKEN` (Cloudflare Pages: Edit) and `CLOUDFLARE_ACCOUNT_ID`.
+
+schltr.com itself still points at Adobe Portfolio. Going live means moving the nameservers from Namecheap to Cloudflare, copying the mail records (MX, SPF, DKIM, DMARC) first, recreating the Namecheap URL redirects, then adding schltr.com as a custom domain of the Pages project.
+
 ---
 
 ## Layout & Navigation
@@ -191,7 +197,7 @@ Input fields (if there are any):
 ## Implementation
 
 - Framework: Astro, with React components where helpful
-- Hosting: Cloudflare Pages (preliminary). Very little needed, willing to pay for stability if necessary. No significant traffic expected (<20 visitors per month)
+- Hosting: Cloudflare Pages, see [Deployment](#deployment). Very little needed, willing to pay for stability if necessary. No significant traffic expected (<20 visitors per month)
 
 ---
 
