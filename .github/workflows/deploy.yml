@@ -1,0 +1,32 @@
+# Builds the site and deploys it to Cloudflare Pages project "schltr".
+# main -> schltr.pages.dev, any other branch -> <branch>.schltr.pages.dev
+name: Deploy
+
+on: push
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          # Creates the project on the first run; fails harmlessly once it exists.
+          npx --yes wrangler@4 pages project create schltr --production-branch=main || true
+          npx --yes wrangler@4 pages deploy dist --project-name=schltr --branch="$GITHUB_REF_NAME"
