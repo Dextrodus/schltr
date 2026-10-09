@@ -1,5 +1,6 @@
 # Builds the site and deploys it to Cloudflare Pages.
-# - push to main     -> production deployment of the Pages project (served at staging.schltr.com until go-live)
+# - push to main     -> production deployment of the Pages project, at schltr.pages.dev
+#                       (the staging site until schltr.com is attached at go-live)
 # - pull request     -> preview deployment at <branch>.<project>.pages.dev
 # Setup and go-live steps: docs/deployment.md
 name: Deploy
@@ -103,5 +104,4 @@ jobs:
             echo "### Deployed \`$BRANCH\`"
             echo
             echo "Deployment: ${url:-see log}"
-            if [ "$BRANCH" = "main" ]; then echo; echo "Staging: https://staging.schltr.com"; fi
           } >> "$GITHUB_STEP_SUMMARY"
