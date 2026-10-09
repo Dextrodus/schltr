@@ -74,7 +74,12 @@ Do this only when staging looks right. This is the step that changes schltr.com.
 1. **Move schltr.com's DNS from Namecheap to Cloudflare.** Pages can only serve an apex domain (`schltr.com` without a subdomain) from a Cloudflare zone. Namecheap stays the registrar.
    - In Cloudflare: *Add a site* → `schltr.com` → Free plan. Cloudflare imports the existing records.
    - Compare them with Namecheap's *Advanced DNS* page. The Adobe Portfolio `@`/`www` records and the `staging` CNAME must be there so nothing changes yet.
-   - **Email:** Namecheap's free email forwarding stops working once the nameservers move. If you use it, set up *Email → Email Routing* in Cloudflare first (it supports a catch-all address). For a mail host like Fastmail or Google, check its MX and SPF/DKIM/DMARC TXT records were imported.
+   - **Email** stays on the existing mail server (k@schltr.com catch-all); only its DNS records move. Before switching, check each of these against Namecheap and add any that are missing:
+     - `MX` records
+     - SPF (`TXT` on `@` starting with `v=spf1`) and DMARC (`TXT` on `_dmarc`)
+     - DKIM (`TXT` or `CNAME` on `<selector>._domainkey`). The import usually misses these because it can't guess the selector name.
+     - Mail hostnames such as `mail`, `imap`, `smtp`, `autodiscover`, `autoconfig`, and any `SRV` records
+     - Every mail-related `A`/`AAAA`/`CNAME` record must be **DNS only** (grey cloud). Cloudflare's proxy only carries web traffic.
    - In Namecheap: *Domain List → schltr.com → Manage → Nameservers → Custom DNS* → enter the two Cloudflare nameservers. With identical records, the Portfolio site keeps working during the switch.
 2. **Attach the production domains**: *Workers & Pages → schltr → Custom domains* → add `schltr.com`, then `www.schltr.com`. This is the moment visitors start seeing the new site. Cloudflare replaces the old Adobe `@`/`www` records with ones pointing at Pages. Afterwards, remove the custom domain in Adobe Portfolio's site settings.
 3. **Redirect www to the apex** (or the other way round): *Rules → Redirect Rules → Create rule → "Redirect from WWW to root"* template.
