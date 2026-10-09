@@ -1,0 +1,8 @@
+# Appended to the build's _headers by .github/workflows/deploy.yml.
+# Keeps staging and the pages.dev copy out of search engines. schltr.com itself is not matched.
+# (Cloudflare already adds noindex to preview deployments.)
+https://staging.schltr.com/*
+  X-Robots-Tag: noindex
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
