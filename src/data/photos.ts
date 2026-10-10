@@ -37,9 +37,12 @@ const covers = {
   people: cover('cover-people', 'Three people silhouetted on a dune at sunset'),
   action: cover('cover-action', 'Snowboarder mid-jump against a hazy sun'),
   wildlife: cover('cover-wildlife', 'Ducks flying over the sea at dusk'),
+  street: cover('cover-street', 'Car headlights and a tram on snowy, curving tram tracks at night'),
+  city: cover('cover-city', 'The Elbphilharmonie lit up over the water at blue hour'),
+  aerial: cover('cover-aerial', 'Forage harvester filling a trailer in a maize field, seen from above'),
 };
 
-// Order matters: the cover grid fills column by column, three rows high.
+// Order matters: the cover grid fills column by column (see src/lib/cover-layout.js).
 export const albums: Album[] = [
   { slug: 'landscapes', name: 'Landscapes', cover: covers.landscapes, photos: [covers.landscapes] },
   { slug: 'astro', name: 'Astro', cover: covers.astro, photos: [covers.astro] },
@@ -73,6 +76,9 @@ export const albums: Album[] = [
     ],
   },
   { slug: 'wildlife', name: 'Wildlife', cover: covers.wildlife, photos: [covers.wildlife] },
+  { slug: 'street', name: 'Street', cover: covers.street, photos: [covers.street] },
+  { slug: 'city', name: 'City', cover: covers.city, photos: [covers.city] },
+  { slug: 'aerial', name: 'Aerial', cover: covers.aerial, photos: [covers.aerial] },
 ];
 
 export const thumbSrc = (p: Photo) => `/photos/thumbs/${p.file}.jpg`;

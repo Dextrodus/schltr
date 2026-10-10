@@ -46,16 +46,17 @@ export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCo
         </ViewLink>
       </nav>
 
-      <div className={`photo-content ${open ? 'is-open' : ''}`}>
+      <div className={`photo-content ${open ? 'is-open' : ''} ${page === 'albums' ? 'has-covers' : ''}`}>
         {page === 'albums' && (
           <div className="covers">
             {albums.map((a) => (
-              <ViewLink key={a.slug} to={albumView(a.slug)} go={go} className="cover ph-h" tabIndex={open ? undefined : -1}>
+              <ViewLink key={a.slug} to={albumView(a.slug)} go={go} className="cover" tabIndex={open ? undefined : -1}>
+                <span className="cover__name">{a.name}</span>
                 {a.cover ? (
                   <img
                     src={thumbSrc(a.cover)}
                     srcSet={gridSrcSet(a.cover)}
-                    sizes="260px"
+                    sizes="(orientation: portrait) 60vw, 35vw"
                     alt={a.cover.alt}
                     width={a.cover.width}
                     height={a.cover.height}
@@ -64,7 +65,6 @@ export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCo
                 ) : (
                   <span className="cover__empty">[ {a.name.toLowerCase()} ]</span>
                 )}
-                <span className="cover__name">{a.name}</span>
               </ViewLink>
             ))}
           </div>
