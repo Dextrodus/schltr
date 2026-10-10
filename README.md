@@ -39,6 +39,7 @@ schltr.com itself still points at Adobe Portfolio. Going live means moving the n
 - Hovering over one side moves the divider to 80/20 in favor of that side
   - Dead zone near the divider, so the panels don't flicker back and forth when the mouse crosses the middle
 - When a point on one side is chosen, that side opens fully
+- Keyboard: focus the wordmark, then ← / → move the divider in the arrow's direction (← widens the tech side, → the photo side), Enter opens the wider side, Esc returns to the middle
 - Drag handle on the divider for mobile, allowing users to open one side fully
 - Option to try: "schltr" logo on the divider/drag handle
 - Favicon swaps depending on which side the visitor is on (e.g. aperture vs. `>_`)

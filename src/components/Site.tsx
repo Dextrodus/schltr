@@ -30,12 +30,21 @@ export default function Site({ initial }: { initial: View }) {
   const frac = FRAC[mode];
   const open = view.side !== 'split';
 
-  const show = useCallback((next: View) => {
-    setView(next);
-    setLean(null);
-    setViewer(null);
-    document.title = titleFor(next);
+  const hideToast = useCallback(() => {
+    clearTimeout(toastTimer.current);
+    setToast(null);
   }, []);
+
+  const show = useCallback(
+    (next: View) => {
+      setView(next);
+      setLean(null);
+      setViewer(null);
+      hideToast();
+      document.title = titleFor(next);
+    },
+    [hideToast],
+  );
 
   const go: Go = useCallback(
     (next, hash) => {
@@ -53,6 +62,8 @@ export default function Site({ initial }: { initial: View }) {
     hydrated.current = true;
     const css = getComputedStyle(document.documentElement);
     bands.current = { header: parseFloat(css.getPropertyValue('--header-h')), footer: parseFloat(css.getPropertyValue('--footer-h')) };
+    // a reload while the viewer was open: that history entry now holds a page without a viewer
+    if (history.state?.viewer) history.replaceState(null, '');
     const onPop = () => show(viewFromPath(location.pathname));
     window.addEventListener('popstate', onPop);
     return () => {
@@ -126,6 +137,18 @@ export default function Site({ initial }: { initial: View }) {
   const viewerOpen = !!album && viewer !== null && viewer < album.photos.length;
   const modal = viewerOpen || dialog !== null;
 
+  // the viewer has its own history entry on the album's URL, so browser Back closes just the viewer
+  const openViewer = (i: number) => {
+    hideToast();
+    setViewer(i);
+    if (!history.state?.viewer) history.pushState({ viewer: true }, '');
+  };
+  const closeViewer = () => {
+    hideToast();
+    if (history.state?.viewer) history.back();
+    else setViewer(null);
+  };
+
   const contact = () => go(view.side === 'tech' ? { side: 'tech', page: 'contact' } : { side: 'photo', page: 'contact' });
 
   return (
@@ -144,10 +167,7 @@ export default function Site({ initial }: { initial: View }) {
         dimmed={frac < 0.5}
         go={go}
         onNoCopy={onNoCopy}
-        onOpenPhoto={(i) => {
-          setToast(null);
-          setViewer(i);
-        }}
+        onOpenPhoto={openViewer}
       />
       <TechSide page={view.side === 'tech' ? view.page : null} leanedAway={frac > 0.5} inert={modal || view.side === 'photo'} go={go} />
 
@@ -158,7 +178,7 @@ export default function Site({ initial }: { initial: View }) {
       {view.side !== 'split' && <Strip key={view.side} side={view.side} enter={hydrated.current} inert={modal} onClick={goHome} />}
 
       {album && viewerOpen && viewer !== null && (
-        <Viewer album={album} index={viewer} onStep={step} onClose={() => setViewer(null)} onNoCopy={onNoCopy} go={go} />
+        <Viewer album={album} index={viewer} onStep={step} onClose={closeViewer} onNoCopy={onNoCopy} go={go} />
       )}
 
       {toast && (
@@ -169,8 +189,6 @@ export default function Site({ initial }: { initial: View }) {
             className="po-h"
             onClick={(e) => {
               e.preventDefault();
-              clearTimeout(toastTimer.current);
-              setToast(null);
               go({ side: 'photo', page: 'contact' });
             }}
           >
@@ -190,7 +208,14 @@ export default function Site({ initial }: { initial: View }) {
         />
       )}
 
-      <Footer side={view.side} inert={modal} onOpenDialog={openDialog} />
+      <Footer
+        side={view.side}
+        inert={modal}
+        onOpenDialog={(kind) => {
+          hideToast();
+          openDialog(kind);
+        }}
+      />
     </div>
   );
 }

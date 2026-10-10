@@ -41,11 +41,18 @@ export default function Footer({ side, inert, onOpenDialog }: Props) {
             <span>GitHub</span>
           </span>
         </a>
-        <a href={LINKEDIN} className="footer__icon po-h" rel="me" aria-label="LinkedIn" title="LinkedIn">
+        <a href={LINKEDIN} className="footer__icon po-h" rel="me" aria-label="LinkedIn">
           <LinkedInMark size={20} />
+          <span className="footer__tip popup" aria-hidden="true">
+            Loading Buzzwords...
+            <span>LinkedIn</span>
+          </span>
         </a>
-        <a href={`mailto:${MAIL}`} className="footer__icon po-h" aria-label={`Mail ${MAIL}`} title={MAIL}>
+        <a href={`mailto:${MAIL}`} className="footer__icon po-h" aria-label={`Mail ${MAIL}`}>
           <Envelope size={22} color="currentColor" />
+          <span className="footer__tip popup" aria-hidden="true">
+            {MAIL}
+          </span>
         </a>
       </div>
     </footer>
