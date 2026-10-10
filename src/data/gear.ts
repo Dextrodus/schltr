@@ -22,14 +22,20 @@ export const previousGear: Gear[] = [
   { id: 'ef-s-55-250', kind: 'Lens', name: 'Canon EF-S 55–250mm f/4–5.6 IS STM', exif: 'EF-S55-250mm f/4-5.6 IS STM' },
   { id: 'ef-s-10-18', kind: 'Lens', name: 'Canon EF-S 10–18mm f/4.5–5.6 IS STM', exif: 'EF-S10-18mm f/4.5-5.6 IS STM' },
   { id: 'ef-s-18-55', kind: 'Lens', name: 'Canon EF-S 18–55mm f/4–5.6 IS STM', exif: 'EF-S18-55mm f/4-5.6 IS STM' },
+  { id: 'ef-50', kind: 'Lens', name: 'Canon EF 50mm f/1.8 STM', exif: 'EF50mm f/1.8 STM' },
   { id: 'ef-100-400', kind: 'Lens', name: 'Canon EF 100–400mm f/4.5–5.6L IS USM', exif: 'EF100-400mm f/4.5-5.6L IS USM' },
-  { id: 'dji-fc2103', kind: 'Drone', name: 'DJI (FC2103)', exif: 'DJI FC2103' },
+  { id: 'dji-fc2103', kind: 'Drone', name: 'DJI Mavic Air', exif: 'DJI FC2103' },
 ];
 
 const allPhotos: Photo[] = albums.flatMap((a) => a.photos);
 
 export function photoCount(g: Gear): number {
   return allPhotos.filter((p) => p.exif && (p.exif.camera === g.exif || p.exif.lens === g.exif)).length;
+}
+
+/** Display name for a camera as written in EXIF (the drone only reports its model code). */
+export function cameraName(exifCamera: string): string {
+  return [...currentGear, ...previousGear].find((g) => g.kind !== 'Lens' && g.exif === exifCamera)?.name ?? exifCamera;
 }
 
 /** Gear row id for a lens as written in EXIF, for the link from the viewer. */

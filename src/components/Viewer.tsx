@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react';
 import type { Album } from '../data/photos';
-import { lensId } from '../data/gear';
+import { cameraName, lensId } from '../data/gear';
 import { ChevronLeft, ChevronRight, Cross, EnterFullscreen, ExitFullscreen, Grain, ViewLink, trapTab, type Go } from './bits';
 import Picture from './Picture';
 
@@ -277,7 +277,7 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
         {e ? (
           // fixed slot widths in ch of the mono font, so the line never jumps between photos
           <p className="exif">
-            <span style={{ width: '21ch' }}>{e.camera}</span>
+            <span style={{ width: '21ch' }}>{cameraName(e.camera)}</span>
             {e.lens === 'built-in' || !e.lens ? (
               <span style={{ width: '29ch' }}>{e.lens ? 'built-in lens' : 'unknown lens'}</span>
             ) : (

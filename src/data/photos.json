@@ -1224,32 +1224,6 @@
   "cover": "city-13",
   "photos": [
    {
-    "id": "city-01",
-    "width": 3725,
-    "height": 2794,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3725
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAwAA4BaJaACdAEKn3a7yAAA/rr2nFMgNMqZoFervMLO2pqTayHL6Q4120ESrH64ubIu5sXgAA==",
-    "exif": {
-     "camera": "DJI FC2103",
-     "lens": "built-in",
-     "focal": 4.5,
-     "aperture": 2.8,
-     "shutter": "1/60",
-     "iso": 100,
-     "taken": "2020-09-25"
-    }
-   },
-   {
     "id": "city-02",
     "width": 3840,
     "height": 2160,
@@ -1273,32 +1247,6 @@
      "shutter": "1/4000",
      "iso": 200,
      "taken": "2022-11-02"
-    }
-   },
-   {
-    "id": "city-03",
-    "width": 3840,
-    "height": 2876,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAgCdASoQAAwAA4BaJbACdADhbkK16KEAAPeFRJQuqi/5iJiKUiMXUqXPbvrb7j9F/2cbTvnQ60AA",
-    "exif": {
-     "camera": "DJI FC2103",
-     "lens": "built-in",
-     "focal": 4.5,
-     "aperture": 2.8,
-     "shutter": "1/160",
-     "iso": 100,
-     "taken": "2020-09-25"
     }
    },
    {
