@@ -364,6 +364,7 @@ img {
   gap: 8px;
 }
 .kv {
+  margin: 0;
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr);
   gap: 2px 16px;
@@ -378,6 +379,25 @@ img {
   text-decoration: underline;
   text-decoration-color: var(--tech-accent);
   text-underline-offset: 3px;
+}
+.entries,
+.points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.points li {
+  padding-left: 2ch;
+  text-indent: -2ch;
+}
+.points li::before {
+  content: '- ';
+  color: var(--tech-ink-2);
 }
 .printer {
   margin-top: 8px;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { TechPage } from '../lib/route';
 import { ViewLink, type Go } from './bits';
+import { education, languages, skills, volunteering, work, type Entry } from '../data/career';
 
 interface Props {
   /** null while the tech side is not open: shows the start screen. */
@@ -27,7 +28,8 @@ export default function TechSide({ page, leanedAway, inert, go }: Props) {
         {page === 'introduction' && <Introduction />}
         {page === 'what-i-use' && <Uses />}
         {page === 'contact' && <Contact />}
-        {(page === 'career' || page === 'hobbies') && <NotWritten page={page} />}
+        {page === 'career' && <Career />}
+        {page === 'hobbies' && <NotWritten page={page} />}
       </div>
 
       <nav className="tech-nav slide" aria-label="Tech" style={{ opacity: leanedAway ? 0.8 : 1 }}>
@@ -143,6 +145,82 @@ function Uses() {
             <span className="printer__todo">...................</span>] 37%
           </div>
         </div>
+      </section>
+    </article>
+  );
+}
+
+const Entries = ({ entries }: { entries: Entry[] }) => (
+  <ul className="entries">
+    {entries.map((e) => (
+      <li key={e.title}>
+        <div>{e.title}</div>
+        <div className="dim">{[e.where, e.when].filter(Boolean).join(' · ')}</div>
+        {e.points && (
+          <ul className="points">
+            {e.points.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+);
+
+const Pairs = ({ pairs }: { pairs: [string, string][] }) => (
+  <dl className="kv">
+    {pairs.map(([k, v]) => [<dt key={`${k}-k`}>{k}</dt>, <dd key={`${k}-v`}>{v}</dd>])}
+  </dl>
+);
+
+function Career() {
+  return (
+    <article className="tech-page tech-uses is-long">
+      <div className="dim">~ $ cat career.md</div>
+      <h1># career</h1>
+      <section>
+        <h2>## work</h2>
+        <Entries entries={work} />
+      </section>
+      <section>
+        <h2>## education</h2>
+        <Entries entries={education} />
+      </section>
+      <section>
+        <h2>## skills</h2>
+        <Pairs pairs={skills} />
+      </section>
+      <section>
+        <h2>## languages</h2>
+        <Pairs pairs={languages} />
+      </section>
+      <section>
+        <h2>## volunteering</h2>
+        <Entries entries={volunteering} />
+      </section>
+      <section>
+        <h2>## elsewhere</h2>
+        <dl className="kv">
+          <dt>github</dt>
+          <dd>
+            <a href="https://github.com/dextrodus" className="tech-link te-h">
+              dextrodus
+            </a>
+          </dd>
+          <dt>linkedin</dt>
+          <dd>
+            <a href="https://www.linkedin.com/in/schltr/" className="tech-link te-h">
+              schltr
+            </a>
+          </dd>
+          <dt>mail</dt>
+          <dd>
+            <a href="mailto:k@schltr.com" className="tech-link te-h">
+              k@schltr.com
+            </a>
+          </dd>
+        </dl>
       </section>
     </article>
   );
