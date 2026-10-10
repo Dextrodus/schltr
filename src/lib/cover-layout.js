@@ -18,7 +18,7 @@ function fitCovers(n) {
   function layout(W, H) {
     const D = W / 2;
     const right = W - STRIP - 16;
-    const avail = Math.max(H, 640) - TOP - BOTTOM;
+    const avail = Math.max(H, 480) - TOP - BOTTOM;
     let best = null;
     // j: whole columns left of the one the divider cuts
     for (let j = 0; j <= 3; j++) {
