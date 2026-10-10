@@ -1,7 +1,34 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { MAIL, NAME } from '../data/contact';
 import { Cross, trapTab } from './bits';
 
 export type DialogKind = 'impressum' | 'credits' | 'support';
+
+/** Which footer dialog is open; focus goes back to whatever opened it when it closes. */
+export function useDialog() {
+  const [dialog, setDialog] = useState<DialogKind | null>(null);
+  const returnFocus = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (dialog || !returnFocus.current) return;
+    returnFocus.current.focus();
+    returnFocus.current = null;
+  }, [dialog]);
+
+  const openDialog = useCallback((kind: DialogKind) => {
+    // remember the opener now: once the background is inert it loses focus
+    returnFocus.current = document.activeElement as HTMLElement | null;
+    setDialog(kind);
+  }, []);
+  const closeDialog = useCallback(() => setDialog(null), []);
+  /** Closes without returning focus, for a dialog that navigates somewhere else. */
+  const leaveDialog = useCallback(() => {
+    returnFocus.current = null;
+    setDialog(null);
+  }, []);
+
+  return { dialog, openDialog, closeDialog, leaveDialog };
+}
 
 const TITLES: Record<DialogKind, string> = { impressum: 'Impressum', credits: 'Credits', support: 'Tech support' };
 
@@ -43,9 +70,9 @@ export default function Dialog({ kind, onClose, onContact }: Props) {
         </div>
         {kind === 'impressum' && (
           <div className="impressum">
-            <span>Konrad Schlüter</span>
-            <a href="mailto:k@schltr.com" className="po-h">
-              k@schltr.com
+            <span>{NAME}</span>
+            <a href={`mailto:${MAIL}`} className="po-h">
+              {MAIL}
             </a>
           </div>
         )}

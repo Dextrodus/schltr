@@ -7,7 +7,7 @@ interface Props {
   /** Position of the divider, 0–1 from the left. */
   frac: number;
   onClick: () => void;
-  onKeyDown: (e: KeyboardEvent) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
   inert: boolean;
 }
 

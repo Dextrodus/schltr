@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { DialogKind } from './Dialogs';
-import { Envelope, GITHUB, GitHubMark, LINKEDIN, LinkedInMark } from './bits';
+import { GITHUB, LINKEDIN, MAIL } from '../data/contact';
+import { Envelope, GitHubMark, LinkedInMark } from './bits';
 
 interface Props {
   side: 'split' | 'photo' | 'tech';
@@ -37,7 +38,7 @@ export default function Footer({ side, inert, onOpenDialog }: Props) {
         <a href={LINKEDIN} className="footer__icon po-h" rel="me" aria-label="LinkedIn" title="LinkedIn">
           <LinkedInMark size={20} />
         </a>
-        <a href="mailto:k@schltr.com" className="footer__icon po-h" aria-label="Mail k@schltr.com" title="k@schltr.com">
+        <a href={`mailto:${MAIL}`} className="footer__icon po-h" aria-label={`Mail ${MAIL}`} title={MAIL}>
           <Envelope size={22} color="currentColor" />
         </a>
       </div>

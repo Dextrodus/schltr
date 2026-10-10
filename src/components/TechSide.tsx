@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import type { TechPage } from '../lib/route';
-import { GITHUB, LINKEDIN, ViewLink, type Go } from './bits';
+import { techPages, type TechPage } from '../lib/route';
+import { GITHUB, LINKEDIN, MAIL, NAME, SPAM } from '../data/contact';
+import { ViewLink, type Go } from './bits';
 import Cd from './Cd';
 import { education, languages, skills, volunteering, work, type Entry } from '../data/career';
 
@@ -15,7 +16,7 @@ interface Props {
 }
 
 // bottom-up listing: the first entry sits right under `ls`
-const listing: TechPage[] = ['contact', 'what-i-use', 'career', 'introduction', 'start'];
+const listing = [...techPages].reverse();
 
 export default function TechSide({ page, leanedAway, inert, go }: Props) {
   const [hovered, setHovered] = useState<TechPage | null>(null);
@@ -204,20 +205,20 @@ function Career() {
         <dl className="kv">
           <dt>github</dt>
           <dd>
-            <a href="https://github.com/dextrodus" className="tech-link te-h">
+            <a href={GITHUB} className="tech-link te-h">
               dextrodus
             </a>
           </dd>
           <dt>linkedin</dt>
           <dd>
-            <a href="https://www.linkedin.com/in/schltr/" className="tech-link te-h">
+            <a href={LINKEDIN} className="tech-link te-h">
               schltr
             </a>
           </dd>
           <dt>mail</dt>
           <dd>
-            <a href="mailto:k@schltr.com" className="tech-link te-h">
-              k@schltr.com
+            <a href={`mailto:${MAIL}`} className="tech-link te-h">
+              {MAIL}
             </a>
           </dd>
         </dl>
@@ -233,17 +234,17 @@ function Contact() {
       <h1># contact</h1>
       <dl className="kv">
         <dt>name</dt>
-        <dd>Konrad Schlüter</dd>
+        <dd>{NAME}</dd>
         <dt>mail</dt>
         <dd>
-          <a href="mailto:k@schltr.com" className="tech-link te-h">
-            k@schltr.com
+          <a href={`mailto:${MAIL}`} className="tech-link te-h">
+            {MAIL}
           </a>
         </dd>
         <dt>complaints</dt>
         <dd>
-          <a href="mailto:spam@schltr.com" className="tech-link te-h">
-            spam@schltr.com
+          <a href={`mailto:${SPAM}`} className="tech-link te-h">
+            {SPAM}
           </a>{' '}
           <span className="dim"># for appropriate disposal</span>
         </dd>

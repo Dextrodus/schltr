@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Cd from './Cd';
-import Dialog, { type DialogKind } from './Dialogs';
+import Dialog, { useDialog } from './Dialogs';
 import Footer from './Footer';
 import Wordmark from './Wordmark';
 
@@ -8,16 +8,9 @@ import Wordmark from './Wordmark';
 export default function NotFound() {
   // the static HTML is the same for every path; fill in the one asked for once in the browser
   const [path, setPath] = useState('');
-  const [dialog, setDialog] = useState<DialogKind | null>(null);
-  const returnFocus = useRef<HTMLElement | null>(null);
+  const { dialog, openDialog, closeDialog } = useDialog();
 
   useEffect(() => setPath(decodeURI(location.pathname)), []);
-
-  useEffect(() => {
-    if (dialog || !returnFocus.current) return;
-    returnFocus.current.focus();
-    returnFocus.current = null;
-  }, [dialog]);
 
   return (
     <div className="shell not-found">
@@ -52,19 +45,16 @@ export default function NotFound() {
         </div>
       </main>
 
-      <Wordmark mode="open-tech" frac={0} onClick={() => location.assign('/')} onKeyDown={() => {}} inert={dialog !== null} />
+      <Wordmark mode="open-tech" frac={0} onClick={() => location.assign('/')} inert={dialog !== null} />
 
       {dialog && (
-        <Dialog kind={dialog} onClose={() => setDialog(null)} onContact={() => location.assign('/tech/contact/')} />
+        <Dialog kind={dialog} onClose={closeDialog} onContact={() => location.assign('/tech/contact/')} />
       )}
 
       <Footer
         side="tech"
         inert={dialog !== null}
-        onOpenDialog={(kind) => {
-          returnFocus.current = document.activeElement as HTMLElement | null;
-          setDialog(kind);
-        }}
+        onOpenDialog={openDialog}
       />
     </div>
   );

@@ -2,7 +2,8 @@ import { useEffect, useState, type MouseEvent } from 'react';
 import { albums, albumBySlug } from '../data/photos';
 import { currentGear, previousGear, photoCount, type Gear } from '../data/gear';
 import type { PhotoPage, View } from '../lib/route';
-import { Envelope, LINKEDIN, LinkedInMark, ViewLink, type Go } from './bits';
+import { LINKEDIN, MAIL, NAME, SPAM } from '../data/contact';
+import { Envelope, LinkedInMark, ViewLink, type Go } from './bits';
 import Picture from './Picture';
 
 interface Props {
@@ -148,16 +149,16 @@ function UsesPage() {
 function ContactPage() {
   return (
     <div className="photo-page contact">
-      <p className="contact__name">Konrad Schlüter</p>
+      <p className="contact__name">{NAME}</p>
       <div className="contact__mailbox">
-        <a href="mailto:k@schltr.com" className="contact__mail ph-h">
+        <a href={`mailto:${MAIL}`} className="contact__mail ph-h">
           <Envelope />
-          k@schltr.com
+          {MAIL}
         </a>
         <p className="note">
           Send any complaints to{' '}
-          <a href="mailto:spam@schltr.com" className="ph-h">
-            spam@schltr.com
+          <a href={`mailto:${SPAM}`} className="ph-h">
+            {SPAM}
           </a>{' '}
           for appropriate disposal.
         </p>

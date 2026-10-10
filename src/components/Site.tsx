@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState, type CSSProperties, type Keyb
 import { albumBySlug } from '../data/photos';
 import { pathFor, titleFor, viewFromPath, type View } from '../lib/route';
 import { ChevronLeft, ChevronRight, type Go } from './bits';
-import Dialog, { type DialogKind } from './Dialogs';
+import Dialog, { useDialog } from './Dialogs';
 import Footer from './Footer';
 import PhotoSide from './PhotoSide';
 import TechSide from './TechSide';
@@ -10,8 +10,6 @@ import Viewer from './Viewer';
 import Wordmark, { type Mode } from './Wordmark';
 
 const FRAC: Record<Mode, number> = { split: 0.5, 'lean-photo': 0.8, 'lean-tech': 0.2, 'open-photo': 1, 'open-tech': 0 };
-const HEADER = 132;
-const FOOTER = 64;
 // no leaning within this distance of the divider while it is in the middle
 const DEAD_ZONE = 120;
 
@@ -19,12 +17,12 @@ export default function Site({ initial }: { initial: View }) {
   const [view, setView] = useState<View>(initial);
   const [lean, setLean] = useState<'photo' | 'tech' | null>(null);
   const [viewer, setViewer] = useState<number | null>(null);
-  const [dialog, setDialog] = useState<DialogKind | null>(null);
+  const { dialog, openDialog, closeDialog, leaveDialog } = useDialog();
   const [toast, setToast] = useState<{ x: number; y: number } | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const toastTimer = useRef<number>(undefined);
-  // where focus goes back to when a dialog closes (the viewer returns it to the photo itself)
-  const returnFocus = useRef<HTMLElement | null>(null);
+  // header and footer heights from tokens.css, read once mounted
+  const bands = useRef({ header: 0, footer: 0 });
   // false while the server-rendered page hydrates: what was already there on a reload doesn't animate in
   const hydrated = useRef(false);
 
@@ -33,33 +31,33 @@ export default function Site({ initial }: { initial: View }) {
   const frac = FRAC[mode];
   const open = view.side !== 'split';
 
-  const go: Go = useCallback((next, hash) => {
+  const show = useCallback((next: View) => {
     setView(next);
     setLean(null);
     setViewer(null);
+    document.title = titleFor(next);
+  }, []);
+
+  const go: Go = useCallback((next, hash) => {
+    show(next);
     const path = pathFor(next);
     if (path !== location.pathname || location.hash) history.pushState(null, '', path);
-    document.title = titleFor(next);
     // lens links from the viewer: a real fragment navigation once the page has rendered, so :target applies
     if (hash) requestAnimationFrame(() => location.replace(`#${hash}`));
-  }, []);
+  }, [show]);
   const goHome = () => go({ side: 'split' });
 
   useEffect(() => {
     hydrated.current = true;
-    const onPop = () => {
-      const next = viewFromPath(location.pathname);
-      setView(next);
-      setLean(null);
-      setViewer(null);
-      document.title = titleFor(next);
-    };
+    const css = getComputedStyle(document.documentElement);
+    bands.current = { header: parseFloat(css.getPropertyValue('--header-h')), footer: parseFloat(css.getPropertyValue('--footer-h')) };
+    const onPop = () => show(viewFromPath(location.pathname));
     window.addEventListener('popstate', onPop);
     return () => {
       window.removeEventListener('popstate', onPop);
       clearTimeout(toastTimer.current);
     };
-  }, []);
+  }, [show]);
 
   // ── divider: hover leans a side ───────────────
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -70,7 +68,7 @@ export default function Site({ initial }: { initial: View }) {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     // header and footer bands never lean a side; a leaned side returns to the middle
-    if (y < HEADER || y > rect.height - FOOTER) {
+    if (y < bands.current.header || y > rect.height - bands.current.footer) {
       if (lean) setLean(null);
       return;
     }
@@ -126,18 +124,6 @@ export default function Site({ initial }: { initial: View }) {
   const viewerOpen = !!album && viewer !== null && viewer < album.photos.length;
   const modal = viewerOpen || dialog !== null;
 
-  useEffect(() => {
-    if (modal || !returnFocus.current) return;
-    returnFocus.current.focus();
-    returnFocus.current = null;
-  }, [modal]);
-
-  const openDialog = (kind: DialogKind) => {
-    // remember the opener now: once the background is inert it loses focus
-    returnFocus.current = document.activeElement as HTMLElement | null;
-    setDialog(kind);
-  };
-
   const contact = () => go(view.side === 'tech' ? { side: 'tech', page: 'contact' } : { side: 'photo', page: 'contact' });
 
   return (
@@ -167,8 +153,7 @@ export default function Site({ initial }: { initial: View }) {
 
       <Wordmark mode={mode} frac={frac} onClick={goHome} onKeyDown={onWordmarkKey} inert={modal} />
 
-      {view.side === 'photo' && <Strip side="photo" enter={hydrated.current} inert={modal} onClick={goHome} />}
-      {view.side === 'tech' && <Strip side="tech" enter={hydrated.current} inert={modal} onClick={goHome} />}
+      {view.side !== 'split' && <Strip key={view.side} side={view.side} enter={hydrated.current} inert={modal} onClick={goHome} />}
 
       {album && viewerOpen && viewer !== null && (
         <Viewer album={album} index={viewer} onStep={step} onClose={() => setViewer(null)} onNoCopy={onNoCopy} go={go} />
@@ -195,10 +180,9 @@ export default function Site({ initial }: { initial: View }) {
       {dialog && (
         <Dialog
           kind={dialog}
-          onClose={() => setDialog(null)}
+          onClose={closeDialog}
           onContact={() => {
-            returnFocus.current = null;
-            setDialog(null);
+            leaveDialog();
             contact();
           }}
         />
