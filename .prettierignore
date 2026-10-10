@@ -1,4 +1,3 @@
-design/handoff/
 public/
 src/data/*.json
 package-lock.json
