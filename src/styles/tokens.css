@@ -19,6 +19,9 @@
   /* album tree line, back-strip line */
   --photo-line: #b4b7c0;
   --photo-grain-opacity: 0.17;
+  /* album titles over cover photos */
+  --cover-ink: #f2f2f2;
+  --cover-shade: rgba(10, 12, 16, 0.55);
 
   /* ── Tech side ──────────────────────────────── */
   --tech-bg: #0b1626;

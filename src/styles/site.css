@@ -141,29 +141,42 @@ img {
   overflow-y: auto;
 }
 
-/* album covers: fixed columns so moving the divider only reveals or hides them */
+/* album covers: sized by src/lib/cover-layout.js (fallbacks fit 1440 × 900) */
+.photo-content.has-covers {
+  left: var(--cover-left, 225px);
+  width: var(--cover-area, 1167px);
+  scrollbar-gutter: auto;
+}
 .covers {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(3, auto);
-  grid-auto-columns: calc((100vw - 400px) / 4);
-  gap: 24px 8px;
-  padding-bottom: 32px;
+  grid-template-rows: repeat(var(--cover-rows, 2), var(--cover-h, 243px));
+  grid-auto-columns: var(--cover-w, 325px);
+  gap: 8px;
 }
 .cover {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  position: relative;
   min-width: 0;
+  overflow: hidden;
   text-decoration: none;
 }
 .cover img,
 .cover__empty {
   width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
+  height: 100%;
   object-fit: cover;
   background: var(--photo-placeholder);
+  transition: filter 160ms ease-out;
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(to bottom, transparent, var(--cover-shade));
+  pointer-events: none;
+}
+.cover:hover img {
+  filter: brightness(1.12);
 }
 .cover__empty {
   display: flex;
@@ -173,9 +186,15 @@ img {
   color: var(--photo-ink-2);
 }
 .cover__name {
+  position: absolute;
+  left: 14px;
+  bottom: 10px;
+  z-index: 1;
+  color: var(--cover-ink);
   font-size: 22px;
   line-height: 1.2;
   font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .photo-page {
