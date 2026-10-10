@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { DialogKind } from './Dialogs';
+import { Envelope, GITHUB, GitHubMark, LINKEDIN, LinkedInMark } from './bits';
 
 interface Props {
   side: 'split' | 'photo' | 'tech';
@@ -24,7 +25,22 @@ export default function Footer({ side, inert, onOpenDialog }: Props) {
           Tech support
         </button>
       </nav>
-      <div />
+      <div className="footer__icons">
+        {/* GitHub only belongs to the tech side: fades in there, inert elsewhere */}
+        <a href={GITHUB} className={`footer__icon footer__github po-h ${side === 'tech' ? 'is-shown' : ''}`} inert={side !== 'tech'} rel="me" aria-label="GitHub">
+          <GitHubMark size={20} />
+          <span className="footer__tip popup" aria-hidden="true">
+            Fork me, I dare you!
+            <span>GitHub</span>
+          </span>
+        </a>
+        <a href={LINKEDIN} className="footer__icon po-h" rel="me" aria-label="LinkedIn" title="LinkedIn">
+          <LinkedInMark size={20} />
+        </a>
+        <a href="mailto:k@schltr.com" className="footer__icon po-h" aria-label="Mail k@schltr.com" title="k@schltr.com">
+          <Envelope size={22} color="currentColor" />
+        </a>
+      </div>
     </footer>
   );
 }

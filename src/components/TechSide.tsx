@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { TechPage } from '../lib/route';
-import { ViewLink, type Go } from './bits';
+import { GITHUB, LINKEDIN, ViewLink, type Go } from './bits';
 
 interface Props {
   /** null while the tech side is not open: shows the start screen. */
@@ -168,6 +168,20 @@ function Contact() {
             spam@schltr.com
           </a>{' '}
           <span className="dim"># for appropriate disposal</span>
+        </dd>
+        <dt>github</dt>
+        <dd>
+          <a href={GITHUB} className="tech-link te-h" rel="me">
+            github.com/dextrodus
+          </a>{' '}
+          <span className="dim"># Copilot hurt itself in its confusion!</span>
+        </dd>
+        <dt>linkedin</dt>
+        <dd>
+          <a href={LINKEDIN} className="tech-link te-h" rel="me">
+            linkedin.com/in/schltr
+          </a>{' '}
+          <span className="dim"># Loading Buzzwords...</span>
         </dd>
       </dl>
       <p className="dim">Your message will be read by a human. Eventually.</p>

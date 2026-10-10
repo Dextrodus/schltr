@@ -2,7 +2,7 @@ import type { MouseEvent } from 'react';
 import { albums, albumBySlug, gridSrcSet, thumbSrc } from '../data/photos';
 import { currentGear, previousGear, photoCount, type Gear } from '../data/gear';
 import type { PhotoPage, View } from '../lib/route';
-import { Envelope, Grain, ViewLink, type Go } from './bits';
+import { Envelope, Grain, LINKEDIN, LinkedInMark, ViewLink, type Go } from './bits';
 
 interface Props {
   page: PhotoPage;
@@ -159,6 +159,15 @@ function ContactPage() {
         <Envelope />
         k@schltr.com
       </a>
+      <ul className="contact__links">
+        <li>
+          <a href={LINKEDIN} className="contact__link ph-h" rel="me">
+            <LinkedInMark color="var(--photo-accent)" />
+            LinkedIn
+          </a>
+          <span className="note">Preparing preposterously powerful post...</span>
+        </li>
+      </ul>
       <p className="note">
         Send any complaints to{' '}
         <a href="mailto:spam@schltr.com" className="ph-h">
