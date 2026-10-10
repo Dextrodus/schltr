@@ -1,5 +1,5 @@
 import type { Exif } from '../data/photos';
-import { cameraId, cameraName, lensId } from '../data/gear';
+import { cameraId, cameraName, lensId, lensName } from '../data/gear';
 import { ViewLink, type Go } from './bits';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -18,36 +18,22 @@ export default function ExifLine({ exif: e, go }: { exif?: Exif; go: Go }) {
       {e ? (
         // fixed slot widths in ch of the mono font, so the line never jumps between photos
         <p className="exif">
-          <ViewLink
-            to={{ side: 'photo', page: 'uses' }}
-            hash={cameraId(e.camera)}
-            go={go}
-            className="ph-h"
-            title="See it on What I use"
-            style={{ width: '21ch' }}
-          >
+          <GearLink id={cameraId(e.camera)} go={go} width="21ch">
             {cameraName(e.camera)}
-          </ViewLink>
+          </GearLink>
           {e.lens === 'built-in' ? (
-            <span style={{ width: '29ch' }}>built-in lens</span>
+            <span style={{ width: '36ch' }}>built-in lens</span>
           ) : !e.lens ? (
             // the camera records no lens for manual lenses; the hint shows on hover or focus, without the title delay
-            <span style={{ width: '29ch' }}>
+            <span style={{ width: '36ch' }}>
               <span className="tip" tabIndex={0} data-tip={UNKNOWN_LENS} aria-label={`Unknown lens. ${UNKNOWN_LENS}`}>
                 unknown lens
               </span>
             </span>
           ) : (
-            <ViewLink
-              to={{ side: 'photo', page: 'uses' }}
-              hash={lensId(e.lens)}
-              go={go}
-              className="ph-h"
-              title="See it on What I use"
-              style={{ width: '29ch' }}
-            >
-              {e.lens}
-            </ViewLink>
+            <GearLink id={lensId(e.lens)} go={go} width="36ch">
+              {lensName(e.lens)}
+            </GearLink>
           )}
           <span style={{ width: '7ch' }}>{e.focal ? `${e.focal} mm` : ''}</span>
           <span style={{ width: '5ch' }}>{e.aperture ? `f/${e.aperture}` : ''}</span>
@@ -59,5 +45,15 @@ export default function ExifLine({ exif: e, go }: { exif?: Exif; go: Go }) {
         <p className="note">No camera data on this one. Lost in the darkroom.</p>
       )}
     </div>
+  );
+}
+
+/** Camera or lens in the camera data line: a link to its row on What I use, plain text when it isn't listed there. */
+function GearLink({ id, go, width, children }: { id?: string; go: Go; width: string; children: string }) {
+  if (!id) return <span style={{ width }}>{children}</span>;
+  return (
+    <ViewLink to={{ side: 'photo', page: 'uses' }} hash={id} go={go} className="ph-h" title="See it on What I use" style={{ width }}>
+      {children}
+    </ViewLink>
   );
 }

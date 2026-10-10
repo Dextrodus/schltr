@@ -48,7 +48,14 @@ export function cameraId(exifCamera: string): string | undefined {
   return camera(exifCamera)?.id;
 }
 
+const lens = (exifLens: string) => [...currentGear, ...previousGear].find((g) => g.kind === 'Lens' && g.exif === exifLens);
+
+/** Display name for a lens as written in EXIF, as on What I use. */
+export function lensName(exifLens: string): string {
+  return lens(exifLens)?.name ?? exifLens;
+}
+
 /** Gear row id for a lens as written in EXIF, for the link from the viewer. */
 export function lensId(exifLens: string): string | undefined {
-  return [...currentGear, ...previousGear].find((g) => g.kind === 'Lens' && g.exif === exifLens)?.id;
+  return lens(exifLens)?.id;
 }

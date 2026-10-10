@@ -42,6 +42,8 @@
   --footer-line-tech: #18273d;
   --footer-ink: #e2e4e8;
   --footer-ink-photo: #000000;
+  /* hover and focus in the footer; the photo accent disappears on the split footer, so it gets a light tint */
+  --footer-accent-split: #dbe7ff;
 
   /* dialogs, popups, toasts */
   --popup-bg: #1c1c1c;
