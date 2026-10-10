@@ -1,11 +1,7 @@
 /*
- * schltr design tokens.
- *
- * Derived from the Claude Design handoff of 9 Oct 2026 (design/handoff/2026-10-09).
- * This replaces the old schltr design system referenced in the export; only the
- * values the design actually uses live here. Two worlds that meet at the divider:
- * the photo side (darkroom grey, grotesk) and the tech side (flat navy,
- * monospace), plus a small set of shared chrome tokens.
+ * schltr design tokens. Two worlds that meet at the divider: the photo side
+ * (light blue, Avancement) and the tech side (flat navy, monospace), plus a
+ * small set of shared chrome tokens.
  */
 
 :root {
