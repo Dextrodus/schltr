@@ -3,14 +3,14 @@
 import { albumBySlug } from '../data/photos';
 
 export type PhotoPage = 'albums' | 'album' | 'uses' | 'contact';
-export type TechPage = 'start' | 'introduction' | 'career' | 'hobbies' | 'what-i-use' | 'contact';
+export type TechPage = 'start' | 'introduction' | 'career' | 'what-i-use' | 'contact';
 
 export type View =
   | { side: 'split' }
   | { side: 'photo'; page: PhotoPage; album?: string }
   | { side: 'tech'; page: TechPage };
 
-export const techPages: TechPage[] = ['start', 'introduction', 'career', 'hobbies', 'what-i-use', 'contact'];
+export const techPages: TechPage[] = ['start', 'introduction', 'career', 'what-i-use', 'contact'];
 
 export function pathFor(view: View): string {
   if (view.side === 'split') return '/';

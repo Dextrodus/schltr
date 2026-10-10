@@ -67,7 +67,6 @@ The site must not look like a typical "vibe coded" website:
 ### Dev side
 - Introduction (default page), placeholder text in [content/introduction.md](content/introduction.md)
 - Career (clean version)
-- Hobbies (3D printing etc.)
 - Contact (simple mailto links)
 
 ### Photography side

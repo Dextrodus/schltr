@@ -15,7 +15,7 @@ interface Props {
 }
 
 // bottom-up listing: the first entry sits right under `ls`
-const listing: TechPage[] = ['contact', 'what-i-use', 'hobbies', 'career', 'introduction', 'start'];
+const listing: TechPage[] = ['contact', 'what-i-use', 'career', 'introduction', 'start'];
 
 export default function TechSide({ page, leanedAway, inert, go }: Props) {
   const [hovered, setHovered] = useState<TechPage | null>(null);
@@ -30,7 +30,6 @@ export default function TechSide({ page, leanedAway, inert, go }: Props) {
         {page === 'what-i-use' && <Uses />}
         {page === 'contact' && <Contact />}
         {page === 'career' && <Career />}
-        {page === 'hobbies' && <NotWritten page={page} />}
       </div>
 
       <nav className="tech-nav slide" aria-label="Tech" style={{ opacity: leanedAway ? 0.8 : 1 }}>
@@ -116,7 +115,7 @@ function Uses() {
       <div className="dim">~ $ cat what-i-use.md</div>
       <h1># what i use</h1>
       <section>
-        <h2>## desk</h2>
+        <h2>## dev</h2>
         <dl className="kv">
           <dt>editor</dt>
           <dd>Zed / VS Code</dd>
@@ -124,12 +123,15 @@ function Uses() {
           <dd>Claude Code / Codex</dd>
           <dt>daily</dt>
           <dd>React, Python, Marimo notebooks, Java, LaTeX</dd>
-          <dt>this site</dt>
-          <dd>Astro</dd>
           <dt>os</dt>
           <dd>
             Fedora with GNOME <span className="dim"># probably changed by the time you read this</span>
           </dd>
+        </dl>
+      </section>
+      <section>
+        <h2>## sidetrack</h2>
+        <dl className="kv">
           <dt>cad</dt>
           <dd>Onshape</dd>
           <dt>printer</dt>
@@ -261,16 +263,6 @@ function Contact() {
         </dd>
       </dl>
       <p className="dim">Your message will be read by a human. Eventually.</p>
-    </article>
-  );
-}
-
-function NotWritten({ page }: { page: TechPage }) {
-  return (
-    <article className="tech-page">
-      <div className="dim">~ $ cat {page}.md</div>
-      <h1># {page}</h1>
-      <p className="dim">cat: {page}.md: not written yet. It works on my machine.</p>
     </article>
   );
 }
