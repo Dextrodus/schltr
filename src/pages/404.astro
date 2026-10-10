@@ -1,0 +1,9 @@
+---
+// Built to dist/404.html, which Cloudflare Pages serves (with a 404 status) for unknown paths.
+import Base from '../layouts/Base.astro';
+import NotFound from '../components/NotFound';
+---
+
+<Base title="404 · schltr" noindex>
+  <NotFound client:load />
+</Base>
