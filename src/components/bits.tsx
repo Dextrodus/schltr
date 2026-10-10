@@ -32,7 +32,19 @@ export const Cross = ({ size }: { size: number }) => (
   </svg>
 );
 
-export const Envelope = ({ size = 24, color = 'var(--photo-accent)' }: { size?: number; color?: string }) => (
+export const EnterFullscreen = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 7.5V3h4.5M12.5 3H17v4.5M17 12.5V17h-4.5M7.5 17H3v-4.5" />
+  </svg>
+);
+
+export const ExitFullscreen = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M7.5 3v4.5H3M17 7.5h-4.5V3M12.5 17v-4.5H17M3 12.5h4.5V17" />
+  </svg>
+);
+
+export const Envelope =({ size = 24, color = 'var(--photo-accent)' }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />

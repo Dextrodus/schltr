@@ -226,7 +226,7 @@ img {
   margin: 0 0 8px;
   break-inside: avoid;
   background: var(--photo-placeholder);
-  cursor: zoom-in;
+  cursor: pointer;
 }
 .note {
   margin: 0;
@@ -725,6 +725,17 @@ img {
   justify-content: center;
   color: var(--photo-ink-2);
 }
+.viewer__full {
+  position: absolute;
+  right: 26px;
+  bottom: 6px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--photo-ink-2);
+}
 .viewer__stage {
   position: absolute;
   left: 96px;
@@ -734,12 +745,30 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  user-select: none;
 }
 .viewer__stage img {
-  width: 100%;
-  height: 100%;
+  flex: none;
   object-fit: contain;
-  cursor: pointer;
+  cursor: zoom-in;
+  transition: transform 150ms ease-out;
+}
+.viewer__stage.is-zoomed {
+  cursor: grab;
+  touch-action: none;
+}
+.viewer__stage.is-zoomed img {
+  cursor: inherit;
+}
+.viewer__stage.is-dragging {
+  cursor: grabbing;
+}
+.viewer__stage.is-dragging img {
+  transition: none;
+}
+.viewer__ctl {
+  z-index: 1;
 }
 .viewer__nav {
   position: absolute;
@@ -767,6 +796,52 @@ img {
   justify-content: center;
   text-align: center;
   font: 400 12px/1.5 var(--font-tech);
+}
+/* true fullscreen: the photo takes the whole screen, the controls float over it */
+.viewer.is-full .viewer__stage {
+  inset: 0;
+}
+.viewer.is-full .viewer__title,
+.viewer.is-full .viewer__meta {
+  display: none;
+}
+.viewer.is-full .viewer__nav {
+  top: 50%;
+  bottom: auto;
+  width: 56px;
+  height: 128px;
+  border-radius: 8px;
+  transform: translateY(-50%);
+}
+.viewer.is-full .viewer__nav--prev {
+  left: 16px;
+}
+.viewer.is-full .viewer__nav--next {
+  right: 16px;
+}
+.viewer.is-full .viewer__full {
+  bottom: 18px;
+}
+.viewer.is-full .viewer__ctl {
+  border-radius: 8px;
+  transition:
+    opacity 300ms ease-out,
+    background-color 150ms ease-out,
+    color 150ms ease-out;
+}
+.viewer__ctl.is-over {
+  background: color-mix(in srgb, var(--photo-bg) 70%, transparent);
+}
+.viewer__ctl.is-over:hover {
+  background: color-mix(in srgb, var(--photo-bg) 90%, transparent);
+}
+.viewer.is-idle,
+.viewer.is-idle .viewer__stage,
+.viewer.is-idle .viewer__stage img {
+  cursor: none;
+}
+.viewer.is-idle .viewer__ctl:not(:focus-visible) {
+  opacity: 0;
 }
 .exif {
   margin: 0;
