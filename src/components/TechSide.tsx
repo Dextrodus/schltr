@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import type { TechPage } from '../lib/route';
-import { GITHUB, LINKEDIN, ViewLink, type Go } from './bits';
+import { techPages, type TechPage } from '../lib/route';
+import { GITHUB, LINKEDIN, MAIL, NAME, SPAM } from '../data/contact';
+import { ViewLink, type Go } from './bits';
 import Cd from './Cd';
 import { education, languages, skills, volunteering, work, type Entry } from '../data/career';
 
@@ -15,7 +16,7 @@ interface Props {
 }
 
 // bottom-up listing: the first entry sits right under `ls`
-const listing: TechPage[] = ['contact', 'what-i-use', 'career', 'introduction', 'start'];
+const listing = [...techPages].reverse();
 
 export default function TechSide({ page, leanedAway, inert, go }: Props) {
   const [hovered, setHovered] = useState<TechPage | null>(null);
@@ -87,21 +88,22 @@ function Introduction() {
       <h1># introduction</h1>
       <p>Hi, I'm Konrad.</p>
       <p>
-        I feel at home where computer science meets medicine. I studied Computer Science at TUM with medicine as my application subject, and now I
-        want to build software that makes a real difference.
+        I feel at home where computer science meets medicine. I studied Computer Science at TUM with medicine as my application subject, and
+        now I want to build software that makes a real difference.
       </p>
       <p>
-        As a working student at Carealytix, I learned how to build software that reaches real patients quickly without cutting corners on quality,
-        accessibility or regulatory compliance (ISO 13485 / ISO 27001). At the same time, I worked as a research assistant with nephrologists and
-        nutrition specialists at TUM. I designed, built and validated an LLM-based pipeline that expands a nutritional database for patients with
-        chronic kidney disease. I presented the results at the XXI International Congress on Renal Nutrition and Metabolism, where I won a poster
-        award, and I'm first author of the paper, which is currently under review.
+        As a working student at Carealytix, I learned how to build software that reaches real patients quickly without cutting corners on
+        quality, accessibility or regulatory compliance (ISO 13485 / ISO 27001). At the same time, I worked as a research assistant with
+        nephrologists and nutrition specialists at TUM. I designed, built and validated an LLM-based pipeline that expands a nutritional
+        database for patients with chronic kidney disease. I presented the results at the XXI International Congress on Renal Nutrition and
+        Metabolism, where I won a poster award, and I'm first author of the paper, which is currently under review.
       </p>
       <p>
-        What matters to me is software that's good for the planet, for people and for society. Sometimes that means medicine. I started as a school
-        first-aider and kept going through my studies and at Carealytix. Sometimes it means passing on knowledge: first teaching beginner swimming
-        courses with the DLRG, later teaching IT and maths at a secondary school. It could just as well mean reducing inequality or pushing the
-        energy transition forward. As long as my work makes the world a little better, step by step, I'm motivated.
+        What matters to me is software that's good for the planet, for people and for society. Sometimes that means medicine. I started as a
+        school first-aider and kept going through my studies and at Carealytix. Sometimes it means passing on knowledge: first teaching
+        beginner swimming courses with the DLRG, later teaching IT and maths at a secondary school. It could just as well mean reducing
+        inequality or pushing the energy transition forward. As long as my work makes the world a little better, step by step, I'm
+        motivated.
       </p>
       <p>I'm looking for a position as a software developer, ideally in digital health.</p>
       <p className="dim">When I'm not writing code, I'm probably behind a camera. That's the other half of this site.</p>
@@ -169,9 +171,7 @@ const Entries = ({ entries }: { entries: Entry[] }) => (
 );
 
 const Pairs = ({ pairs }: { pairs: [string, string][] }) => (
-  <dl className="kv">
-    {pairs.map(([k, v]) => [<dt key={`${k}-k`}>{k}</dt>, <dd key={`${k}-v`}>{v}</dd>])}
-  </dl>
+  <dl className="kv">{pairs.map(([k, v]) => [<dt key={`${k}-k`}>{k}</dt>, <dd key={`${k}-v`}>{v}</dd>])}</dl>
 );
 
 function Career() {
@@ -204,20 +204,20 @@ function Career() {
         <dl className="kv">
           <dt>github</dt>
           <dd>
-            <a href="https://github.com/dextrodus" className="tech-link te-h">
+            <a href={GITHUB} className="tech-link te-h">
               dextrodus
             </a>
           </dd>
           <dt>linkedin</dt>
           <dd>
-            <a href="https://www.linkedin.com/in/schltr/" className="tech-link te-h">
+            <a href={LINKEDIN} className="tech-link te-h">
               schltr
             </a>
           </dd>
           <dt>mail</dt>
           <dd>
-            <a href="mailto:k@schltr.com" className="tech-link te-h">
-              k@schltr.com
+            <a href={`mailto:${MAIL}`} className="tech-link te-h">
+              {MAIL}
             </a>
           </dd>
         </dl>
@@ -233,17 +233,17 @@ function Contact() {
       <h1># contact</h1>
       <dl className="kv">
         <dt>name</dt>
-        <dd>Konrad Schlüter</dd>
+        <dd>{NAME}</dd>
         <dt>mail</dt>
         <dd>
-          <a href="mailto:k@schltr.com" className="tech-link te-h">
-            k@schltr.com
+          <a href={`mailto:${MAIL}`} className="tech-link te-h">
+            {MAIL}
           </a>
         </dd>
         <dt>complaints</dt>
         <dd>
-          <a href="mailto:spam@schltr.com" className="tech-link te-h">
-            spam@schltr.com
+          <a href={`mailto:${SPAM}`} className="tech-link te-h">
+            {SPAM}
           </a>{' '}
           <span className="dim"># for appropriate disposal</span>
         </dd>

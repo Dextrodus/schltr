@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "photos": "node scripts/photos.mjs"
+    "photos": "node scripts/photos.mjs",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@astrojs/react": "^7.0.1",
@@ -22,6 +23,8 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "exif-reader": "^2.0.3",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
     "sharp": "^0.35.5",
     "typescript": "^6.0.3"
   }

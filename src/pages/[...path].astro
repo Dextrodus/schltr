@@ -3,19 +3,10 @@
 // so deep links work and moving between views stays animated client-side.
 import Base from '../layouts/Base.astro';
 import Site from '../components/Site';
-import { albums } from '../data/photos';
-import { pathFor, techPages, titleFor, type View } from '../lib/route';
+import { allViews, pathFor, titleFor, type View } from '../lib/route';
 
 export function getStaticPaths() {
-  const views: View[] = [
-    { side: 'split' },
-    { side: 'photo', page: 'albums' },
-    { side: 'photo', page: 'uses' },
-    { side: 'photo', page: 'contact' },
-    ...albums.map((a): View => ({ side: 'photo', page: 'album', album: a.slug })),
-    ...techPages.map((page): View => ({ side: 'tech', page })),
-  ];
-  return views.map((view) => ({
+  return allViews.map((view) => ({
     params: { path: pathFor(view).replace(/^\/|\/$/g, '') || undefined },
     props: { view },
   }));

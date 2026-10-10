@@ -2,37 +2,96 @@ import type { AnchorHTMLAttributes, KeyboardEvent, MouseEvent, ReactNode } from 
 import { pathFor, type View } from '../lib/route';
 
 export const ChevronLeft = () => (
-  <svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="18"
+    height="64"
+    viewBox="0 0 18 64"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M15 4L3 32l12 28" />
   </svg>
 );
 
 export const ChevronRight = () => (
-  <svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="18"
+    height="64"
+    viewBox="0 0 18 64"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M3 4l12 28L3 60" />
   </svg>
 );
 
 export const Cross = ({ size }: { size: number }) => (
-  <svg width={size} height={size} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    aria-hidden="true"
+  >
     <path d="M3 3l14 14M17 3L3 17" />
   </svg>
 );
 
 export const EnterFullscreen = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M3 7.5V3h4.5M12.5 3H17v4.5M17 12.5V17h-4.5M7.5 17H3v-4.5" />
   </svg>
 );
 
 export const ExitFullscreen = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <path d="M7.5 3v4.5H3M17 7.5h-4.5V3M12.5 17v-4.5H17M3 12.5h4.5V17" />
   </svg>
 );
 
-export const Envelope =({ size = 24, color = 'var(--photo-accent)' }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+export const Envelope = ({ size = 24, color = 'var(--photo-accent)' }: { size?: number; color?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="1.75"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
   </svg>
@@ -49,9 +108,6 @@ export const LinkedInMark = ({ size = 24, color = 'currentColor' }: { size?: num
     <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
   </svg>
 );
-
-export const GITHUB = 'https://github.com/dextrodus';
-export const LINKEDIN = 'https://www.linkedin.com/in/schltr/';
 
 /** Keeps Tab inside a modal: wraps from the last focusable element to the first and back. */
 export function trapTab(e: KeyboardEvent<HTMLElement>) {

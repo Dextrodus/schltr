@@ -1,4 +1,5 @@
 // Album cover grid layout. Runs inline in <head> so the grid is sized before first paint.
+// That is before the stylesheet applies, so the layout values marked with a token copy tokens.css: keep them in sync.
 //
 // The divider in the split view always cuts one cover column in half. Within that rule,
 // pick the column width, column and row count and left edge that give the largest
