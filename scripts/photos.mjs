@@ -52,11 +52,13 @@ function readExif(buf) {
   const camera = img.Model.toLowerCase().startsWith(make.toLowerCase()) ? img.Model : `${make} ${img.Model}`;
   const lens = ph.LensModel && !/^-+$/.test(ph.LensModel) ? ph.LensModel : make === 'DJI' ? 'built-in' : '';
   const taken = ph.DateTimeOriginal instanceof Date ? ph.DateTimeOriginal.toISOString().slice(0, 10) : '';
+  // manual lenses report no focal length or aperture; left out rather than written as null
+  const round = (x) => (x ? Math.round(x * 10) / 10 : undefined);
   return {
     camera,
     lens,
-    focal: Math.round(ph.FocalLength * 10) / 10,
-    aperture: Math.round(ph.FNumber * 10) / 10,
+    focal: round(ph.FocalLength),
+    aperture: round(ph.FNumber),
     shutter: fmtShutter(ph.ExposureTime),
     iso: ph.ISOSpeedRatings,
     taken,

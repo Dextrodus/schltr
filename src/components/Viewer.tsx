@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react';
 import type { Album } from '../data/photos';
-import { cameraName, lensId } from '../data/gear';
+import { cameraId, cameraName, lensId } from '../data/gear';
 import { ChevronLeft, ChevronRight, Cross, EnterFullscreen, ExitFullscreen, Grain, ViewLink, trapTab, type Go } from './bits';
 import Picture from './Picture';
 
@@ -18,6 +18,8 @@ const fmtDate = (iso: string) => {
   const [y, m, d] = iso.split('-').map(Number);
   return `${d} ${MONTHS[m - 1]} ${y}`;
 };
+
+const UNKNOWN_LENS = 'Likely a manual lens, could be the Samyang 20mm F1.8 or an old 600mm reflex lens';
 
 // zoom: s is the scale over the fitted size, x/y move the image centre away from the stage centre (px)
 type Zoom = { s: number; x: number; y: number };
@@ -277,13 +279,24 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
         {e ? (
           // fixed slot widths in ch of the mono font, so the line never jumps between photos
           <p className="exif">
-            <span style={{ width: '21ch' }}>{cameraName(e.camera)}</span>
+            <ViewLink
+              to={{ side: 'photo', page: 'uses' }}
+              hash={cameraId(e.camera)}
+              go={go}
+              className="ph-h"
+              title="See it on What I use"
+              style={{ width: '21ch' }}
+            >
+              {cameraName(e.camera)}
+            </ViewLink>
             {e.lens === 'built-in' ? (
               <span style={{ width: '29ch' }}>built-in lens</span>
             ) : !e.lens ? (
-              // the camera records no lens for manual lenses
-              <span style={{ width: '29ch', cursor: 'help' }} title="Likely a manual lens, could be the Samyang 20mm F1.8 or an old 600mm reflex lens">
-                unknown lens
+              // the camera records no lens for manual lenses; the hint shows on hover or focus, without the title delay
+              <span style={{ width: '29ch' }}>
+                <span className="tip" tabIndex={0} data-tip={UNKNOWN_LENS} aria-label={`Unknown lens. ${UNKNOWN_LENS}`}>
+                  unknown lens
+                </span>
               </span>
             ) : (
               <ViewLink
@@ -297,8 +310,8 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
                 {e.lens}
               </ViewLink>
             )}
-            <span style={{ width: '7ch' }}>{e.focal} mm</span>
-            <span style={{ width: '5ch' }}>f/{e.aperture}</span>
+            <span style={{ width: '7ch' }}>{e.focal ? `${e.focal} mm` : ''}</span>
+            <span style={{ width: '5ch' }}>{e.aperture ? `f/${e.aperture}` : ''}</span>
             <span style={{ width: '8ch' }}>{e.shutter} s</span>
             <span style={{ width: '9ch' }}>ISO {e.iso}</span>
             <span style={{ width: '11ch' }}>{fmtDate(e.taken)}</span>

@@ -8,8 +8,9 @@ export interface Exif {
   camera: string;
   /** 'built-in' for cameras without interchangeable lenses (the drone), '' when the lens is unknown. */
   lens: string;
-  focal: number;
-  aperture: number;
+  /** Missing for manual lenses, which report neither. */
+  focal?: number;
+  aperture?: number;
   shutter: string;
   iso: number;
   /** ISO date, YYYY-MM-DD */

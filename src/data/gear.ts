@@ -33,9 +33,16 @@ export function photoCount(g: Gear): number {
   return allPhotos.filter((p) => p.exif && (p.exif.camera === g.exif || p.exif.lens === g.exif)).length;
 }
 
+const camera = (exifCamera: string) => [...currentGear, ...previousGear].find((g) => g.kind !== 'Lens' && g.exif === exifCamera);
+
 /** Display name for a camera as written in EXIF (the drone only reports its model code). */
 export function cameraName(exifCamera: string): string {
-  return [...currentGear, ...previousGear].find((g) => g.kind !== 'Lens' && g.exif === exifCamera)?.name ?? exifCamera;
+  return camera(exifCamera)?.name ?? exifCamera;
+}
+
+/** Gear row id for a camera as written in EXIF, for the link from the viewer. */
+export function cameraId(exifCamera: string): string | undefined {
+  return camera(exifCamera)?.id;
 }
 
 /** Gear row id for a lens as written in EXIF, for the link from the viewer. */
