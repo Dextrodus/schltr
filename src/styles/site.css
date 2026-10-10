@@ -166,6 +166,12 @@ img {
   overflow: hidden;
   text-decoration: none;
 }
+/* <picture> only picks the file; the img inside is laid out as if it were a direct child */
+.cover picture,
+.masonry picture,
+.viewer__stage picture {
+  display: contents;
+}
 .cover img,
 .cover__empty {
   width: 100%;
@@ -754,6 +760,10 @@ img {
   cursor: zoom-in;
   transition: transform 150ms ease-out;
 }
+/* the neighbouring photos, only loaded ahead */
+.viewer__stage img[hidden] {
+  display: none;
+}
 .viewer__stage.is-zoomed {
   cursor: grab;
   touch-action: none;
@@ -850,11 +860,36 @@ img {
   justify-content: center;
   column-gap: 20px;
   row-gap: 2px;
+  cursor: default;
 }
 .exif > * {
   flex: none;
   text-align: center;
   white-space: nowrap;
+}
+/* hint above a value, shown at once on hover or keyboard focus */
+.tip {
+  position: relative;
+}
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 36ch;
+  padding: 6px 10px;
+  white-space: normal;
+  background: var(--popup-bg);
+  border: 1px solid var(--popup-border);
+  color: var(--popup-ink);
+  opacity: 0;
+  pointer-events: none;
+}
+.tip:hover::after,
+.tip:focus-visible::after {
+  opacity: 1;
 }
 .exif a {
   text-decoration: underline;

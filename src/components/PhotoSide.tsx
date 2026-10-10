@@ -1,8 +1,9 @@
 import type { MouseEvent } from 'react';
-import { albums, albumBySlug, gridSrcSet, thumbSrc } from '../data/photos';
+import { albums, albumBySlug } from '../data/photos';
 import { currentGear, previousGear, photoCount, type Gear } from '../data/gear';
 import type { PhotoPage, View } from '../lib/route';
 import { Envelope, Grain, LINKEDIN, LinkedInMark, ViewLink, type Go } from './bits';
+import Picture from './Picture';
 
 interface Props {
   page: PhotoPage;
@@ -53,15 +54,7 @@ export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCo
               <ViewLink key={a.slug} to={albumView(a.slug)} go={go} className="cover" tabIndex={open ? undefined : -1}>
                 <span className="cover__name">{a.name}</span>
                 {a.cover ? (
-                  <img
-                    src={thumbSrc(a.cover)}
-                    srcSet={gridSrcSet(a.cover)}
-                    sizes="(orientation: portrait) 60vw, 35vw"
-                    alt={a.cover.alt}
-                    width={a.cover.width}
-                    height={a.cover.height}
-                    onContextMenu={onNoCopy}
-                  />
+                  <Picture photo={a.cover} sizes="(orientation: portrait) 60vw, 35vw" preview onContextMenu={onNoCopy} />
                 ) : (
                   <span className="cover__empty">[ {a.name.toLowerCase()} ]</span>
                 )}
@@ -87,15 +80,12 @@ function AlbumPage({ slug, onNoCopy, onOpenPhoto }: { slug: string; onNoCopy: Pr
       {album.photos.length > 0 ? (
         <div className="masonry">
           {album.photos.map((p, i) => (
-            <img
-              key={p.file}
-              src={thumbSrc(p)}
-              srcSet={gridSrcSet(p)}
-              sizes="350px"
+            <Picture
+              key={p.id}
+              photo={p}
+              sizes="(max-width: 700px) 100vw, 360px"
+              preview
               data-index={i}
-              alt={p.alt}
-              width={p.width}
-              height={p.height}
               loading="lazy"
               tabIndex={0}
               role="button"

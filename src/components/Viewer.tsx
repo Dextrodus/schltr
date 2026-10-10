@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react';
-import { fullSrc, type Album } from '../data/photos';
-import { lensId } from '../data/gear';
+import type { Album } from '../data/photos';
+import { cameraId, cameraName, lensId } from '../data/gear';
 import { ChevronLeft, ChevronRight, Cross, EnterFullscreen, ExitFullscreen, Grain, ViewLink, trapTab, type Go } from './bits';
+import Picture from './Picture';
 
 interface Props {
   album: Album;
@@ -17,6 +18,8 @@ const fmtDate = (iso: string) => {
   const [y, m, d] = iso.split('-').map(Number);
   return `${d} ${MONTHS[m - 1]} ${y}`;
 };
+
+const UNKNOWN_LENS = 'Likely a manual lens, could be the Samyang 20mm F1.8 or an old 600mm reflex lens';
 
 // zoom: s is the scale over the fitted size, x/y move the image centre away from the stage centre (px)
 type Zoom = { s: number; x: number; y: number };
@@ -102,6 +105,11 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
   // the largest file decides how far in it goes: at least 1:1 pixels on a click, twice that at most
   const native = () => (imgRef.current?.naturalWidth || photo.width) / (w || 1);
   const maxScale = () => Math.max(4, 2 * native());
+  // the browser picks the file for the fitted size; zoomed in, it switches to the largest one
+  const sizes = zoomed ? `${photo.width}px` : w ? `${Math.ceil(w)}px` : '100vw';
+  // the photos either side are loaded in hidden images, so stepping through shows them without a wait
+  const neighbours = [-1, 1].map((d) => album.photos[(index + d + album.photos.length) % album.photos.length]).filter((p) => p !== photo);
+  const sizesOf = (p: typeof photo) => (box.w && box.h ? `${Math.ceil(p.width * Math.min(box.w / p.width, box.h / p.height))}px` : '100vw');
 
   const clamp = (z: Zoom): Zoom => {
     const s = Math.min(Math.max(z.s, 1), maxScale());
@@ -229,15 +237,18 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}
       >
-        <img
-          key={photo.file}
+        <Picture
+          key={photo.id}
           ref={imgRef}
-          src={fullSrc(photo)}
-          alt={photo.alt}
+          photo={photo}
+          sizes={sizes}
           draggable={false}
           style={{ width: w, height: h, transform: `translate(${zoom.x}px, ${zoom.y}px) scale(${zoom.s})` }}
           onContextMenu={onNoCopy}
         />
+        {neighbours.map((p) => (
+          <Picture key={p.id} photo={p} sizes={sizesOf(p)} alt="" hidden />
+        ))}
       </div>
       <button
         className={`viewer__nav viewer__nav--prev viewer__ctl chev chev--photo ${over(img.left < 72)}`}
@@ -268,9 +279,25 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
         {e ? (
           // fixed slot widths in ch of the mono font, so the line never jumps between photos
           <p className="exif">
-            <span style={{ width: '21ch' }}>{e.camera}</span>
+            <ViewLink
+              to={{ side: 'photo', page: 'uses' }}
+              hash={cameraId(e.camera)}
+              go={go}
+              className="ph-h"
+              title="See it on What I use"
+              style={{ width: '21ch' }}
+            >
+              {cameraName(e.camera)}
+            </ViewLink>
             {e.lens === 'built-in' ? (
               <span style={{ width: '29ch' }}>built-in lens</span>
+            ) : !e.lens ? (
+              // the camera records no lens for manual lenses; the hint shows on hover or focus, without the title delay
+              <span style={{ width: '29ch' }}>
+                <span className="tip" tabIndex={0} data-tip={UNKNOWN_LENS} aria-label={`Unknown lens. ${UNKNOWN_LENS}`}>
+                  unknown lens
+                </span>
+              </span>
             ) : (
               <ViewLink
                 to={{ side: 'photo', page: 'uses' }}
@@ -283,8 +310,8 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
                 {e.lens}
               </ViewLink>
             )}
-            <span style={{ width: '7ch' }}>{e.focal} mm</span>
-            <span style={{ width: '5ch' }}>f/{e.aperture}</span>
+            <span style={{ width: '7ch' }}>{e.focal ? `${e.focal} mm` : ''}</span>
+            <span style={{ width: '5ch' }}>{e.aperture ? `f/${e.aperture}` : ''}</span>
             <span style={{ width: '8ch' }}>{e.shutter} s</span>
             <span style={{ width: '9ch' }}>ISO {e.iso}</span>
             <span style={{ width: '11ch' }}>{fmtDate(e.taken)}</span>
