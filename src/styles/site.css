@@ -376,7 +376,8 @@ img {
   left: max(48px, calc(50% - 400px));
   top: var(--content-top);
   bottom: var(--footer-h);
-  width: min(600px, calc(100% - 96px));
+  /* up to 720px where it clears the ls listing on the right, never under 600px */
+  width: max(min(600px, calc(100% - 96px)), min(720px, calc(100% - max(48px, 50% - 400px) - 320px)));
   overflow-x: hidden;
   overflow-y: hidden;
   font: var(--tech-text);
@@ -448,6 +449,20 @@ img {
 .points li::before {
   content: '- ';
   color: var(--tech-ink-2);
+}
+/* career: blue titles and bullets so each entry stands out */
+.career .entries {
+  gap: 24px;
+}
+.entry__title {
+  color: var(--tech-accent);
+  font-weight: 700;
+}
+.career .points {
+  margin-top: 4px;
+}
+.career .points li::before {
+  color: var(--tech-accent);
 }
 .printer {
   margin-top: 8px;

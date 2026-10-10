@@ -154,7 +154,7 @@ const Entries = ({ entries }: { entries: Entry[] }) => (
   <ul className="entries">
     {entries.map((e) => (
       <li key={e.title}>
-        <div>{e.title}</div>
+        <div className="entry__title">{e.title}</div>
         <div className="dim">{[e.where, e.when].filter(Boolean).join(' · ')}</div>
         {e.points && (
           <ul className="points">
@@ -176,7 +176,7 @@ const Pairs = ({ pairs }: { pairs: [string, string][] }) => (
 
 function Career() {
   return (
-    <article className="tech-page tech-uses is-long">
+    <article className="tech-page tech-uses career is-long">
       <div className="dim">~ $ cat career.md</div>
       <h1># career</h1>
       <section>
