@@ -3,3 +3,7 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+
+# Original photo exports; only the generated web versions in public/photos are committed
+/content/**
+!/content/introduction.md

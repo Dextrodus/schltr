@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react';
-import { fullSrc, type Album } from '../data/photos';
+import type { Album } from '../data/photos';
 import { lensId } from '../data/gear';
 import { ChevronLeft, ChevronRight, Cross, EnterFullscreen, ExitFullscreen, Grain, ViewLink, trapTab, type Go } from './bits';
+import Picture from './Picture';
 
 interface Props {
   album: Album;
@@ -102,6 +103,11 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
   // the largest file decides how far in it goes: at least 1:1 pixels on a click, twice that at most
   const native = () => (imgRef.current?.naturalWidth || photo.width) / (w || 1);
   const maxScale = () => Math.max(4, 2 * native());
+  // the browser picks the file for the fitted size; zoomed in, it switches to the largest one
+  const sizes = zoomed ? `${photo.width}px` : w ? `${Math.ceil(w)}px` : '100vw';
+  // the photos either side are loaded in hidden images, so stepping through shows them without a wait
+  const neighbours = [-1, 1].map((d) => album.photos[(index + d + album.photos.length) % album.photos.length]).filter((p) => p !== photo);
+  const sizesOf = (p: typeof photo) => (box.w && box.h ? `${Math.ceil(p.width * Math.min(box.w / p.width, box.h / p.height))}px` : '100vw');
 
   const clamp = (z: Zoom): Zoom => {
     const s = Math.min(Math.max(z.s, 1), maxScale());
@@ -229,15 +235,18 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerCancel}
       >
-        <img
-          key={photo.file}
+        <Picture
+          key={photo.id}
           ref={imgRef}
-          src={fullSrc(photo)}
-          alt={photo.alt}
+          photo={photo}
+          sizes={sizes}
           draggable={false}
           style={{ width: w, height: h, transform: `translate(${zoom.x}px, ${zoom.y}px) scale(${zoom.s})` }}
           onContextMenu={onNoCopy}
         />
+        {neighbours.map((p) => (
+          <Picture key={p.id} photo={p} sizes={sizesOf(p)} alt="" hidden />
+        ))}
       </div>
       <button
         className={`viewer__nav viewer__nav--prev viewer__ctl chev chev--photo ${over(img.left < 72)}`}
@@ -269,8 +278,8 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
           // fixed slot widths in ch of the mono font, so the line never jumps between photos
           <p className="exif">
             <span style={{ width: '21ch' }}>{e.camera}</span>
-            {e.lens === 'built-in' ? (
-              <span style={{ width: '29ch' }}>built-in lens</span>
+            {e.lens === 'built-in' || !e.lens ? (
+              <span style={{ width: '29ch' }}>{e.lens ? 'built-in lens' : 'unknown lens'}</span>
             ) : (
               <ViewLink
                 to={{ side: 'photo', page: 'uses' }}
