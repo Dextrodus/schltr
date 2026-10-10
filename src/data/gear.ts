@@ -1,5 +1,6 @@
 // Camera gear for "What I use" on the photo side.
 // `exif` is the camera or lens name as it appears in photo EXIF; photo counts are computed from it.
+// The EXIF names of the Samyang 20mm and the Mini 5 Pro are guesses until photos taken with them are added.
 
 import { albums, type Photo } from './photos';
 
@@ -13,7 +14,9 @@ export interface Gear {
 export const currentGear: Gear[] = [
   { id: 'sony-a7c', kind: 'Body', name: 'Sony a7c', exif: 'Sony ILCE-7C' },
   { id: 'tamron-28-200', kind: 'Lens', name: 'Tamron 28–200mm', exif: 'E 28-200mm F2.8-5.6 A071' },
+  { id: 'samyang-20', kind: 'Lens', name: 'Samyang 20mm f/1.8', exif: 'SAMYANG AF 20mm F1.8' },
   { id: 'samyang-75', kind: 'Lens', name: 'Samyang 75mm f/1.8', exif: 'SAMYANG AF 75mm F1.8' },
+  { id: 'dji-mini-5-pro', kind: 'Drone', name: 'DJI Mini 5 Pro', exif: 'DJI Mini 5 Pro' },
 ];
 
 export const previousGear: Gear[] = [
