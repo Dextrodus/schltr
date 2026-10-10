@@ -488,6 +488,45 @@ img {
   }
 }
 
+/* the cd prompt: an input that looks like the rest of the line */
+.cd {
+  align-self: stretch;
+  white-space: pre;
+}
+/* sized by the text it mirrors, so the cursor sits right after it */
+.cd__field {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  max-width: calc(100% - 8ch);
+  overflow: hidden;
+}
+.cd__mirror {
+  visibility: hidden;
+}
+.cd__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  /* the block cursor stands in for the caret at the end of the line */
+  caret-color: transparent;
+}
+.cd.is-mid .cd__input {
+  caret-color: var(--tech-accent);
+}
+.cd .cd__input:focus,
+.cd .cd__input:focus-visible {
+  outline: none;
+}
+.cd.is-focused .cd__field {
+  box-shadow: inset 0 -1px var(--tech-accent);
+}
+
 /* ── Wordmark ───────────────────────────────── */
 
 .wm {
@@ -1174,6 +1213,8 @@ img {
 }
 .not-found__home {
   margin-top: 16px;
+}
+.not-found__home a {
   text-decoration: none;
 }
 .not-found :focus-visible {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { TechPage } from '../lib/route';
 import { GITHUB, LINKEDIN, ViewLink, type Go } from './bits';
+import Cd from './Cd';
 import { education, languages, skills, volunteering, work, type Entry } from '../data/career';
 
 interface Props {
@@ -48,10 +49,7 @@ export default function TechSide({ page, leanedAway, inert, go }: Props) {
             {p}/
           </ViewLink>
         ))}
-        <span aria-hidden="true">
-          <span className="dim">~ $</span> cd {hovered ?? active}
-          <span className="cursor" />
-        </span>
+        <Cd value={active} hint={hovered} cwd="/tech/" enabled={!inert} go={go} />
       </nav>
     </section>
   );

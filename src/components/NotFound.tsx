@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Cd from './Cd';
 import Dialog, { type DialogKind } from './Dialogs';
 import Footer from './Footer';
 import Wordmark from './Wordmark';
@@ -36,9 +37,18 @@ export default function NotFound() {
           </div>
           <h1>What are you looking at?</h1>
           <p>This page does not exist.</p>
-          <a href="/" className="te-h not-found__home" title="Back to the start">
-            <span className="dim">~ $</span> cd ~<span className="cursor" />
-          </a>
+          <div className="not-found__home">
+            <Cd
+              value="~"
+              cwd="/"
+              enabled={dialog === null}
+              idle={
+                <a href="/" className="te-h" title="Back to the start">
+                  <span className="dim">~ $</span> cd ~<span className="cursor" />
+                </a>
+              }
+            />
+          </div>
         </div>
       </main>
 
