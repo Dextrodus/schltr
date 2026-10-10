@@ -25,6 +25,8 @@ export default function Site({ initial }: { initial: View }) {
   const toastTimer = useRef<number>(undefined);
   // where focus goes back to when a dialog closes (the viewer returns it to the photo itself)
   const returnFocus = useRef<HTMLElement | null>(null);
+  // false while the server-rendered page hydrates: what was already there on a reload doesn't animate in
+  const hydrated = useRef(false);
 
   const mode: Mode =
     view.side === 'photo' ? 'open-photo' : view.side === 'tech' ? 'open-tech' : lean ? (`lean-${lean}` as Mode) : 'split';
@@ -44,6 +46,7 @@ export default function Site({ initial }: { initial: View }) {
   const goHome = () => go({ side: 'split' });
 
   useEffect(() => {
+    hydrated.current = true;
     const onPop = () => {
       const next = viewFromPath(location.pathname);
       setView(next);
@@ -164,30 +167,8 @@ export default function Site({ initial }: { initial: View }) {
 
       <Wordmark mode={mode} frac={frac} onClick={goHome} onKeyDown={onWordmarkKey} inert={modal} />
 
-      {view.side === 'photo' && (
-        <button
-          className="strip strip--photo chev chev--photo"
-          tabIndex={-1}
-          inert={modal}
-          onClick={goHome}
-          aria-label="Back to the split view, to reach the tech side"
-          title="Back to the split view"
-        >
-          <ChevronRight />
-        </button>
-      )}
-      {view.side === 'tech' && (
-        <button
-          className="strip strip--tech chev chev--tech"
-          tabIndex={-1}
-          inert={modal}
-          onClick={goHome}
-          aria-label="Back to the split view, to reach the photography side"
-          title="Back to the split view"
-        >
-          <ChevronLeft />
-        </button>
-      )}
+      {view.side === 'photo' && <Strip side="photo" enter={hydrated.current} inert={modal} onClick={goHome} />}
+      {view.side === 'tech' && <Strip side="tech" enter={hydrated.current} inert={modal} onClick={goHome} />}
 
       {album && viewerOpen && viewer !== null && (
         <Viewer album={album} index={viewer} onStep={step} onClose={() => setViewer(null)} onNoCopy={onNoCopy} go={go} />
@@ -225,5 +206,23 @@ export default function Site({ initial }: { initial: View }) {
 
       <Footer side={view.side} inert={modal} onOpenDialog={openDialog} />
     </div>
+  );
+}
+
+/** The edge of the collapsed side, back to the split view. Fades in only when the side opens after the page has loaded. */
+function Strip({ side, enter, inert, onClick }: { side: 'photo' | 'tech'; enter: boolean; inert: boolean; onClick: () => void }) {
+  // decided once: a later re-render must not restart the fade on a strip that is already showing
+  const [animate] = useState(enter);
+  return (
+    <button
+      className={`strip strip--${side} chev chev--${side}${animate ? ' strip--enter' : ''}`}
+      tabIndex={-1}
+      inert={inert}
+      onClick={onClick}
+      aria-label={`Back to the split view, to reach the ${side === 'photo' ? 'tech' : 'photography'} side`}
+      title="Back to the split view"
+    >
+      {side === 'photo' ? <ChevronRight /> : <ChevronLeft />}
+    </button>
   );
 }

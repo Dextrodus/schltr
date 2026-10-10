@@ -24,6 +24,13 @@ a {
 }
 img {
   display: block;
+  /* Firefox paints the alt text while a photo loads, even from cache: keep it hidden unless the photo is slow */
+  animation: hide-alt 1.2s step-end;
+}
+@keyframes hide-alt {
+  from {
+    color: transparent;
+  }
 }
 
 /* anything that follows the divider */
@@ -658,6 +665,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* only when a side opens; a strip that was there before a reload just stays */
+.strip--enter {
   animation: fade-in 200ms ease-out 480ms both;
 }
 .strip--photo {
@@ -1417,5 +1427,9 @@ img {
   }
   .crumb {
     display: none;
+  }
+  /* not motion: still keeps the alt text from flashing */
+  img {
+    animation: hide-alt 1.2s step-end !important;
   }
 }
