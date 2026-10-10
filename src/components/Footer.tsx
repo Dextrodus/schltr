@@ -32,7 +32,8 @@ export default function Footer({ side, inert, onOpenDialog }: Props) {
           href={GITHUB}
           className={`footer__icon footer__github po-h ${side === 'tech' ? 'is-shown' : ''}`}
           inert={side !== 'tech'}
-          rel="me"
+          target="_blank"
+          rel="me noopener noreferrer"
           aria-label="GitHub"
         >
           <GitHubMark size={20} />
@@ -41,7 +42,7 @@ export default function Footer({ side, inert, onOpenDialog }: Props) {
             <span>GitHub</span>
           </span>
         </a>
-        <a href={LINKEDIN} className="footer__icon po-h" rel="me" aria-label="LinkedIn">
+        <a href={LINKEDIN} className="footer__icon po-h" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn">
           <LinkedInMark size={20} />
           <span className="footer__tip popup" aria-hidden="true">
             Loading Buzzwords...

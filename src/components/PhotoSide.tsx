@@ -165,7 +165,7 @@ function ContactPage() {
       </div>
       <ul className="contact__links">
         <li>
-          <a href={LINKEDIN} className="contact__link ph-h" rel="me">
+          <a href={LINKEDIN} className="contact__link ph-h" target="_blank" rel="me noopener noreferrer">
             <LinkedInMark color="var(--photo-accent)" />
             linkedin.com/in/schltr
           </a>

@@ -223,14 +223,14 @@ function Contact() {
         </dd>
         <dt>github</dt>
         <dd>
-          <a href={GITHUB} className="tech-link te-h" rel="me">
+          <a href={GITHUB} className="tech-link te-h" target="_blank" rel="me noopener noreferrer">
             github.com/dextrodus
           </a>{' '}
           <span className="dim"># Copilot hurt itself in its confusion!</span>
         </dd>
         <dt>linkedin</dt>
         <dd>
-          <a href={LINKEDIN} className="tech-link te-h" rel="me">
+          <a href={LINKEDIN} className="tech-link te-h" target="_blank" rel="me noopener noreferrer">
             linkedin.com/in/schltr
           </a>{' '}
           <span className="dim"># Loading Buzzwords...</span>
