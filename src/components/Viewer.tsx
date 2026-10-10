@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type MouseEvent, type PointerEvent } from 'react';
 import type { Album } from '../data/photos';
 import { cameraId, cameraName, lensId } from '../data/gear';
-import { ChevronLeft, ChevronRight, Cross, EnterFullscreen, ExitFullscreen, Grain, ViewLink, trapTab, type Go } from './bits';
+import { ChevronLeft, ChevronRight, Cross, EnterFullscreen, ExitFullscreen, ViewLink, trapTab, type Go } from './bits';
 import Picture from './Picture';
 
 interface Props {
@@ -223,7 +223,6 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
       onKeyDown={onKey}
       onPointerMove={full ? wake : undefined}
     >
-      <Grain id="grain-viewer" />
       <p className="viewer__title">{album.name}</p>
       <button className={`viewer__close viewer__ctl ph-h ${over(cornerX && img.top < 62)}`} onClick={onClose} aria-label="Close">
         <Cross size={20} />

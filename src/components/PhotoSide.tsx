@@ -1,8 +1,8 @@
-import type { MouseEvent } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { albums, albumBySlug } from '../data/photos';
 import { currentGear, previousGear, photoCount, type Gear } from '../data/gear';
 import type { PhotoPage, View } from '../lib/route';
-import { Envelope, Grain, LINKEDIN, LinkedInMark, ViewLink, type Go } from './bits';
+import { Envelope, LINKEDIN, LinkedInMark, ViewLink, type Go } from './bits';
 import Picture from './Picture';
 
 interface Props {
@@ -21,11 +21,14 @@ interface Props {
 export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCopy, onOpenPhoto }: Props) {
   const current = (p: PhotoPage, slug?: string) => (page === p && (!slug || album === slug) ? 'is-current' : undefined);
   const albumView = (slug: string): View => ({ side: 'photo', page: 'album', album: slug });
+  // the covers are faded out while the tech side is leaned, so a page that opens there loads them only once they show
+  const [coversShown, setCoversShown] = useState(!dimmed);
+  useEffect(() => {
+    if (!dimmed) setCoversShown(true);
+  }, [dimmed]);
 
   return (
     <section className="photo slide" aria-label="Photography" inert={inert}>
-      <Grain id="grain-side" />
-
       <nav className="photo-nav slide" aria-label="Photography" style={{ opacity: dimmed ? 0.8 : 1 }}>
         <div className="photo-nav__group">
           <ViewLink to={{ side: 'photo', page: 'albums' }} go={go} className={`photo-nav__item ph-h ${current('albums') ?? ''}`}>
@@ -53,11 +56,12 @@ export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCo
             {albums.map((a) => (
               <ViewLink key={a.slug} to={albumView(a.slug)} go={go} className="cover" tabIndex={open ? undefined : -1}>
                 <span className="cover__name">{a.name}</span>
-                {a.cover ? (
-                  <Picture photo={a.cover} sizes="(orientation: portrait) 60vw, 35vw" preview onContextMenu={onNoCopy} />
-                ) : (
-                  <span className="cover__empty">[ {a.name.toLowerCase()} ]</span>
-                )}
+                {coversShown &&
+                  (a.cover ? (
+                    <Picture photo={a.cover} sizes="(orientation: portrait) 45vw, 25vw" preview onContextMenu={onNoCopy} />
+                  ) : (
+                    <span className="cover__empty">[ {a.name.toLowerCase()} ]</span>
+                  ))}
               </ViewLink>
             ))}
           </div>

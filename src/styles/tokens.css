@@ -4,7 +4,7 @@
  * Derived from the Claude Design handoff of 9 Oct 2026 (design/handoff/2026-10-09).
  * This replaces the old schltr design system referenced in the export; only the
  * values the design actually uses live here. Two worlds that meet at the divider:
- * the photo side (darkroom grey, film grain, grotesk) and the tech side (flat navy,
+ * the photo side (darkroom grey, grotesk) and the tech side (flat navy,
  * monospace), plus a small set of shared chrome tokens.
  */
 
@@ -18,7 +18,6 @@
   --photo-placeholder: #6c6f7b;
   /* album tree line, back-strip line */
   --photo-line: #8293ad;
-  --photo-grain-opacity: 0.17;
   /* album titles over cover photos */
   --cover-ink: #f2f2f2;
   --cover-shade: rgba(10, 12, 16, 0.55);
