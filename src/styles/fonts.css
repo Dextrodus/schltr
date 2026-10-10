@@ -1,0 +1,19 @@
+/* Avancement 2020, photo side. */
+@font-face {
+  font-family: 'Avancement 2020';
+  src: url('/fonts/avancement/Avancement2020-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avancement 2020';
+  src: url('/fonts/avancement/Avancement2020-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Avancement 2020';
+  src: url('/fonts/avancement/Avancement2020-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+}

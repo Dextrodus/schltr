@@ -1,4 +1,4 @@
-@import '@fontsource-variable/schibsted-grotesk';
+@import './fonts.css';
 @import '@fontsource-variable/martian-mono';
 @import './tokens.css';
 
@@ -609,8 +609,8 @@ img {
   font-family: var(--font-photo);
   font-size: 65px;
   line-height: 1.108;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  letter-spacing: 0.01em;
   color: var(--photo-ink);
   transition: color var(--dur-slide) var(--ease-slide);
 }
@@ -1067,6 +1067,11 @@ img {
 
 /* ── Footer ─────────────────────────────────── */
 
+@property --footer-t {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
 .footer {
   position: absolute;
   left: 0;
@@ -1082,17 +1087,34 @@ img {
   gap: 24px;
   background: var(--footer-bg-split);
   border-top: 1px solid var(--footer-line-split);
-  color: var(--footer-ink);
+  /* Dark text on the split and photo backgrounds, light on tech (--footer-t 1 → 0). */
+  --footer-t: 1;
+  color: color-mix(in oklab, var(--footer-ink) calc((1 - var(--footer-t)) * 100%), var(--footer-ink-photo));
   font: var(--chrome-text);
   transition:
     background-color var(--dur-slide) var(--ease-slide),
-    border-color var(--dur-slide) var(--ease-slide);
+    border-color var(--dur-slide) var(--ease-slide),
+    /* No fade: the text snaps colour at the moment black and light read equally
+       well on the moving background, so it never passes through invisible.
+       Leaving tech for split: */
+    --footer-t 0s linear 210ms;
 }
 .footer.is-photo {
+  /* Leaving tech for photo (lighter background, so earlier): */
+  transition:
+    background-color var(--dur-slide) var(--ease-slide),
+    border-color var(--dur-slide) var(--ease-slide),
+    --footer-t 0s linear 85ms;
   background: var(--footer-bg-photo);
   border-top-color: var(--footer-line-photo);
 }
 .footer.is-tech {
+  --footer-t: 0;
+  /* Entering tech: */
+  transition:
+    background-color var(--dur-slide) var(--ease-slide),
+    border-color var(--dur-slide) var(--ease-slide),
+    --footer-t 0s linear 40ms;
   background: var(--footer-bg-tech);
   border-top-color: var(--footer-line-tech);
 }
@@ -1182,6 +1204,9 @@ img {
   border: 1px solid var(--popup-chip);
   border-radius: 2px;
   color: var(--popup-ink);
+}
+.footer .cookie__chip {
+  color: inherit;
 }
 .cookie__chip button {
   padding: 12px;

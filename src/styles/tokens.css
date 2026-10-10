@@ -14,7 +14,7 @@
   --photo-ink: #16181e;
   --photo-ink-2: #2b2e37;
   /* current page, hover, focus ring */
-  --photo-accent: #3971c6;
+  --photo-accent: #396fc6;
   --photo-placeholder: #6c6f7b;
   /* album tree line, back-strip line */
   --photo-line: #8293ad;
@@ -28,20 +28,21 @@
   --tech-ink: #dce6f0;
   --tech-ink-2: #8fa2b8;
   /* headings, current page, cursor, focus ring */
-  --tech-accent: #6fb7cf;
+  --tech-accent: #81a3da;
   --tech-surface: #12223a;
   --tech-line: #2b3f5c;
   --tech-track: #50678a;
 
   /* ── Shared chrome ──────────────────────────── */
   --divider: #f2f2f2;
-  --footer-bg-split: #464c5a;
-  --footer-bg-photo: #55585f;
+  --footer-bg-split: #667A99;
+  --footer-bg-photo: #B9C2D0;
   --footer-bg-tech: #060d18;
   --footer-line-split: #565c6a;
   --footer-line-photo: #676a72;
   --footer-line-tech: #18273d;
   --footer-ink: #e2e4e8;
+  --footer-ink-photo: #000000;
 
   /* dialogs, popups, toasts */
   --popup-bg: #1c1c1c;
@@ -60,7 +61,7 @@
   --crumb: #c8955a;
 
   /* ── Type ───────────────────────────────────── */
-  --font-photo: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-photo: 'Avancement 2020', ui-sans-serif, system-ui, sans-serif;
   --font-tech: 'Martian Mono Variable', 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* photo side scale */
