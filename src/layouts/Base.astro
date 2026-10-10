@@ -22,6 +22,9 @@ const { title, description = 'Konrad Schlüter: photography and software.', noin
     <meta name="color-scheme" content="dark" />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />}
     <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     {['Regular', 'Bold', 'Black'].map((w) => (
       <link rel="preload" href={`/fonts/avancement/Avancement2020-${w}.woff2`} as="font" type="font/woff2" crossorigin />
     ))}
