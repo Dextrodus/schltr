@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="b"><rect width="32" height="32" rx="6"/></clipPath>
+    <clipPath id="l"><rect width="16" height="32"/></clipPath>
+    <clipPath id="r"><rect x="16" width="16" height="32"/></clipPath>
+    <!-- "s" from Avancement 2020 Black, as in the logo -->
+    <path id="s" transform="translate(16 16) scale(0.0197 -0.0197) translate(-549 -539.5)" d="M436 424Q80 513 80 756Q80 895 201.0 996.5Q322 1098 547 1098Q781 1098 1015 946L910 680Q672 811 547 811Q501 811 485.0 799.0Q469 787 469 765Q469 728 547 704L713 657Q1031 559 1031 341Q1031 193 905.5 87.0Q780 -19 554 -19Q325 -19 67 130L168 377Q452 269 554 269Q603 269 622.5 282.0Q642 295 642 332Q642 367 592 381Z"/>
+  </defs>
+  <g clip-path="url(#b)">
+    <rect width="16" height="32" fill="#c8d7ef"/>
+    <rect x="16" width="16" height="32" fill="#0b1626"/>
+  </g>
+  <use href="#s" clip-path="url(#l)" fill="#000"/>
+  <use href="#s" clip-path="url(#r)" fill="#fff"/>
+</svg>
