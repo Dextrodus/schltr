@@ -167,7 +167,7 @@ function ContactPage() {
         <li>
           <a href={LINKEDIN} className="contact__link ph-h" rel="me">
             <LinkedInMark color="var(--photo-accent)" />
-            LinkedIn
+            linkedin.com/in/schltr
           </a>
           <span className="note">Preparing preposterously powerful post...</span>
         </li>

@@ -491,10 +491,11 @@ img {
   color: var(--tech-track);
 }
 
-/* bottom-up ls listing */
+/* ls listing, anchored above the footer */
 .tech-nav {
   position: absolute;
-  right: 32px;
+  /* 32px from the right edge, but never cut off when the tech side is narrow */
+  left: max(16px, calc(100% - 272px));
   bottom: calc(var(--footer-h) + 24px);
   width: 240px;
   display: flex;
@@ -706,13 +707,17 @@ img {
 
 .viewer {
   color-scheme: light;
-  position: absolute;
+  /* the viewport, not the shell: the shell keeps a min height and would scroll on short screens */
+  position: fixed;
   inset: 0;
   z-index: 30;
   outline: none;
   background: var(--photo-bg);
   color: var(--photo-ink);
   font-family: var(--font-photo);
+}
+:root:has(.viewer) {
+  overflow: hidden;
 }
 .viewer :focus-visible {
   outline: 2px solid var(--photo-accent);
