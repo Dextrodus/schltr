@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Dialog, { type DialogKind } from './Dialogs';
 import Footer from './Footer';
+import Wordmark from './Wordmark';
 
 // The 404 page: served by Cloudflare Pages for any path that has no page.
 export default function NotFound() {
@@ -40,6 +41,8 @@ export default function NotFound() {
           </a>
         </div>
       </main>
+
+      <Wordmark mode="open-tech" frac={0} onClick={() => location.assign('/')} onKeyDown={() => {}} inert={dialog !== null} />
 
       {dialog && (
         <Dialog kind={dialog} onClose={() => setDialog(null)} onContact={() => location.assign('/tech/contact/')} />
