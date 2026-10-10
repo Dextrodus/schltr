@@ -278,8 +278,13 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
           // fixed slot widths in ch of the mono font, so the line never jumps between photos
           <p className="exif">
             <span style={{ width: '21ch' }}>{cameraName(e.camera)}</span>
-            {e.lens === 'built-in' || !e.lens ? (
-              <span style={{ width: '29ch' }}>{e.lens ? 'built-in lens' : 'unknown lens'}</span>
+            {e.lens === 'built-in' ? (
+              <span style={{ width: '29ch' }}>built-in lens</span>
+            ) : !e.lens ? (
+              // the camera records no lens for manual lenses
+              <span style={{ width: '29ch', cursor: 'help' }} title="Likely a manual lens, could be the Samyang 20mm F1.8 or an old 600mm reflex lens">
+                unknown lens
+              </span>
             ) : (
               <ViewLink
                 to={{ side: 'photo', page: 'uses' }}
