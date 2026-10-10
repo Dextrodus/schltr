@@ -292,6 +292,32 @@ img {
 .contact__mail svg {
   flex: none;
 }
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.contact__links li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+}
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--photo-ink);
+  text-underline-offset: 4px;
+}
+.contact__link svg {
+  flex: none;
+}
 .contact .note a {
   text-decoration: underline;
   text-decoration-color: var(--photo-ink);
@@ -895,6 +921,61 @@ img {
 }
 .footer__links button {
   padding: 12px 0;
+}
+.footer__icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.footer__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+}
+.footer__tip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  font: var(--popup-text);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out;
+}
+.footer__tip span {
+  align-self: flex-end;
+  color: var(--popup-ink-2);
+}
+.footer__icon:hover .footer__tip,
+.footer__icon:focus-visible .footer__tip {
+  opacity: 1;
+  transform: none;
+}
+.footer__github {
+  opacity: 0;
+  transform: translateY(6px) scale(0.8);
+  visibility: hidden;
+  transition:
+    opacity var(--dur-slide) var(--ease-slide),
+    transform var(--dur-slide) var(--ease-slide),
+    visibility 0s linear var(--dur-slide);
+}
+.footer__github.is-shown {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition:
+    opacity var(--dur-slide) var(--ease-slide),
+    transform var(--dur-slide) var(--ease-slide);
 }
 
 /* cookie preferences */
