@@ -47,3 +47,29 @@ export function titleFor(view: View): string {
   }
   return `${view.page} · schltr`;
 }
+
+/** The view at exactly this path, or null when no page has it. */
+export function knownView(path: string): View | null {
+  const view = viewFromPath(path);
+  if (pathFor(view) === path) return view;
+  return path === '/tech/introduction/' ? view : null;
+}
+
+/**
+ * Where `cd <input>` goes, shell style: `~` is home (/), absolute paths stay as they are, and relative
+ * ones are tried against the current directory first, then the root, /tech/ and /photo/, so `cd career`
+ * works from anywhere. Nothing known: the literal path, which lands on the 404 page.
+ */
+export function resolveCd(input: string, cwd: string): string {
+  const arg = input.trim().replace(/^cd\s+/, '').toLowerCase();
+  if (arg === '' || arg === '~') return '/';
+  const rel = arg.startsWith('~/') ? arg.slice(1) : arg;
+  const bases = rel.startsWith('/') ? ['/'] : [...new Set([cwd, '/', '/tech/', '/photo/'])];
+  const tries = bases.map((base) => {
+    const url = new URL(rel, `http://x${base}`);
+    // pages live at directory URLs
+    if (!/\.[a-z0-9]+$/.test(url.pathname) && !url.pathname.endsWith('/')) url.pathname += '/';
+    return url.pathname + url.search + url.hash;
+  });
+  return tries.find((t) => knownView(t.replace(/[?#].*$/, ''))) ?? tries[0];
+}
