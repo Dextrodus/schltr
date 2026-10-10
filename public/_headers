@@ -1,3 +1,11 @@
 # Keep the pages.dev copies out of search engines; schltr.com is not matched.
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
+
+# Built JS/CSS has a content hash in its name, so it never changes; photos and fonts keep their names, so 2 hours.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+/photos/*
+  Cache-Control: public, max-age=7200
+/fonts/*
+  Cache-Control: public, max-age=7200

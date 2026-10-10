@@ -1,19 +1,6 @@
 import type { AnchorHTMLAttributes, KeyboardEvent, MouseEvent, ReactNode } from 'react';
 import { pathFor, type View } from '../lib/route';
 
-/** Film grain over the photo side: above the background, below the content. */
-export function Grain({ id }: { id: string }) {
-  return (
-    <svg className="grain" aria-hidden="true">
-      <filter id={id}>
-        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves={3} stitchTiles="stitch" />
-        <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1" />
-      </filter>
-      <rect width="100%" height="100%" filter={`url(#${id})`} />
-    </svg>
-  );
-}
-
 export const ChevronLeft = () => (
   <svg width="18" height="64" viewBox="0 0 18 64" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M15 4L3 32l12 28" />
