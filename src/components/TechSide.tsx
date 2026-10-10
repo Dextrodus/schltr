@@ -15,9 +15,6 @@ interface Props {
   go: Go;
 }
 
-// bottom-up listing: the first entry sits right under `ls`
-const listing = [...techPages].reverse();
-
 export default function TechSide({ page, leanedAway, inert, go }: Props) {
   const [hovered, setHovered] = useState<TechPage | null>(null);
   const active = page ?? 'start';
@@ -35,7 +32,7 @@ export default function TechSide({ page, leanedAway, inert, go }: Props) {
 
       <nav className="tech-nav slide" aria-label="Tech" style={{ opacity: leanedAway ? 0.8 : 1 }}>
         <span className="dim">~ $ ls</span>
-        {listing.map((p) => (
+        {techPages.map((p) => (
           <ViewLink
             key={p}
             to={{ side: 'tech', page: p }}
@@ -198,29 +195,6 @@ function Career() {
       <section>
         <h2>## volunteering</h2>
         <Entries entries={volunteering} />
-      </section>
-      <section>
-        <h2>## elsewhere</h2>
-        <dl className="kv">
-          <dt>github</dt>
-          <dd>
-            <a href={GITHUB} className="tech-link te-h">
-              dextrodus
-            </a>
-          </dd>
-          <dt>linkedin</dt>
-          <dd>
-            <a href={LINKEDIN} className="tech-link te-h">
-              schltr
-            </a>
-          </dd>
-          <dt>mail</dt>
-          <dd>
-            <a href={`mailto:${MAIL}`} className="tech-link te-h">
-              {MAIL}
-            </a>
-          </dd>
-        </dl>
       </section>
     </article>
   );

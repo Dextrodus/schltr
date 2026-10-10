@@ -10,7 +10,7 @@ const photoPages = {
   uses: { dir: 'what-i-use', title: 'What I use' },
   contact: { dir: 'contact', title: 'Contact' },
 } as const;
-// in order of the `ls` listing, read bottom-up
+// in order of the `ls` listing, top to bottom
 const techPageDirs = {
   start: 'start',
   introduction: '',
