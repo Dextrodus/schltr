@@ -295,6 +295,11 @@ img {
   margin: 0;
   font: var(--photo-menu);
 }
+.contact__mailbox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .contact__mail {
   align-self: flex-start;
   display: inline-flex;
@@ -321,9 +326,9 @@ img {
 }
 .contact__links li {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 .contact__link {
   display: inline-flex;

@@ -155,10 +155,19 @@ function ContactPage() {
   return (
     <div className="photo-page contact">
       <p className="contact__name">Konrad Schlüter</p>
-      <a href="mailto:k@schltr.com" className="contact__mail ph-h">
-        <Envelope />
-        k@schltr.com
-      </a>
+      <div className="contact__mailbox">
+        <a href="mailto:k@schltr.com" className="contact__mail ph-h">
+          <Envelope />
+          k@schltr.com
+        </a>
+        <p className="note">
+          Send any complaints to{' '}
+          <a href="mailto:spam@schltr.com" className="ph-h">
+            spam@schltr.com
+          </a>{' '}
+          for appropriate disposal.
+        </p>
+      </div>
       <ul className="contact__links">
         <li>
           <a href={LINKEDIN} className="contact__link ph-h" rel="me">
@@ -168,13 +177,6 @@ function ContactPage() {
           <span className="note">Preparing preposterously powerful post...</span>
         </li>
       </ul>
-      <p className="note">
-        Send any complaints to{' '}
-        <a href="mailto:spam@schltr.com" className="ph-h">
-          spam@schltr.com
-        </a>{' '}
-        for appropriate disposal.
-      </p>
     </div>
   );
 }
