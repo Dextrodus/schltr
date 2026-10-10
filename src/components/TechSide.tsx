@@ -13,17 +13,17 @@ interface Props {
 }
 
 // bottom-up listing: the first entry sits right under `ls`
-const listing: TechPage[] = ['contact', 'what-i-use', 'hobbies', 'career', 'introduction'];
+const listing: TechPage[] = ['contact', 'what-i-use', 'hobbies', 'career', 'introduction', 'start'];
 
 export default function TechSide({ page, leanedAway, inert, go }: Props) {
   const [hovered, setHovered] = useState<TechPage | null>(null);
-  const active = page ?? 'introduction';
+  const active = page ?? 'start';
   const off = () => setHovered(null);
 
   return (
     <section className="tech" aria-label="Tech" inert={inert}>
       <div className={`tech-content slide ${page ? 'is-open' : ''}`} style={{ opacity: leanedAway ? 0 : 1 }}>
-        {page === null && <Home />}
+        {(page === null || page === 'start') && <Home />}
         {page === 'introduction' && <Introduction />}
         {page === 'what-i-use' && <Uses />}
         {page === 'contact' && <Contact />}
