@@ -2,10 +2,7 @@
 
 import { albums, albumBySlug } from '../data/photos';
 
-export type View =
-  | { side: 'split' }
-  | { side: 'photo'; page: PhotoPage; album?: string }
-  | { side: 'tech'; page: TechPage };
+export type View = { side: 'split' } | { side: 'photo'; page: PhotoPage; album?: string } | { side: 'tech'; page: TechPage };
 
 // Pages with a fixed URL: the directory under /photo/ or /tech/ and the page title. Albums add one page each.
 const photoPages = {
@@ -79,7 +76,10 @@ export function knownView(path: string): View | null {
  * works from anywhere. Nothing known: the literal path, which lands on the 404 page.
  */
 export function resolveCd(input: string, cwd: string): string {
-  const arg = input.trim().replace(/^cd\s+/, '').toLowerCase();
+  const arg = input
+    .trim()
+    .replace(/^cd\s+/, '')
+    .toLowerCase();
   if (arg === '' || arg === '~') return '/';
   const rel = arg.startsWith('~/') ? arg.slice(1) : arg;
   const bases = rel.startsWith('/') ? ['/'] : [...new Set([cwd, '/', '/tech/', '/photo/'])];

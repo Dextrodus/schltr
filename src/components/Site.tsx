@@ -26,8 +26,7 @@ export default function Site({ initial }: { initial: View }) {
   // false while the server-rendered page hydrates: what was already there on a reload doesn't animate in
   const hydrated = useRef(false);
 
-  const mode: Mode =
-    view.side === 'photo' ? 'open-photo' : view.side === 'tech' ? 'open-tech' : lean ? (`lean-${lean}` as Mode) : 'split';
+  const mode: Mode = view.side === 'photo' ? 'open-photo' : view.side === 'tech' ? 'open-tech' : lean ? (`lean-${lean}` as Mode) : 'split';
   const frac = FRAC[mode];
   const open = view.side !== 'split';
 
@@ -38,13 +37,16 @@ export default function Site({ initial }: { initial: View }) {
     document.title = titleFor(next);
   }, []);
 
-  const go: Go = useCallback((next, hash) => {
-    show(next);
-    const path = pathFor(next);
-    if (path !== location.pathname || location.hash) history.pushState(null, '', path);
-    // lens links from the viewer: a real fragment navigation once the page has rendered, so :target applies
-    if (hash) requestAnimationFrame(() => location.replace(`#${hash}`));
-  }, [show]);
+  const go: Go = useCallback(
+    (next, hash) => {
+      show(next);
+      const path = pathFor(next);
+      if (path !== location.pathname || location.hash) history.pushState(null, '', path);
+      // lens links from the viewer: a real fragment navigation once the page has rendered, so :target applies
+      if (hash) requestAnimationFrame(() => location.replace(`#${hash}`));
+    },
+    [show],
+  );
   const goHome = () => go({ side: 'split' });
 
   useEffect(() => {

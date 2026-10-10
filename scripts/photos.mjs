@@ -93,7 +93,15 @@ async function buildPhoto(src, dir, id) {
   // ~200-byte blurred preview, inlined so grids show the photo's colours before it loads
   const lqip = await sharp(`${dir}${id}-${widths[0]}.avif`).resize({ width: 16 }).webp({ quality: 40 }).toBuffer();
   return {
-    photo: { id, width: fw, height: fh, widths, jpeg: jpegWidths, lqip: `data:image/webp;base64,${lqip.toString('base64')}`, exif: readExif(meta.exif) },
+    photo: {
+      id,
+      width: fw,
+      height: fh,
+      widths,
+      jpeg: jpegWidths,
+      lqip: `data:image/webp;base64,${lqip.toString('base64')}`,
+      exif: readExif(meta.exif),
+    },
     outputs,
   };
 }

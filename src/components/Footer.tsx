@@ -28,7 +28,13 @@ export default function Footer({ side, inert, onOpenDialog }: Props) {
       </nav>
       <div className="footer__icons">
         {/* GitHub only belongs to the tech side: fades in there, inert elsewhere */}
-        <a href={GITHUB} className={`footer__icon footer__github po-h ${side === 'tech' ? 'is-shown' : ''}`} inert={side !== 'tech'} rel="me" aria-label="GitHub">
+        <a
+          href={GITHUB}
+          className={`footer__icon footer__github po-h ${side === 'tech' ? 'is-shown' : ''}`}
+          inert={side !== 'tech'}
+          rel="me"
+          aria-label="GitHub"
+        >
           <GitHubMark size={20} />
           <span className="footer__tip popup" aria-hidden="true">
             Fork me, I dare you!

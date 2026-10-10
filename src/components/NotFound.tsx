@@ -47,15 +47,9 @@ export default function NotFound() {
 
       <Wordmark mode="open-tech" frac={0} onClick={() => location.assign('/')} inert={dialog !== null} />
 
-      {dialog && (
-        <Dialog kind={dialog} onClose={closeDialog} onContact={() => location.assign('/tech/contact/')} />
-      )}
+      {dialog && <Dialog kind={dialog} onClose={closeDialog} onContact={() => location.assign('/tech/contact/')} />}
 
-      <Footer
-        side="tech"
-        inert={dialog !== null}
-        onOpenDialog={openDialog}
-      />
+      <Footer side="tech" inert={dialog !== null} onOpenDialog={openDialog} />
     </div>
   );
 }

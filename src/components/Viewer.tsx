@@ -90,11 +90,7 @@ export default function Viewer({ album, index, onStep, onClose, onNoCopy, go }: 
         <Cross size={20} />
       </button>
 
-      <div
-        ref={stageRef}
-        className={`viewer__stage ${zoomed ? 'is-zoomed' : ''} ${dragging ? 'is-dragging' : ''}`}
-        {...handlers}
-      >
+      <div ref={stageRef} className={`viewer__stage ${zoomed ? 'is-zoomed' : ''} ${dragging ? 'is-dragging' : ''}`} {...handlers}>
         <Picture
           key={photo.id}
           ref={imgRef}
