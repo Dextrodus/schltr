@@ -118,8 +118,15 @@ function Support({ onContact }: { onContact: () => void }) {
         )}
         {step === 5 && (
           <>
-            {/* TODO: dog photo for Level 2 Support */}
-            <div className="support__dog">[ dog photo ]</div>
+            <img
+              className="support__dog"
+              src="/photos/support/dog-384.jpg"
+              srcSet="/photos/support/dog-384.jpg 384w, /photos/support/dog-768.jpg 768w"
+              sizes="384px"
+              width={768}
+              height={480}
+              alt="A black and white dog climbing over a snowy log, staring straight into the camera."
+            />
             <p style={{ color: 'var(--popup-ink-2)' }}>
               Level 2 Support is looking into it.
               <br />
