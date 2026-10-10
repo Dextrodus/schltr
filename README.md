@@ -2,7 +2,7 @@
 
 Konrad Schlüter's personal site: a photography portfolio and a dev side, split down the middle. Desktop only so far; mobile is still to come.
 
-Staging: https://schltr.pages.dev (schltr.com still points at the old Adobe Portfolio site).
+Work in Progress! Currently at https://schltr.pages.dev, schltr.com still points at the old Adobe Portfolio site.
 
 ## The site
 
