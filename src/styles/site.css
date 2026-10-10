@@ -614,6 +614,10 @@ img {
   font-weight: 400;
   letter-spacing: -0.03em;
   color: var(--tech-ink);
+  transition: color var(--dur-slide) var(--ease-slide);
+}
+.wm.is-open:not(.is-tech) .wm__ltr {
+  color: var(--photo-accent);
 }
 .wm__labels.is-hidden {
   opacity: 0;
