@@ -10,7 +10,7 @@ interface Props {
   open: boolean;
   /** Out of reach for keyboard and screen readers: the side is collapsed, or a viewer or dialog is open. */
   inert: boolean;
-  /** The menu dims slightly while the tech side is leaned. */
+  /** The menu dims slightly and the album covers fade out while the tech side is leaned. */
   dimmed: boolean;
   go: Go;
   onNoCopy: (e: MouseEvent) => void;
@@ -48,7 +48,7 @@ export default function PhotoSide({ page, album, open, inert, dimmed, go, onNoCo
 
       <div className={`photo-content ${open ? 'is-open' : ''} ${page === 'albums' ? 'has-covers' : ''}`}>
         {page === 'albums' && (
-          <div className="covers">
+          <div className={`covers ${dimmed ? 'is-faded' : ''}`}>
             {albums.map((a) => (
               <ViewLink key={a.slug} to={albumView(a.slug)} go={go} className="cover" tabIndex={open ? undefined : -1}>
                 <span className="cover__name">{a.name}</span>

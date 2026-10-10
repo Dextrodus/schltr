@@ -153,6 +153,12 @@ img {
   grid-template-rows: repeat(var(--cover-rows, 2), var(--cover-h, 243px));
   grid-auto-columns: var(--cover-w, 325px);
   gap: 8px;
+  transition: opacity 400ms ease-out;
+}
+/* leaning toward tech: whatever the 20% side still shows of the covers fades out, slow at first and fast at the end */
+.covers.is-faded {
+  opacity: 0;
+  transition-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
 }
 .cover {
   position: relative;
