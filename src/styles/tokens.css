@@ -10,14 +10,14 @@
 
 :root {
   /* ── Photo side ─────────────────────────────── */
-  --photo-bg: #80838f;
+  --photo-bg: #c8d7ef;
   --photo-ink: #16181e;
   --photo-ink-2: #2b2e37;
   /* current page, hover, focus ring */
-  --photo-accent: #0e3a6b;
+  --photo-accent: #3971c6;
   --photo-placeholder: #6c6f7b;
   /* album tree line, back-strip line */
-  --photo-line: #b4b7c0;
+  --photo-line: #8293ad;
   --photo-grain-opacity: 0.17;
   /* album titles over cover photos */
   --cover-ink: #f2f2f2;
