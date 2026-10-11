@@ -2,7 +2,7 @@
 
 export const NAME = 'Konrad Schlüter';
 export const MAIL = 'k@schltr.com';
-/** Catch-all address for the complaints joke. */
+/** Catch-all address for the spam joke on the photo contact page. */
 export const SPAM = 'spam@schltr.com';
 export const GITHUB = 'https://github.com/dextrodus';
 export const LINKEDIN = 'https://www.linkedin.com/in/schltr/';
