@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { techPages, type TechPage } from '../lib/route';
-import { GITHUB, LINKEDIN, MAIL, NAME, SPAM } from '../data/contact';
+import { GITHUB, LINKEDIN, MAIL, NAME } from '../data/contact';
 import { ViewLink, type Go } from './bits';
 import Cd from './Cd';
 import { education, languages, skills, volunteering, work, type Entry } from '../data/career';
@@ -214,13 +214,6 @@ function Contact() {
             {MAIL}
           </a>
         </dd>
-        <dt>complaints</dt>
-        <dd>
-          <a href={`mailto:${SPAM}`} className="tech-link te-h">
-            {SPAM}
-          </a>{' '}
-          <span className="dim"># for appropriate disposal</span>
-        </dd>
         <dt>github</dt>
         <dd>
           <a href={GITHUB} className="tech-link te-h" target="_blank" rel="me noopener noreferrer">
@@ -236,7 +229,7 @@ function Contact() {
           <span className="dim"># Loading Buzzwords...</span>
         </dd>
       </dl>
-      <p className="dim">Your message will be read by a human. Eventually.</p>
+      <p className="dim">I usually reply within 1 or 2 days.</p>
     </article>
   );
 }

@@ -156,7 +156,7 @@ function ContactPage() {
           {MAIL}
         </a>
         <p className="note">
-          Send any complaints to{' '}
+          Please feel free to reach out if you have something to say. If you don't have anything to say, you can send an email to{' '}
           <a href={`mailto:${SPAM}`} className="ph-h">
             {SPAM}
           </a>{' '}
