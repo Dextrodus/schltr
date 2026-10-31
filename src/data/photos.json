@@ -2842,12 +2842,12 @@
   ]
  },
  "landscapes": {
-  "cover": "landscapes-09",
+  "cover": "landscapes-01",
   "photos": [
    {
-    "id": "landscapes-02",
+    "id": "landscapes-01",
     "width": 3840,
-    "height": 2880,
+    "height": 2877,
     "widths": [
      720,
      1080,
@@ -2859,15 +2859,39 @@
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAwAA4BaJYwC7ACyW17FAAD8xlnUV1q+NgZDHVDUCo7lbU9VMIcG67YhwYCdnK6eO3HuZNGGgAAA",
+    "lqip": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoQAAwAA4BaJQBOgCK3JHulVQbIAP7qvVgsQQM/RgrR5redC38x8miTgN12/XCcu5pT+7BOqjPL2Fg9mzpOB5QGqq6K6TbqRRLBYdIHzJ3Zk5bTbd6ppmqAAAA=",
+    "exif": {
+     "camera": "DJI FC2103",
+     "lens": "built-in",
+     "focal": 4.5,
+     "aperture": 2.8,
+     "shutter": "1/250",
+     "iso": 100,
+     "taken": "2020-10-04"
+    }
+   },
+   {
+    "id": "landscapes-02",
+    "width": 1440,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1440
+    ],
+    "jpeg": [
+     720,
+     1440
+    ],
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JagCdABb2T1ZkWAtKs19R4AD+3GW1JGNR4RtFxaGFnQ5oiEv6DzlR8Ztu/fTR9xbgz/K63jTyGLW3FS0xKgd54+2lJIgFHjEhABNAAAA=",
     "exif": {
      "camera": "Canon EOS 200D",
-     "lens": "EF-S18-55mm f/4-5.6 IS STM",
-     "focal": 24,
-     "aperture": 22,
-     "shutter": "2.5",
-     "iso": 100,
-     "taken": "2017-11-15"
+     "lens": "EF-S55-250mm f/4-5.6 IS STM",
+     "focal": 175,
+     "aperture": 5.6,
+     "shutter": "1/3200",
+     "iso": 400,
+     "taken": "2021-06-04"
     }
    },
    {
@@ -2885,7 +2909,7 @@
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAsAA4BaJbACdAEOuNyyMADLToSeAwnhanRgTN+9Qfo9Dml+6z0t36sxvs8vm7m/XjgVJjxv3YOPVThqAAAA",
+    "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADQAQCdASoQAAsAA4BaJbACdAEOuNzxwADLToSeAwnhanRgTN+9Qfo9Dml+6z0t36tLP+hR+JuLNFxW0mPG/dg49VOGoAAA",
     "exif": {
      "camera": "Canon EOS 200D",
      "lens": "EF-S55-250mm f/4-5.6 IS STM",
@@ -2898,32 +2922,186 @@
    },
    {
     "id": "landscapes-04",
-    "width": 3742,
-    "height": 2803,
+    "width": 1728,
+    "height": 2160,
     "widths": [
      720,
      1080,
      1600,
-     2560,
-     3742
+     1728
     ],
     "jpeg": [
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAwAA4BaJQBOgCPps+46mIAA/vQ6QHdcYsea803NFyAu9bceOUKvRkldbk4x4JQCtjTn8rrxqmgb8SCjQKLKamq3wteA9OAAAA==",
+    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQBACdASoQABQAPu1iqU2ppaQiMAgBMB2JYwDCgCHXHYdc5mUOCyfogAD9+vk9TA3eGG1pEUBr3+63uT3bp+guVuH9+nm1yvmyqSG4sYYkmaISdHzidraYSrwEOAAA",
     "exif": {
-     "camera": "DJI FC2103",
-     "lens": "built-in",
-     "focal": 4.5,
-     "aperture": 2.8,
-     "shutter": "1/80",
+     "camera": "Canon EOS 200D",
+     "lens": "EF-S10-18mm f/4.5-5.6 IS STM",
+     "focal": 10,
+     "aperture": 4.5,
+     "shutter": "1/1000",
      "iso": 100,
-     "taken": "2020-10-25"
+     "taken": "2022-03-25"
     }
    },
    {
     "id": "landscapes-05",
+    "width": 3749,
+    "height": 2812,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3749
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADwAQCdASoQAAwAA4BaJZQAAudlYFuqGYAA/uvqctYVGBtSzufjY6Pbh8PnlZvVYSAAAA==",
+    "exif": {
+     "camera": "Canon EOS 200D",
+     "lens": "EF-S55-250mm f/4-5.6 IS STM",
+     "focal": 250,
+     "aperture": 5.6,
+     "shutter": "1/125",
+     "iso": 100,
+     "taken": "2022-05-15"
+    }
+   },
+   {
+    "id": "landscapes-06",
+    "width": 3840,
+    "height": 1229,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoQAAUAA4BaJQBOgCPf15OCAAD+0JCZZG1D8GHGJTgTTDMSpoAAAA==",
+    "exif": {
+     "camera": "Canon EOS 200D",
+     "lens": "EF-S55-250mm f/4-5.6 IS STM",
+     "focal": 250,
+     "aperture": 5.6,
+     "shutter": "1/640",
+     "iso": 400,
+     "taken": "2022-05-27"
+    }
+   },
+   {
+    "id": "landscapes-07",
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAQCdASoQAAsAA4BaJQBOgCG0vF+ciADLTQt1Ycdrvij5jrqNf1sr9IRbGAAA",
+    "exif": {
+     "camera": "Canon EOS 200D",
+     "lens": "EF-S55-250mm f/4-5.6 IS STM",
+     "focal": 250,
+     "aperture": 5.6,
+     "shutter": "1/1600",
+     "iso": 200,
+     "taken": "2022-08-25"
+    }
+   },
+   {
+    "id": "landscapes-08",
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAQCdASoQAAsAA4BaJbACdADbe2D/U4AA+xe/FPD75eVwDaqBX7+cm9/1cSIy0/fjzcpt020zYjPUdyxZrPd7d5DE7BS+GsgSP77aMs/6SUDM/kj10hVc5NZ+uzvbFswd5kzkAAA=",
+    "exif": {
+     "camera": "Canon EOS 200D",
+     "lens": "EF-S55-250mm f/4-5.6 IS STM",
+     "focal": 70,
+     "aperture": 4.5,
+     "shutter": "1/1600",
+     "iso": 800,
+     "taken": "2022-08-25"
+    }
+   },
+   {
+    "id": "landscapes-09",
+    "width": 3840,
+    "height": 2182,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACQAQCdASoQAAkAA4BaJbACdAEI9QAA/hRIqTmAxcTD98sWtA1Yf2/jlyyjkjsAAAA=",
+    "exif": {
+     "camera": "Canon EOS 5D Mark III",
+     "lens": "EF100-400mm f/4.5-5.6L IS USM",
+     "focal": 400,
+     "aperture": 10,
+     "shutter": "1/1250",
+     "iso": 640,
+     "taken": "2022-09-16"
+    }
+   },
+   {
+    "id": "landscapes-10",
+    "width": 1620,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1600,
+     1620
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoQABUAPu1kqU2ppaOiMAgBMB2JYgCdMoACwakwaGiyRRfAAP6iVMzwyccFXzKckJeGVdrYE7GdulR79Rd/tSf6dQyKJppTzIAAAA==",
+    "exif": {
+     "camera": "Canon EOS 5D Mark III",
+     "lens": "EF100-400mm f/4.5-5.6L IS USM",
+     "focal": 220,
+     "aperture": 10,
+     "shutter": "1/1250",
+     "iso": 640,
+     "taken": "2022-09-16"
+    }
+   },
+   {
+    "id": "landscapes-11",
     "width": 3840,
     "height": 2161,
     "widths": [
@@ -2949,7 +3127,7 @@
     }
    },
    {
-    "id": "landscapes-06",
+    "id": "landscapes-12",
     "width": 1440,
     "height": 2160,
     "widths": [
@@ -2961,227 +3139,44 @@
      720,
      1440
     ],
-    "lqip": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABwAwCdASoQABgALrV2u12jqampiYC0SygABc1eyVtzwam8tAAA/uQNwbiTW352PcD9OfEdzonm02r7e2afteAA",
+    "lqip": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JZgC7IDZDAz9vgsB+LScJxSAAAP70KFndN1VP0B4J73aZHubxDcIlIsr4vTgFd4LdAkADuFP0WN6SCGGdM+N/URXE0ibbD/+64/0SjyKWgul9yxWjpHQmmGhvoSUb8ei5itwNR+GUhZ1wSQfL264AAAA=",
     "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 250,
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
      "aperture": 5.6,
-     "shutter": "1/200",
-     "iso": 400,
-     "taken": "2022-05-27"
-    }
-   },
-   {
-    "id": "landscapes-07",
-    "width": 3840,
-    "height": 2877,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoQAAwAA4BaJQBOgCPVdMoOEpwA9jf051tWBJzvNEZ2XC9xZ8GPV7GihM1886tfxJishktdzj2NfnMZeVCeoMke6suSs60+u3bLB0RgAAA=",
-    "exif": {
-     "camera": "DJI FC2103",
-     "lens": "built-in",
-     "focal": 4.5,
-     "aperture": 2.8,
-     "shutter": "1/40",
-     "iso": 200,
-     "taken": "2021-09-28"
-    }
-   },
-   {
-    "id": "landscapes-08",
-    "width": 3840,
-    "height": 2880,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAABQAgCdASoQAAwAA4BaJZACdH8AGBhTKiazsgAA/vUxR7P+LRKiZ5zgdMdl7Xya4a76CHPimTV+9IFc/ZOZMGJe3KNAAA==",
-    "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S10-18mm f/4.5-5.6 IS STM",
-     "focal": 10,
-     "aperture": 20,
-     "shutter": "1/500",
-     "iso": 400,
-     "taken": "2021-06-06"
-    }
-   },
-   {
-    "id": "landscapes-09",
-    "width": 3840,
-    "height": 2560,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADwAQCdASoQAAsAA4BaJQBOgCFqwxLFVoAAy00LdVxnV3yHCZrqJA2yv0hFsYAA",
-    "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 250,
-     "aperture": 5.6,
-     "shutter": "1/1600",
-     "iso": 200,
-     "taken": "2022-08-25"
-    }
-   },
-   {
-    "id": "landscapes-10",
-    "width": 3840,
-    "height": 2560,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAA4BaJbACdADw0XuusAAA/uy2dn0UTqam9tErrC3oQuzeEBohX9iY4vo5z74aTXz99l4PN/mRJNgAAA==",
-    "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 209,
-     "aperture": 5.6,
-     "shutter": "1/3200",
-     "iso": 100,
-     "taken": "2017-01-25"
-    }
-   },
-   {
-    "id": "landscapes-11",
-    "width": 3840,
-    "height": 2880,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAAAQAgCdASoQAAwAA4BaJaQAAxdCk5X8mJQAAP7vrnpeyxNKM7wO0GLyH5ySk3/nLKCP/xc5kuxuip1aYE2uAG3e06Plnb2vZJ+XaLGGA2AAAA==",
-    "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 250,
-     "aperture": 5.6,
-     "shutter": "1/2000",
-     "iso": 100,
-     "taken": "2022-09-21"
-    }
-   },
-   {
-    "id": "landscapes-12",
-    "width": 1620,
-    "height": 2160,
-    "widths": [
-     720,
-     1080,
-     1600,
-     1620
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZACdMoACwaaC3IDJh9IA/rvvtzYjOQZZs67UYS8MrA6+Yj2+VCOx+lakUsXJU00skgxGAAA=",
-    "exif": {
-     "camera": "Canon EOS 5D Mark III",
-     "lens": "EF100-400mm f/4.5-5.6L IS USM",
-     "focal": 220,
-     "aperture": 10,
      "shutter": "1/1250",
      "iso": 640,
-     "taken": "2022-09-16"
+     "taken": "2022-12-30"
     }
    },
    {
     "id": "landscapes-13",
-    "width": 3840,
-    "height": 2560,
+    "width": 1484,
+    "height": 2160,
     "widths": [
      720,
      1080,
-     1600,
-     2560,
-     3840
+     1484
     ],
     "jpeg": [
      720,
-     1600
+     1484
     ],
-    "lqip": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAAAQAgCdASoQAAsAA4BaJYwCdAEVY6deiYkAAP6n9vyzVW52iA+vGctoZZfKd/5MKS55OhUYBUh3IzEWx0c/WAAA",
+    "lqip": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACQAwCdASoQABcAPu1iqU2ppaOiMAgBMB2JQBOgA81w8Vy7FowAAOETtyMEkA+eDYYADbwJoNIjG6FW9fWYLCuU9NkUTGEVsD1/BtGuNFv4KMAA",
     "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 109,
-     "aperture": 5,
-     "shutter": "1/3200",
-     "iso": 100,
-     "taken": "2022-05-27"
+     "camera": "Sony ILCE-7C",
+     "lens": "SAMYANG AF 75mm F1.8",
+     "focal": 75,
+     "aperture": 2.2,
+     "shutter": "1/250",
+     "iso": 500,
+     "taken": "2023-03-17"
     }
    },
    {
     "id": "landscapes-14",
     "width": 3840,
-    "height": 2156,
-    "widths": [
-     720,
-     1080,
-     1600,
-     2560,
-     3840
-    ],
-    "jpeg": [
-     720,
-     1600
-    ],
-    "lqip": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAwAgCdASoQAAkAA4BaJZACdAEfcfwFvDIu4AD+8mWqHgGks0VagzdiA3GFXecVEUoCvcsdnYt/ZLvkwU7sbcBG9qAAAA==",
-    "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF50mm f/1.8 STM",
-     "focal": 50,
-     "aperture": 11,
-     "shutter": "1/1000",
-     "iso": 800,
-     "taken": "2021-08-23"
-    }
-   },
-   {
-    "id": "landscapes-15",
-    "width": 3840,
     "height": 2560,
     "widths": [
      720,
@@ -3194,15 +3189,41 @@
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADwAQCdASoQAAsAA4BaJbACdADcotmRi+AA+xe/FPD75eVwDaqBX7+cm9/1cSIy0/fjzcpt020zYYh+BqhbtA1LclcfK/BetjQ9PvFclKtFTSqt1v5I9dIVXOTWfrs72xbMHeZM5AAAAA==",
+    "lqip": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAsAA4BaJaACdAD0Zz/uYAAA/q+bEP6QQGqR1rTprY95OHcFuKGx4uVX1TR+FnFRLYinDIXsOyfFKOMR3gAA",
     "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 70,
-     "aperture": 4.5,
-     "shutter": "1/1600",
-     "iso": 800,
-     "taken": "2022-08-25"
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 5.6,
+     "shutter": "1/800",
+     "iso": 100,
+     "taken": "2023-04-10"
+    }
+   },
+   {
+    "id": "landscapes-15",
+    "width": 3840,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACwAQCdASoQAAkAA4BaJbACdAEOslsAAP6yPZTAjhPchu4X1f1AWqx8uFSflf9oGeckntdzzkj924QE9hjyjAAA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 5.6,
+     "shutter": "1/250",
+     "iso": 1000,
+     "taken": "2023-04-12"
     }
    },
    {
@@ -3220,118 +3241,619 @@
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAQAgCdASoQAAsAA4BaJZQC7AEG4ruTq1IAAP6vERuwZwH9RotPoEdepNlNONygK15lUUvhaEoSgsWOK3AAAA==",
+    "lqip": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAACQAQCdASoQAAsAA4BaJQBOgBP5zgAA9QV7ONzVy4HfQJq0L+wval60fv6N5NRTF0pmxAAA",
     "exif": {
      "camera": "Sony ILCE-7C",
      "lens": "E 28-200mm F2.8-5.6 A071",
      "focal": 200,
      "aperture": 5.6,
-     "shutter": "1/4000",
-     "iso": 1250,
-     "taken": "2022-12-11"
+     "shutter": "1/250",
+     "iso": 8000,
+     "taken": "2023-04-12"
     }
    },
    {
     "id": "landscapes-17",
-    "width": 3840,
-    "height": 2877,
+    "width": 2324,
+    "height": 546,
     "widths": [
      720,
      1080,
      1600,
-     2560,
-     3840
+     2324
     ],
     "jpeg": [
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwAgCdASoQAAwAA4BaJQBOgCK3JGGapcjkAAD+6r1YLEEDP0YK0ea3nQt/MfJok4Dddv1MlZdOd4vnMMK99CzeHjW5zF/XtQcsS5utKF0Z6bxRSB8yd2ZOW023eqaZqgAAAA==",
+    "lqip": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAQAA4BaJQBOgCICqK2aOAD7pfCRBZ+TDDOwUQCHlxBIJEB+9xUhiHwYAAAA",
     "exif": {
-     "camera": "DJI FC2103",
-     "lens": "built-in",
-     "focal": 4.5,
-     "aperture": 2.8,
-     "shutter": "1/250",
-     "iso": 100,
-     "taken": "2020-10-04"
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 69,
+     "aperture": 8,
+     "shutter": "1/80",
+     "iso": 1000,
+     "taken": "2023-06-26"
     }
    },
    {
     "id": "landscapes-18",
-    "width": 3840,
-    "height": 2876,
+    "width": 2261,
+    "height": 1696,
     "widths": [
      720,
      1080,
      1600,
-     2560,
-     3840
+     2261
     ],
     "jpeg": [
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAABQAgCdASoQAAwAA4BaJZwAD43w9vc7MjaKUQAA/ojeoG9hzlVWCzoO1fPOTVw1hmHbee9o+MOu8hICbTTlsaxjbChDm3fpJ1kusmhL8/whfGb6AdIAAA==",
+    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAwAgCdASoQAAwAA4BaJbACdADp6RyYa7YugAD+9c5JHnj5E6+xiLv0YADSucF9NcLV0W1gblgSmp4nMkPqbxRFSdmk6ufCt+GYaT+mF5R+RPtOd+Efm4/BU/nzA1M2j33hRPoO6QtZ9LrpEAAAAA==",
     "exif": {
-     "camera": "DJI FC2103",
-     "lens": "built-in",
-     "focal": 4.5,
-     "aperture": 2.8,
-     "shutter": "1/2400",
-     "iso": 100,
-     "taken": "2021-03-23"
+     "camera": "Sony ILCE-7C",
+     "lens": "FE 200-600mm F5.6-6.3 G OSS",
+     "focal": 600,
+     "aperture": 6.3,
+     "shutter": "1/500",
+     "iso": 320,
+     "taken": "2023-08-14"
     }
    },
    {
     "id": "landscapes-19",
-    "width": 3840,
-    "height": 1229,
+    "width": 2560,
+    "height": 1707,
     "widths": [
      720,
      1080,
      1600,
-     2560,
-     3840
+     2560
     ],
     "jpeg": [
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADQAQCdASoQAAUAA4BaJQBOgCPf15OCAAD+0JCZZG1D8GHGJMALovVqpBjAAA==",
+    "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoQAAsAA4BaJaQAAsTEsjGHCtAwAPZeFmImG6DJtiqliGNfLzjBOXis5rbUHusmWGwB1LeUThlvv/gwP80KwzAAAAA=",
     "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S55-250mm f/4-5.6 IS STM",
-     "focal": 250,
-     "aperture": 5.6,
-     "shutter": "1/640",
-     "iso": 400,
-     "taken": "2022-05-27"
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 34,
+     "aperture": 3.2,
+     "shutter": "1/500",
+     "iso": 2500,
+     "taken": "2023-08-16"
     }
    },
    {
     "id": "landscapes-20",
-    "width": 1728,
+    "width": 2508,
+    "height": 823,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2508
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAAUAA4BaJZQAAuUv/2oAAP4BtXdaoT2+VQ3lcI9Dc0OI3himfj41UCgFuKcvAAA=",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "SAMYANG AF 75mm F1.8",
+     "focal": 75,
+     "aperture": 5.6,
+     "shutter": "1/500",
+     "iso": 1000,
+     "taken": "2023-08-18"
+    }
+   },
+   {
+    "id": "landscapes-21",
+    "width": 2560,
+    "height": 1707,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoQAAsAA4BaJbACdACzt+8ZWAD9Nft3dr3csg2nzcr3UuJ+Oczu1FIv8Zi3+etsMAAAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "FE 200-600mm F5.6-6.3 G OSS",
+     "focal": 382,
+     "aperture": 6.3,
+     "shutter": "1/500",
+     "iso": 400,
+     "taken": "2023-08-27"
+    }
+   },
+   {
+    "id": "landscapes-22",
+    "width": 2344,
+    "height": 1563,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2344
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoQAAsAA4BaJbACdAEOtWmAAAD+56O+/XrwuyzID1pgdoUCGzk6DrhSFgfbFAnTlC2i67P/5PHHAT/fyzAqa5X9qU+1c+Ag/vzHs81sSbuAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 32,
+     "shutter": "1/1",
+     "iso": 100,
+     "taken": "2023-09-03"
+    }
+   },
+   {
+    "id": "landscapes-23",
+    "width": 2560,
+    "height": 1707,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAA4BaJbACdADHszYiCGAA/kmPs7K4M9k0vYof6VyowIwn+0HPjrpGiXa+0IUkbEAc3rW3vZM9lAAAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "FE 200-600mm F5.6-6.3 G OSS",
+     "focal": 600,
+     "aperture": 6.3,
+     "shutter": "1/500",
+     "iso": 320,
+     "taken": "2023-09-07"
+    }
+   },
+   {
+    "id": "landscapes-24",
+    "width": 2560,
+    "height": 1707,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAsAA4BaJYgCdADcHgmm0QAA/I8DkXdUPoBfT2pwifhB8ZGc8eVQtHXtW+D1G1Qo6AAA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "SAMYANG AF 75mm F1.8",
+     "focal": 75,
+     "aperture": 1.8,
+     "shutter": "1/250",
+     "iso": 6400,
+     "taken": "2023-09-07"
+    }
+   },
+   {
+    "id": "landscapes-25",
+    "width": 2156,
+    "height": 1479,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2156
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQAgCdASoQAAsAA4BaJbACdADxCW4Q5IqR8wAA/u/Xitx/PToPmvy9xOxaBmG+ErPznOOq590By2+vz/+hof+zT5ZVmeW5ceTOzPQA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "FE 200-600mm F5.6-6.3 G OSS",
+     "focal": 600,
+     "aperture": 7.1,
+     "shutter": "1/4000",
+     "iso": 100,
+     "taken": "2023-10-09"
+    }
+   },
+   {
+    "id": "landscapes-26",
+    "width": 2167,
+    "height": 1626,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2167
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADQAQCdASoQAAwAA4BaJbACdADOJszz4ADNwmpTH8hUyFcFbJOJnriiVA5CdOq+tq5WmYjlIyrG5roCUSE9ZW5t25u4oi7zt57RfczRtTAAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "FE 200-600mm F5.6-6.3 G OSS",
+     "focal": 600,
+     "aperture": 6.3,
+     "shutter": "1/400",
+     "iso": 10000,
+     "taken": "2023-10-09"
+    }
+   },
+   {
+    "id": "landscapes-27",
+    "width": 1620,
     "height": 2160,
     "widths": [
      720,
      1080,
      1600,
-     1728
+     1620
     ],
     "jpeg": [
      720,
      1600
     ],
-    "lqip": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAwCdASoQABQAPu1iqU2ppaQiMAgBMB2JYwAAW9K7df5kaI9Lg9sAAP36+T1MDd4YbWkRQGvf7re5Pdun6C5W4f36ebXLPTzVX0cvT4FCssuAp6Sa2NsgOS1gAAAA",
+    "lqip": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZACw7CL6q/H8YPMXR+oAAP0hDSYS8k58qRjSNQPxQXqufbvMtWX56zxhietN04hL2GjRV3pdxqxwyU/RsxUPU4fAAA==",
     "exif": {
-     "camera": "Canon EOS 200D",
-     "lens": "EF-S10-18mm f/4.5-5.6 IS STM",
-     "focal": 10,
-     "aperture": 4.5,
-     "shutter": "1/1000",
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 28,
+     "aperture": 8,
+     "shutter": "1/640",
+     "iso": 10000,
+     "taken": "2023-10-09"
+    }
+   },
+   {
+    "id": "landscapes-28",
+    "width": 2560,
+    "height": 1707,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAA4BaJZgCdAEOcKywDIAA9iztRc1UgOEqm5EiEqRgfSf89OjXOOX7vt98SeqGtswCgbHT8CSvrLQwAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "FE 200-600mm F5.6-6.3 G OSS",
+     "focal": 600,
+     "aperture": 6.3,
+     "shutter": "1/1600",
+     "iso": 10000,
+     "taken": "2023-10-10"
+    }
+   },
+   {
+    "id": "landscapes-29",
+    "width": 2560,
+    "height": 1707,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAsAA4BaJZgCdAEU1ZrGQAAA/o7KspABQhpOiHRCEfvUHDNwdGSd7KdW9/2m25ODEqgA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 164,
+     "aperture": 5.6,
+     "shutter": "1/250",
+     "iso": 500,
+     "taken": "2023-10-11"
+    }
+   },
+   {
+    "id": "landscapes-30",
+    "width": 2560,
+    "height": 1920,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQAAwAA4BaJQBOgCHcVxjdqJoAAP2bVI5FWlEvSnhN/HvF3WweqLhteq1IF0HiwL4wVFcB1xNdDleogAA=",
+    "exif": {
+     "camera": "DJI FC3582",
+     "lens": "6.7 mm f/1.7",
+     "focal": 6.7,
+     "aperture": 1.7,
+     "shutter": "1/15",
      "iso": 100,
-     "taken": "2022-03-25"
+     "taken": "2023-10-11"
+    }
+   },
+   {
+    "id": "landscapes-31",
+    "width": 1440,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1440
+    ],
+    "jpeg": [
+     720,
+     1440
+    ],
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwBACdASoQABgAPu1iqU2ppaOiMAgBMB2JbAAAW+KRS9lRdrPJwRobbYAA/ueZHP2Bs9V+cjT1wtZ9BukwFCooJzLGste4UojBCJXVe89lgrHRXXLIw/Ee5k1SSZ7Ivnr4CjQRZ1doVMSokxlpcBERwKvyXapdTDJXr0PW2I3bVbPAAAA=",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 28,
+     "aperture": 13,
+     "shutter": "1/1000",
+     "iso": 2500,
+     "taken": "2024-08-23"
+    }
+   },
+   {
+    "id": "landscapes-32",
+    "width": 1440,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1440
+    ],
+    "jpeg": [
+     720,
+     1440
+    ],
+    "lqip": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAQBACdASoQABgAPu1iqU2ppaOiMAgBMB2JbACsACPw6dml8Y3+GUTrQAD+Zck7Ms49SPQ9Rz8cq83mjBE0OdOZ9fspOJr01EeoIplJpTV9rfrui2qlWxQfVOmnhj08WAUbzSVm8i1E7xDeN6Ubs0FYoI+fwwAA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 28,
+     "aperture": 13,
+     "shutter": "1/1000",
+     "iso": 3200,
+     "taken": "2024-08-23"
+    }
+   },
+   {
+    "id": "landscapes-33",
+    "width": 1620,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1600,
+     1620
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAQBACdASoQABUAPu1iqU2ppaOiMAgBMB2JYgB3AAQCYFz89tRp+Fs4oAD+6DGK9+C/epc55Uw2rn8U31efH6qyIyd6rKeEXQbLNrIUx2U3YDb56cciDQO7stJtXi2MZxXfJoPXvnK8PgjgJDuVUfvVQ8AAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 5.6,
+     "shutter": "1/1000",
+     "iso": 1600,
+     "taken": "2024-08-23"
+    }
+   },
+   {
+    "id": "landscapes-34",
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAwAgCdASoQAAsAA4BaJYgCdAEURCxlD+qUAADOH3nH0k2B8D676CVUR5xiQoSl5Gb/nZxWK21qplGItV1l9G2kJhqtmx3AAAA=",
+    "exif": {
+     "camera": "Sony ZV-E10M2",
+     "lens": "E PZ 16-50mm F3.5-5.6 OSS II",
+     "focal": 16,
+     "aperture": 4,
+     "shutter": "1/30",
+     "iso": 125,
+     "taken": "2025-08-29"
+    }
+   },
+   {
+    "id": "landscapes-35",
+    "width": 1620,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1600,
+     1620
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAQBACdASoQABUAPu1iqk2ppaQiMAgBMB2JYwC06CHfE3jzldl82zbYAAD+78kYA1Uak4ppqE9wLXWcS4WQ1fThbK9hkrE61JI4xOTXL9/sIunvOeZaOAAA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 28,
+     "aperture": 8,
+     "shutter": "1/250",
+     "iso": 100,
+     "taken": "2025-09-08"
+    }
+   },
+   {
+    "id": "landscapes-36",
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoQAAsAA4BaJZQCw7EfbIfyYcQAAP6151dXzjvKkh2DbFuVC8GcTDAR/+Oo0UMDgthM0+zyooWGVCllT7iCDMeN5WI+h4wAAAA=",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 67,
+     "aperture": 8,
+     "shutter": "1/250",
+     "iso": 1000,
+     "taken": "2025-12-22"
+    }
+   },
+   {
+    "id": "landscapes-37",
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoQAAsAA4BaJQBdgCHYniIQQAD+4Atq1DaTmV2vFZOF8LGYySDkY3dcTDcO8KK3XSAAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 53,
+     "aperture": 20,
+     "shutter": "1/400",
+     "iso": 8000,
+     "taken": "2026-06-13"
+    }
+   },
+   {
+    "id": "landscapes-38",
+    "width": 3840,
+    "height": 1920,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAQCdASoQAAgAA4BaJQBOgCHZr+ayAP5Zi99PFYb+DL4UAbcQ2aQJkBermERxjtmjwphgaveFCG4l++oAAA==",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 9,
+     "shutter": "1/500",
+     "iso": 5000,
+     "taken": "2026-06-13"
+    }
+   },
+   {
+    "id": "landscapes-39",
+    "width": 3840,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoQAAkAA4BaJagCdADOY0mMAP7QzeGLFkvb2ZvAR/XlawKF4XwMUZdPPqPZX8Fd1lus59ev4yMjR2ScSmHFcd+b011icAAA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 5.6,
+     "shutter": "1/500",
+     "iso": 1250,
+     "taken": "2026-08-29"
+    }
+   },
+   {
+    "id": "landscapes-40",
+    "width": 3840,
+    "height": 2160,
+    "widths": [
+     720,
+     1080,
+     1600,
+     2560,
+     3840
+    ],
+    "jpeg": [
+     720,
+     1600
+    ],
+    "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAQCdASoQAAkAA4BaJZQC7AEOw7t4AAD+5w3VIEx/mgBRTY3RLXZ4Mp26MAAA",
+    "exif": {
+     "camera": "Sony ILCE-7C",
+     "lens": "E 28-200mm F2.8-5.6 A071",
+     "focal": 200,
+     "aperture": 32,
+     "shutter": "1/6",
+     "iso": 100,
+     "taken": "2026-09-06"
     }
    }
   ]

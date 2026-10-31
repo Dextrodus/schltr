@@ -20,6 +20,7 @@ export const currentGear: Gear[] = [
 ];
 
 export const previousGear: Gear[] = [
+  { id: 'sony-zv-e10-ii', kind: 'Body', name: 'Sony ZV-E10 II', exif: 'Sony ZV-E10M2' },
   { id: 'canon-200d', kind: 'Body', name: 'Canon EOS 200D', exif: 'Canon EOS 200D' },
   { id: 'canon-5d3', kind: 'Body', name: 'Canon EOS 5D Mark III', exif: 'Canon EOS 5D Mark III' },
   { id: 'ef-s-55-250', kind: 'Lens', name: 'Canon EF-S 55–250mm f/4–5.6 IS STM', exif: 'EF-S55-250mm f/4-5.6 IS STM' },
