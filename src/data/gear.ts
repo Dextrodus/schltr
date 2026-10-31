@@ -1,6 +1,6 @@
 // Camera gear for "What I use" on the photo side.
 // `exif` is the camera or lens name as it appears in photo EXIF; photo counts are computed from it.
-// The EXIF names of the Samyang 20mm and the Mini 5 Pro are guesses until photos taken with them are added.
+// The EXIF name of the Samyang 20mm is a guess until photos taken with it are added.
 
 import { albums, type Photo } from './photos';
 
@@ -16,7 +16,7 @@ export const currentGear: Gear[] = [
   { id: 'tamron-28-200', kind: 'Lens', name: 'Tamron 28–200mm', exif: 'E 28-200mm F2.8-5.6 A071' },
   { id: 'samyang-20', kind: 'Lens', name: 'Samyang 20mm f/1.8', exif: 'SAMYANG AF 20mm F1.8' },
   { id: 'samyang-75', kind: 'Lens', name: 'Samyang 75mm f/1.8', exif: 'SAMYANG AF 75mm F1.8' },
-  { id: 'dji-mini-5-pro', kind: 'Drone', name: 'DJI Mini 5 Pro', exif: 'DJI Mini 5 Pro' },
+  { id: 'dji-mini-5-pro', kind: 'Drone', name: 'DJI Mini 5 Pro', exif: 'DJI FC9313' },
 ];
 
 export const previousGear: Gear[] = [
@@ -26,7 +26,9 @@ export const previousGear: Gear[] = [
   { id: 'ef-s-10-18', kind: 'Lens', name: 'Canon EF-S 10–18mm f/4.5–5.6 IS STM', exif: 'EF-S10-18mm f/4.5-5.6 IS STM' },
   { id: 'ef-s-18-55', kind: 'Lens', name: 'Canon EF-S 18–55mm f/4–5.6 IS STM', exif: 'EF-S18-55mm f/4-5.6 IS STM' },
   { id: 'ef-50', kind: 'Lens', name: 'Canon EF 50mm f/1.8 STM', exif: 'EF50mm f/1.8 STM' },
+  { id: 'fe-200-600', kind: 'Lens', name: 'Sony FE 200–600mm f/5.6–6.3 G OSS', exif: 'FE 200-600mm F5.6-6.3 G OSS' },
   { id: 'ef-100-400', kind: 'Lens', name: 'Canon EF 100–400mm f/4.5–5.6L IS USM', exif: 'EF100-400mm f/4.5-5.6L IS USM' },
+  { id: 'dji-mini-3-pro', kind: 'Drone', name: 'DJI Mini 3 Pro', exif: 'DJI FC3582' },
   { id: 'dji-fc2103', kind: 'Drone', name: 'DJI Mavic Air', exif: 'DJI FC2103' },
 ];
 
